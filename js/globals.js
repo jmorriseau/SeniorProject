@@ -66,17 +66,6 @@ function updateSlidingSelect(current, next){
   }
 }
 
-function editCampus(elem){
-  $(".campus-container section").removeClass("edit-campus");
-  $(elem).parent("section").addClass("edit-campus");
-  $(elem).animate({"opacity" : "0"}, 200);
-}
-
-function closeEdit(){
-  $(".campus-container section").removeClass("edit-campus");
-  $(".edit-campus-btn").animate({"opacity" : "1"}, 200);
-}
-
 var campuses = [
   {
     "campusName": "Access Road",
