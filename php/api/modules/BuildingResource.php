@@ -10,9 +10,6 @@ class BuildingResource implements IRestModel{
 
     private $db;
     function __construct($db) {
-        //sets connection to the database
-        //$util = new Util();
-        //$dbo = new DB_Connect($util->getDBConfig());
         $this->setDB($db);
     }
     function setDB($db) {
@@ -33,19 +30,28 @@ class BuildingResource implements IRestModel{
 
     }
 
-    function post($data)
+    public function post($data)
     {
         //Setups up the insert for SQL for post function as well as binding JSON data provided by the data array to the statement
-
+        //return 'yay';
         try{
-          $this->db->sql("INSERT INTO Building SET campus_id = '".$data['campus_id'].
-          "', building_name = '".$data['building_name'].
-              "', building_abbreviation = '".$data['building_abbreviation']."';");
-          return 'Building Added';
+            $this->db->sql("INSERT INTO Building (
+             campus_id, building_abbreviation, building_name, address, city, state, zip)
+             VALUES(
+           '" .$data['campus_id']. "',
+           '" .$data['building_abbreviation']. "',
+           '" .$data['building_name']. "',
+           '" .$data['address']. "',
+           '" .$data['city']. "',
+           '" .$data['state']. "',
+           '" .$data['zip']. "' )
+          ;");
 
+            return 'Building Added';
         }
         catch(Exception $e){
-          throw new Exception('Building could not be added');
+            //return new Exception($e);
+            return $e;
         }
 
     }
@@ -55,22 +61,23 @@ class BuildingResource implements IRestModel{
     {
         //Put function uses a statement written to update a pre-existing db entry.
         try {
-          $this->db->sql("Update Building SET campus_id ='" .$data['campus_id'] .
-              "', building_abreviation = '" . $data['building_abbreviation'] .
-              "', building_name = '" . $data['building_name'] .
-              "', address = '" . $data['address'] .
-              "', city = '" . $data['city'] .
-              "', state = '" . $data['state'] .
-              "', zip = '" . $data['zip'] .
-              "', WHERE building_id = '" . $data['building_id'] . "'");
+            $this->db->sql("UPDATE Building SET
+            campus_id = '" .$data['campus_id'] ."'
+            , building_abbreviation = '" . $data['building_abbreviation'] . "'
+          , building_name = '". $data['building_name'] . "'
+          , address = '" . $data['address'] . "'
+          , city = '" . $data['city'] . "'
+          , state = '" . $data['state'] . "'
+          , zip = '" . $data['zip'] . "'
+          WHERE building_id = '" .$id. "'");
             return 'Building Updated';
         } catch (Exception $e){
-                throw new Exception('Building could not be updated');
+            throw new Exception('Building could not be updated');
         }
     }
 
     public function delete($id) {
-        //Delete uses a statment written to delete from the db where the id matches the one located in the endpoint.
+        //Delete uses a statement written to delete from the db where the id matches the one located in the endpoint.
         $this->db->sql("DELETE FROM Building WHERE building_id = '".$id."';");
 
         if($this->db->sql("select * from Building where building_id ='".$id."';").length == 0)

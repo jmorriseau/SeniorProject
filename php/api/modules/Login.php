@@ -6,6 +6,9 @@
 
       $username = $db->sql("SELECT * FROM [User] where user_name = '".$email."';");
 
+      //var_dump($username);
+      //var_dump($email);
+
       if(password_verify($password,$username[0]['password'])){
         $_SESSION['account']=$username;
         $_SESSION['logged_in']=true;

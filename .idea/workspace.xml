@@ -2,8 +2,23 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a8a444e7-8fe2-4e65-8715-5a45d5bfb01d" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/php/api/API.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/php/api/modules/.htaccess" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/dictionaries/w.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/php/api/modules/AttributeResource.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/php/api/modules/ClassroomResource.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/php/api/modules/DepartmentResource.php" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/npm-debug.log" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/php/api/modules/RestServer.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/php/api/modules/RestServer1.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/php/api/modules/proxyDemo.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/php/api/modules/simple-rest.php" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/index.php" afterPath="$PROJECT_DIR$/index.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/php/api/API.php" afterPath="$PROJECT_DIR$/php/api/API.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/php/api/modules/BuildingResource.php" afterPath="$PROJECT_DIR$/php/api/modules/BuildingResource.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/php/api/modules/CampusResource.php" afterPath="$PROJECT_DIR$/php/api/modules/CampusResource.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/php/api/modules/Login.php" afterPath="$PROJECT_DIR$/php/api/modules/Login.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/php/api/modules/SQLJSON.php" afterPath="$PROJECT_DIR$/php/api/modules/SQLJSON.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/php/building.php" afterPath="$PROJECT_DIR$/php/building.php" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -15,26 +30,34 @@
   <component name="CreatePatchCommitExecutor">
     <option name="PATCH_PATH" value="" />
   </component>
+  <component name="DatabaseView">
+    <option name="GROUP_SCHEMA" value="true" />
+    <option name="GROUP_CONTENTS" value="false" />
+    <option name="SORT_POSITIONED" value="false" />
+    <option name="SHOW_TABLE_DETAILS" value="true" />
+    <option name="SHOW_EMPTY_GROUPS" value="false" />
+    <option name="AUTO_SCROLL_FROM_SOURCE" value="false" />
+  </component>
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="API.php" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/php/api/API.php">
+      <file leaf-file-name="iRestModel.php" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/php/api/modules/iRestModel.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="323">
-              <caret line="47" column="29" lean-forward="false" selection-start-line="47" selection-start-column="29" selection-end-line="47" selection-end-column="29" />
-              <folding>
-                <element signature="n#getData#0;n#API#0;n#!!top" expanded="false" />
-                <element signature="n#setData#0;n#API#0;n#!!top" expanded="false" />
-                <element signature="n#getDB#0;n#API#0;n#!!top" expanded="false" />
-                <element signature="n#setDB#0;n#API#0;n#!!top" expanded="false" />
-                <element signature="n#__construct#0;n#API#0;n#!!top" expanded="false" />
-              </folding>
+            <state relative-caret-position="242">
+              <caret line="14" column="0" lean-forward="true" selection-start-line="0" selection-start-column="0" selection-end-line="16" selection-end-column="0" />
+              <folding />
             </state>
           </provider>
         </entry>
       </file>
     </leaf>
+  </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>setMessage</find>
+      <find>$departmentResource</find>
+    </findStrings>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -42,19 +65,22 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/php/api/modules/SQLJSON.php" />
         <option value="$PROJECT_DIR$/php/api/modules/DAO.php" />
         <option value="$PROJECT_DIR$/php/api/modules/IRestModel1.php" />
         <option value="$PROJECT_DIR$/php/autoload.php" />
         <option value="$PROJECT_DIR$/php/faculty.php" />
-        <option value="$PROJECT_DIR$/php/api/modules/BuildingResource.php" />
-        <option value="$PROJECT_DIR$/php/building.php" />
-        <option value="$PROJECT_DIR$/php/api/API.php" />
-        <option value="$PROJECT_DIR$/php/api/modules/CampusResource.php" />
         <option value="$PROJECT_DIR$/php/api/modules/RestServer1.php" />
-        <option value="$PROJECT_DIR$/php/api/modules/Login.php" />
         <option value="$PROJECT_DIR$/php/login.php" />
         <option value="$PROJECT_DIR$/index.php" />
+        <option value="$PROJECT_DIR$/php/api/modules/DepartmentResource.php" />
+        <option value="$PROJECT_DIR$/php/api/modules/CampusResource.php" />
+        <option value="$PROJECT_DIR$/php/api/modules/Login.php" />
+        <option value="$PROJECT_DIR$/php/api/modules/BuildingResource.php" />
+        <option value="$PROJECT_DIR$/php/api/API.php" />
+        <option value="$PROJECT_DIR$/php/api/modules/ClassroomResource.php" />
+        <option value="$PROJECT_DIR$/php/api/modules/AttributeResource.php" />
+        <option value="$PROJECT_DIR$/php/building.php" />
+        <option value="$PROJECT_DIR$/php/api/modules/SQLJSON.php" />
       </list>
     </option>
   </component>
@@ -64,11 +90,6 @@
   </component>
   <component name="JsGulpfileManager">
     <detection-done>true</detection-done>
-    <gulpfiles>
-      <GulpfileState>
-        <gulpfile-path>$PROJECT_DIR$/gulpfile.js</gulpfile-path>
-      </GulpfileState>
-    </gulpfiles>
     <sorting>DEFINITION_ORDER</sorting>
   </component>
   <component name="NodeModulesDirectoryManager">
@@ -76,10 +97,10 @@
   </component>
   <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true" />
   <component name="ProjectFrameBounds">
-    <option name="x" value="-8" />
-    <option name="y" value="-8" />
-    <option name="width" value="1696" />
-    <option name="height" value="1026" />
+    <option name="x" value="2" />
+    <option name="y" value="2" />
+    <option name="width" value="866" />
+    <option name="height" value="972" />
   </component>
   <component name="ProjectView">
     <navigator currentView="ProjectPane" proportions="" version="1">
@@ -96,25 +117,27 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scratches" />
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
             <PATH_ELEMENT>
-              <option name="myItemId" value="schEDUle-master" />
+              <option name="myItemId" value="schEDUle" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="schEDUle-master" />
+              <option name="myItemId" value="schEDUle" />
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
           </PATH>
           <PATH>
             <PATH_ELEMENT>
-              <option name="myItemId" value="schEDUle-master" />
+              <option name="myItemId" value="schEDUle" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="schEDUle-master" />
+              <option name="myItemId" value="schEDUle" />
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
@@ -124,11 +147,11 @@
           </PATH>
           <PATH>
             <PATH_ELEMENT>
-              <option name="myItemId" value="schEDUle-master" />
+              <option name="myItemId" value="schEDUle" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="schEDUle-master" />
+              <option name="myItemId" value="schEDUle" />
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
@@ -142,11 +165,11 @@
           </PATH>
           <PATH>
             <PATH_ELEMENT>
-              <option name="myItemId" value="schEDUle-master" />
+              <option name="myItemId" value="schEDUle" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="schEDUle-master" />
+              <option name="myItemId" value="schEDUle" />
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
@@ -164,18 +187,19 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scratches" />
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="C:/Windows/Downloaded Program Files" />
+    <property name="last_opened_file_path" value="$USER_HOME$/schEDUle-Jmaster" />
     <property name="nodejs_interpreter_path" value="C:/Program Files/nodejs/node" />
     <property name="js.eslint.eslintPackage" value="" />
     <property name="js-jscs-nodeInterpreter" value="C:\Program Files\nodejs\node.exe" />
   </component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\w\schEDUle\php\api\modules" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\w\schEDUle-master\php\api" />
     </key>
@@ -263,33 +287,36 @@
       <workItem from="1484961848311" duration="430000" />
       <workItem from="1485186142708" duration="13788000" />
       <workItem from="1485204851935" duration="4327000" />
+      <workItem from="1485263607520" duration="13754000" />
+      <workItem from="1485291839977" duration="17272000" />
+      <workItem from="1485811395775" duration="1199000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="26164000" />
+    <option name="totallyTimeSpent" value="58389000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1696" height="1026" extended-state="6" />
+    <frame x="2" y="2" width="866" height="972" extended-state="0" />
     <editor active="false" />
     <layout>
-      <window_info id="Gulp" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.20591862" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.510101" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.1621455" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="npm" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.13956171" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24969174" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.22386225" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Gulp" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.42329872" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
     </layout>
@@ -307,12 +334,42 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/php/login.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/php/api/API.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="n#getData#0;n#API#0;n#!!top" expanded="false" />
+            <element signature="n#setData#0;n#API#0;n#!!top" expanded="false" />
+            <element signature="n#getDB#0;n#API#0;n#!!top" expanded="false" />
+            <element signature="n#setDB#0;n#API#0;n#!!top" expanded="false" />
+            <element signature="n#__construct#0;n#API#0;n#!!top" expanded="false" />
+            <element signature="n#buildingResourceRun#0;n#API#0;n#!!top" expanded="false" />
+            <element signature="n#campusResourceRun#0;n#API#0;n#!!top" expanded="false" />
+            <element signature="e#6682#8362#0#PHP" expanded="false" />
+            <element signature="n#departmentResourceRun#0;n#API#0;n#!!top" expanded="false" />
+            <element signature="n#coursesResourceRun#0;n#API#0;n#!!top" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/php/building.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="44">
           <caret line="2" column="1" lean-forward="false" selection-start-line="1" selection-start-column="0" selection-end-line="20" selection-end-column="5" />
           <folding>
-            <marker date="1485198822561" expanded="true" signature="524:552" ph="Select * FRO... " />
+            <element signature="e#559#694#0#PHP" expanded="false" />
+            <element signature="e#695#825#0#PHP" expanded="false" />
+            <marker date="1485732046275" expanded="true" signature="4450:4478" ph="Select * FRO... " />
+            <marker date="1485732046275" expanded="true" signature="4493:4683" ph="..." />
           </folding>
         </state>
       </provider>
@@ -353,7 +410,10 @@
         <state relative-caret-position="220">
           <caret line="10" column="35" lean-forward="true" selection-start-line="10" selection-start-column="35" selection-end-line="10" selection-end-column="35" />
           <folding>
-            <marker date="1485198822561" expanded="true" signature="524:552" ph="Select * FRO... " />
+            <element signature="e#559#694#0#PHP" expanded="false" />
+            <element signature="e#695#825#0#PHP" expanded="false" />
+            <marker date="1485732046275" expanded="true" signature="4450:4478" ph="Select * FRO... " />
+            <marker date="1485732046275" expanded="true" signature="4493:4683" ph="..." />
           </folding>
         </state>
       </provider>
@@ -389,21 +449,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/php/api/modules/Util.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/php/api/modules/DAO.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="224">
-          <caret line="100" column="22" lean-forward="false" selection-start-line="100" selection-start-column="17" selection-end-line="100" selection-end-column="22" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/php/api/modules/IRestModel1.php" />
     <entry file="file://$PROJECT_DIR$/php/faculty.php">
       <provider selected="true" editor-type-id="text-editor">
@@ -427,122 +472,16 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/php/api/modules/SQLJSON.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="88">
-          <caret line="4" column="11" lean-forward="false" selection-start-line="4" selection-start-column="6" selection-end-line="4" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/php/building.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="704">
-          <caret line="32" column="5" lean-forward="true" selection-start-line="32" selection-start-column="5" selection-end-line="32" selection-end-column="5" />
-          <folding>
-            <marker date="1485198822561" expanded="true" signature="524:552" ph="Select * FRO... " />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/php/api/modules/RestServer1.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="154">
-          <caret line="7" column="17" lean-forward="false" selection-start-line="7" selection-start-column="17" selection-end-line="7" selection-end-column="17" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/php/api/modules/proxyDemo.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/php/api/modules/BuildingResource.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="22">
-          <caret line="10" column="16" lean-forward="true" selection-start-line="10" selection-start-column="16" selection-end-line="10" selection-end-column="16" />
-          <folding>
-            <marker date="1485197155313" expanded="true" signature="704:726" ph="SELECT * FRO... Building" />
-            <marker date="1485197155313" expanded="true" signature="908:960" ph="SELECT * FRO... Building" />
-            <marker date="1485197155313" expanded="true" signature="1173:1368" ph="INSERT INTO Building... " />
-            <marker date="1485197155313" expanded="true" signature="1693:2150" ph="Update Build... " />
-            <marker date="1485197155313" expanded="true" signature="2487:2537" ph="DELETE FROM " />
-            <marker date="1485197155313" expanded="true" signature="2570:2621" ph="select * fro... Building" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/php/api/modules/CampusResource.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="308">
-          <caret line="14" column="39" lean-forward="false" selection-start-line="14" selection-start-column="39" selection-end-line="14" selection-end-column="39" />
-          <folding>
-            <marker date="1485200460342" expanded="true" signature="651:671" ph="SELECT * FRO... Campus" />
-            <marker date="1485200460342" expanded="true" signature="852:901" ph="SELECT * FRO... Campus" />
-            <marker date="1485200460342" expanded="true" signature="1117:1235" ph="INSERT INTO Campus... " />
-            <marker date="1485200460342" expanded="true" signature="1560:1680" ph="Update Campu... " />
-            <marker date="1485200460342" expanded="true" signature="2011:2057" ph="DELETE FROM " />
-            <marker date="1485200460342" expanded="true" signature="2090:2137" ph="select * fro... Campus" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/php/api/modules/bootstrap.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/php/api/modules/RestServer1.php" />
+    <entry file="file://$PROJECT_DIR$/php/api/modules/bootstrap.php" />
     <entry file="file://$PROJECT_DIR$/php/api/modules/.htaccess">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <marker date="1484775965685" expanded="true" signature="0:188" ph="&lt;IfModule mod_rewrite.c&gt;" />
-          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/php/api/modules/Login.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="286">
-          <caret line="13" column="11" lean-forward="true" selection-start-line="13" selection-start-column="11" selection-end-line="13" selection-end-column="11" />
-          <folding>
-            <marker date="1485205970318" expanded="true" signature="105:156" ph="SELECT * FRO... " />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/php/login.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="22">
-          <caret line="1" column="26" lean-forward="true" selection-start-line="1" selection-start-column="26" selection-end-line="1" selection-end-column="26" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/index.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="166">
-          <caret line="33" column="0" lean-forward="true" selection-start-line="33" selection-start-column="0" selection-end-line="33" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/js/globals.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="198">
-          <caret line="9" column="3" lean-forward="true" selection-start-line="9" selection-start-column="3" selection-end-line="9" selection-end-column="3" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/js/globals.js" />
     <entry file="file://$PROJECT_DIR$/php/home.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -551,17 +490,187 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/php/api/modules/RestServer.php" />
+    <entry file="file://$PROJECT_DIR$/php/api/modules/proxyDemo.php" />
+    <entry file="file://$PROJECT_DIR$/php/api/modules/DepartmentResource.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="462">
+          <caret line="21" column="14" lean-forward="true" selection-start-line="21" selection-start-column="14" selection-end-line="21" selection-end-column="14" />
+          <folding>
+            <marker date="1485268629116" expanded="true" signature="503:528" ph="SELECT * FRO... Departments" />
+            <marker date="1485268629116" expanded="true" signature="708:766" ph="SELECT * FRO... Departments" />
+            <marker date="1485268629116" expanded="true" signature="1009:1104" ph="INSERT INTO Departments... " />
+            <marker date="1485268629116" expanded="true" signature="1390:1516" ph="Update Depar... " />
+            <marker date="1485268629116" expanded="true" signature="1866:1922" ph="DELETE FROM " />
+            <marker date="1485268629116" expanded="true" signature="1955:2012" ph="SELECT * fro... Departments" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/php/api/modules/ClassroomResource.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="441">
+          <caret line="83" column="0" lean-forward="true" selection-start-line="83" selection-start-column="0" selection-end-line="83" selection-end-column="0" />
+          <folding>
+            <element signature="n#getAll#0;n#ClassroomResource#0;n#!!top" expanded="false" />
+            <element signature="n#get#0;n#ClassroomResource#0;n#!!top" expanded="false" />
+            <marker date="1485560075394" expanded="true" signature="502:525" ph="SELECT * FRO... Classroom" />
+            <marker date="1485560075394" expanded="true" signature="733:787" ph="SELECT * FRO... Classroom" />
+            <marker date="1485560075394" expanded="true" signature="1030:1301" ph="INSERT INTO Classroom... " />
+            <marker date="1485560075394" expanded="true" signature="1635:1921" ph="Update Class... " />
+            <marker date="1485560075394" expanded="true" signature="2260:2312" ph="DELETE FROM " />
+            <marker date="1485560075394" expanded="true" signature="2345:2398" ph="select * fro... Classroom" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/php/api/modules/AttributeResource.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2002">
+          <caret line="91" column="9" lean-forward="false" selection-start-line="91" selection-start-column="9" selection-end-line="91" selection-end-column="9" />
+          <folding>
+            <marker date="1485561354456" expanded="true" signature="521:721" ph="SELECT Attri... Attributes" />
+            <marker date="1485561354456" expanded="true" signature="933:1232" ph="SELECT Attri... Attributes" />
+            <marker date="1485561354456" expanded="true" signature="1477:1653" ph="INSERT INTO Attributes... " />
+            <marker date="1485561354456" expanded="true" signature="1990:2188" ph="Update Attri... " />
+            <marker date="1485561354456" expanded="true" signature="2529:2587" ph="DELETE FROM " />
+            <marker date="1485561354456" expanded="true" signature="2621:2680" ph="select * fro... Attributes" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/php/add_edit_building.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-795">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/package.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="132">
+          <caret line="24" column="27" lean-forward="true" selection-start-line="24" selection-start-column="27" selection-end-line="24" selection-end-column="27" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/php/api/modules/BuildingResource.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="132">
+          <caret line="10" column="16" lean-forward="true" selection-start-line="0" selection-start-column="0" selection-end-line="128" selection-end-column="0" />
+          <folding>
+            <marker date="1485555564734" expanded="true" signature="577:599" ph="SELECT * FRO... Building" />
+            <marker date="1485555564734" expanded="true" signature="781:833" ph="SELECT * FRO... Building" />
+            <marker date="1485555564734" expanded="true" signature="1078:1483" ph="INSERT INTO Building... " />
+            <marker date="1485555564734" expanded="true" signature="1824:2253" ph="UPDATE Build... " />
+            <marker date="1485555564734" expanded="true" signature="2587:2637" ph="DELETE FROM " />
+            <marker date="1485555564734" expanded="true" signature="2670:2721" ph="select * fro... Building" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/php/api/modules/CampusResource.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="179">
+          <caret line="46" column="9" lean-forward="true" selection-start-line="0" selection-start-column="0" selection-end-line="96" selection-end-column="0" />
+          <folding>
+            <marker date="1485276183252" expanded="true" signature="651:671" ph="SELECT * FRO... Campus" />
+            <marker date="1485276183252" expanded="true" signature="852:901" ph="SELECT * FRO... Campus" />
+            <marker date="1485276183252" expanded="true" signature="1117:1225" ph="INSERT INTO Campus... " />
+            <marker date="1485276183252" expanded="true" signature="1512:1638" ph="Update Campu... " />
+            <marker date="1485276183252" expanded="true" signature="1928:1974" ph="DELETE FROM " />
+            <marker date="1485276183252" expanded="true" signature="2007:2054" ph="select * fro... Campus" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/php/api/modules/DAO.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="135">
+          <caret line="112" column="13" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="155" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/php/api/modules/Login.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="110">
+          <caret line="5" column="0" lean-forward="true" selection-start-line="0" selection-start-column="0" selection-end-line="41" selection-end-column="0" />
+          <folding>
+            <marker date="1485536511568" expanded="true" signature="105:156" ph="SELECT * FRO... " />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/php/api/modules/SQLJSON.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="223">
+          <caret line="12" column="6" lean-forward="true" selection-start-line="0" selection-start-column="0" selection-end-line="81" selection-end-column="45" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/php/api/modules/Util.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="132">
+          <caret line="6" column="12" lean-forward="true" selection-start-line="0" selection-start-column="0" selection-end-line="27" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/php/api/API.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
-          <caret line="47" column="29" lean-forward="false" selection-start-line="47" selection-start-column="29" selection-end-line="47" selection-end-column="29" />
+        <state relative-caret-position="289">
+          <caret line="158" column="9" lean-forward="true" selection-start-line="0" selection-start-column="0" selection-end-line="352" selection-end-column="0" />
           <folding>
             <element signature="n#getData#0;n#API#0;n#!!top" expanded="false" />
             <element signature="n#setData#0;n#API#0;n#!!top" expanded="false" />
             <element signature="n#getDB#0;n#API#0;n#!!top" expanded="false" />
             <element signature="n#setDB#0;n#API#0;n#!!top" expanded="false" />
             <element signature="n#__construct#0;n#API#0;n#!!top" expanded="false" />
+            <element signature="n#buildingResourceRun#0;n#API#0;n#!!top" expanded="false" />
+            <element signature="n#campusResourceRun#0;n#API#0;n#!!top" expanded="false" />
+            <element signature="e#6682#8362#0#PHP" expanded="false" />
+            <element signature="n#departmentResourceRun#0;n#API#0;n#!!top" expanded="false" />
+            <element signature="n#coursesResourceRun#0;n#API#0;n#!!top" expanded="false" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/php/building.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="66">
+          <caret line="3" column="17" lean-forward="true" selection-start-line="0" selection-start-column="0" selection-end-line="148" selection-end-column="2" />
+          <folding>
+            <element signature="e#559#694#0#PHP" expanded="false" />
+            <element signature="e#695#825#0#PHP" expanded="false" />
+            <marker date="1485732046275" expanded="true" signature="4450:4478" ph="Select * FRO... " />
+            <marker date="1485732046275" expanded="true" signature="4493:4683" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/index.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1320">
+          <caret line="63" column="27" lean-forward="true" selection-start-line="63" selection-start-column="27" selection-end-line="63" selection-end-column="27" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/php/login.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="88">
+          <caret line="4" column="8" lean-forward="false" selection-start-line="4" selection-start-column="4" selection-end-line="4" selection-end-column="43" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/php/api/modules/iRestModel.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="242">
+          <caret line="14" column="0" lean-forward="true" selection-start-line="0" selection-start-column="0" selection-end-line="16" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>

@@ -33,8 +33,9 @@ if ($util->isPostRequest() && $_SESSION['logged_in'] === false) {
 <?php } ?>
 
 <div id="header">
-    <div id="header-image" <span><?php echo "Welcome " . " " . $_SESSION['account'][0]['user_name']; ?></span>
-    </div>
+    <div id="header-image"
+    <span><?php echo "Welcome " . " " . $_SESSION['account'][0]['user_name']; ?></span>
+</div>
 </div>
 
 <div class="content-wrapper">

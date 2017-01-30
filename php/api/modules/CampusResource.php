@@ -38,25 +38,29 @@ class CampusResource implements IRestModel{
         //Setups up the insert for SQL for post function as well as binding JSON data provided by the data array to the statement
 
         try{
-            $this->db->sql("INSERT INTO Campus SET campus_id = '".$data['campus_id'].
-                "', campus_name = '".$data['campus_name']."';");
+            $this->db->sql("INSERT INTO Campus (
+             campus_name)
+             VALUES(
+           '" .$data['campus_name']. "');");
             return 'Campus Added';
 
         }
         catch(Exception $e){
-            throw new Exception('Campus could not be added');
+            return $e;
         }
 
     }
     public function put($id,$data)
     {
         //Put function uses a statement written to update a pre-existing db entry.
+
         try {
-            $this->db->sql("Update Campus SET campus_id ='" .$data['campus_id'] .
-                "', WHERE campus_id = '" . $data['campus_id'] . "'");
+            $this->db->sql("Update Campus SET 
+                campus_name ='" .$data['campus_name'] . "'
+                 WHERE campus_id = '" . $id . "'");
             return 'Campus Updated';
         } catch (Exception $e){
-            throw new Exception('Campus could not be updated');
+            return $e;
         }
     }
 
