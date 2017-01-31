@@ -16,7 +16,16 @@ function loadPage(page){
       $('#container').html(result);
       $("#side-bar ul li").removeClass("active");
       $(".nav-" + page).addClass("active");
+    }
+  })
+}
 
+function loadSubPage(subPage){
+  $.ajax({
+    method:"GET",
+    url:"../php/" + subPage + ".php",
+    success: function(result){
+      $('.campus-buildings').html(result);
     }
   })
 }
@@ -64,6 +73,16 @@ function updateSlidingSelect(current, next){
   if(next !== undefined || next !== null){
     $(next).addClass('active');
   }
+}
+
+function editCampus(elem){
+  console.log(elem);
+  $(".campus-container section").not(".active").addClass("inactive");
+  $(elem).parent("section").removeClass("inactive").addClass("active");
+}
+
+function closeEdit(){
+  $(".campus-container section").removeClass("active inactive");
 }
 
 var campuses = [
