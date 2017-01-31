@@ -1,4 +1,4 @@
-<!-- <button class="btn" onclick="launchModal('.edit-classroom','add_edit_building')">Test model edit</button> -->
+<button class="btn" onclick="launchModal('.edit-classroom','add_edit_building')">Test model edit</button>
 
 <div class="modal-container edit-classroom">
   <div class="modal-header">
@@ -15,7 +15,7 @@
   <h1>Current Classrooms</h1>
 </div>
 <hr />
-
+  
 <div class="classroom-container content-container">
 
   <div class="classroom-selector select-campus">
