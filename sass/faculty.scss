@@ -3,11 +3,12 @@ div.alpha-search{
   text-align:center;
 }
 .result-faculty ul li{
-  width:100%;
+  width:80%;
   padding:15px 10px;
   box-sizing:border-box;
   border-bottom:solid 1px #cccccc;
   display:block;
+  margin:0 auto;
 
   &:last-child{
     border-bottom:none;

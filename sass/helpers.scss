@@ -8,7 +8,6 @@
   text-align:center;
 }
 
-
 .hide{
   display:none;
 }
@@ -152,6 +151,15 @@
   width:100%;
   padding:10px 0;
   position:relative;
+
+  &.error{
+    input[type=text], input[type=password], select, textarea {
+      border-color:red;
+    }
+    label{
+      color:red;
+    }
+  }
 
   textarea{
     height:100px;
