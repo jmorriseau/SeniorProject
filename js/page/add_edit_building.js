@@ -48,7 +48,42 @@ function checkForm(e) {
     }
     else {
         alert("Form is valid.");
-        //Add the ajax call here
+        $.ajax({
+            url: "php/url",
+            type: "POST",
+            dataType: "JSON",
+            data: {
+                buildingName: $("input[name=buildingName]").val(),
+                campusName: $("input[name=campusName]").val(),
+                addressLine1: $("input[name=addressLine1]").val(),
+                addressLine2: $("input[name=addressLine2]").val(),
+                city: $("input[name=city]").val(),
+                state: $("input[name=state]").val(),
+                zip: $("input[name=zip]").val()
+            },
+            //if ajax is successful, return to building main page and alert the user
+            success: function (data) {
+                if (data !== "") {
+                    alert(data);
+                }
+                else {
+                    loadPage('building');
+                    // $("#content").load("tools/contacts/index.php", function () {
+                    //     if (url == "tools/contacts/add_contact_db.php") {
+                    //         alert("Contact successfully added");
+                    //     }
+                    //     else if (url == "tools/contacts/edit_contact_db.php") {
+                    //         alert("Contact successfully edited");
+                    //     }
+
+                    // });
+                }
+            },
+            //if ajax is unsuccessful, show response text in console
+            error: function (data) {
+                console.log(data.responseText);
+            }
+        });
     }
 
 }
