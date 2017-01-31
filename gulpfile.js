@@ -33,7 +33,9 @@ gulp.task('sass-watch', function(){
 
 //start the default web server
 gulp.task('webserver', function(){
-  connect.server(); // can be blank of take arguments for the port etc
+  connect.server({
+	port: 80,
+	}); // can be blank of take arguments for the port etc
 })
 
 //allows you to just type 'gulp' can kick off all functions
