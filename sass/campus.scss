@@ -1,20 +1,149 @@
 .campus-container {
-  display:block;
   width:100%;
-  min-height:400px;
-  font-size:0;
+  height:400px;
+  position:relative;
+  overflow: hidden;
 
-  >section{
-    display:inline-block;
-    min-height: 400px;
-    width:33.3333333%;
-    font-size:16px;
-    transition: all 0.3s ease-in-out;
 
-    &:hover{
-      background-color:#efefef;
-      box-shadow: 1px 1px 10px #cccccc;
-      transition: all 0.3s ease-in-out;
+    section{
+      width:33.3333333%;
+      height:400px;
+      display:inline-block;
+      float:left;
+      background-color:#fff;
+      opacity: 1;
+      visibility: visible;
+      transition: all 0.5s ease 0.5s, background-color 0.3s ease;
+      position: relative;
+
+      .campus-info-container{
+        width:100%;
+        transition:width 0.3s ease;
+        float:left;
+        padding: 15px;
+        box-sizing: border-box;
+
+        .campus-image {
+          margin-left: calc(50% - 75px);
+          transition: all 0.3s ease 0.5s;
+        }
+      }
+
+      .edit-campus-btn {
+        margin:10px auto;
+        opacity:1;
+        visibility: visible;
+        transition: all 0.3s ease;
+        display:block;
+      }
+
+      .campus-buildings {
+        opacity: 0;
+        visibility: hidden;
+        width:0;
+        float:left;
+
+        .buildings-row{
+          height:50px;
+        }
+      }
+
+      .close-edit{
+        opacity: 0;
+        visibility: hidden;
+        position:absolute;
+        top:10px;
+        right:10px;
+      }
+
+      &.active{
+        width:100%;
+        z-index: 1000;
+        background-color: #e2e2e2;
+        transition: all 0.5s ease;
+
+        .edit-campus-btn{
+          opacity:0;
+          visibility: hidden;
+          animation: all 0.5s ease 0.5s;
+        }
+
+        .close-edit {
+          opacity: 1;
+          visibility: visible;
+          transition:all 0.3s ease-in 0.5s;
+        }
+
+        .campus-info-container{
+          width:25%;
+          overflow-x:visible;
+          transition:width 0.3s ease 0.5s;
+          float:left;
+          margin-left: 0;
+          text-align: left;
+        }
+        .campus-buildings{
+          width:75%;
+          float:left;
+          overflow:hidden;
+          opacity: 1;
+          visibility: visible;
+          transition:all 0.3s ease 1s;
+        }
+      }
+
+      &.inactive{
+        width:0;
+        opacity:0;
+        visibility: hidden;
+        z-index:-1000;
+        transition: all 0.5s ease;
+      }
+
+      &:hover{
+          background-color:#efefef;
+          box-shadow: 1px 1px 10px #cccccc;
+          transition: all 0.5s ease-in-out;
+        }
     }
+
+}
+
+.building-container {
+  width:500px;
+  margin:50px auto;
+
+}
+.campus-image{
+  background-repeat: no-repeat;
+  background-size: cover;
+  border: 1px solid #000;
+  border-radius: 100%;
+  height: 150px;
+  width: 150px;
+
+  &.access-road{
+    background-image: url(../images/access_campus.jpg);
   }
+
+  &.east-green{
+    background-image: url(../images/eg_campus.jpg);
+  }
+
+  &.post-road{
+    background-image: url(../images/post_campus.jpg);
+  }
+
+}
+
+
+.campus-address {
+  margin:30px 0 10px 0;
+  text-align:center;
+
+  .campus-card-header{
+    font-weight:600;
+    font-size:16px;
+  }
+
 }
