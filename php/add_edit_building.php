@@ -63,13 +63,19 @@
 <!--
 <script>
 console.log(campuses);
+
 $('.btn-success').click(function(){
+
+
   var newBuilding = {
     buildingName : $("input[name=buildingName]").val(),
     campusName: $("select[name=campusName] option:selected").val(),
   }
+
   campuses.push(newBuilding);
   newBuilding = null;
   console.log(campuses);
+
 })
+
 </script>-->

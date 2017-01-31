@@ -56,8 +56,11 @@
     var access = "";
     var eastGreen = "";
     var postRd = "";
+
     for(var i = 0; i < campuses.length; i++){
+
       if(campuses[i].campusName == "Access Road"){
+
          for(var x = 0; x < campuses[i].buildings.length; x++){
            access += "<div class='buildings-row'>";
            access += campuses[i].buildings[x].name;
@@ -67,8 +70,10 @@
            access += '</button>';
            access += '</div>';
          }
+
       }
       else if(campuses[i].campusName == "East Greenwich"){
+
          for(var x = 0; x < campuses[i].buildings.length; x++){
            eastGreen += "<div class='buildings-row'>";
            eastGreen += campuses[i].buildings[x].name;
@@ -78,8 +83,10 @@
            eastGreen += '</button>';
            eastGreen += '</div>';
          }
+
       }
       else if(campuses[i].campusName == "Post Road"){
+
          for(var x = 0; x < campuses[i].buildings.length; x++){
            postRd += "<div class='buildings-row'>";
            postRd += campuses[i].buildings[x].name;
@@ -90,7 +97,9 @@
            postRd += '</div>';
          }
       }
+
     }
+
     // for(var i = 0; i < campuses.length; i++) {
     //   console.log(campuses[i].buildings.length);
     //   html += '<div class="accordian-container collapsed">';
@@ -109,9 +118,11 @@
     //     html += '</div>';
     //     html += '</div>';
     // }
+
     $("#access-buildings").html(access);
     $("#eg-buildings").html(eastGreen);
     $("#post-rd-buildings").html(postRd);
+
     access = "";
     eastGreen = "";
     postRd = "";

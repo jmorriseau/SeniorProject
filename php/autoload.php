@@ -5,7 +5,7 @@
  * include must be the name of the folder the classes are in
  */
 function load_lib($class) {
-    include 'api/modules/'.$class . '.php';
+    //include 'api/modules/'.$class . '.php';
     include 'api/'.$class . '.php';
 };
 spl_autoload_register('load_lib');
