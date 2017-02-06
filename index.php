@@ -29,7 +29,7 @@ if ($util->isPostRequest() && $_SESSION['logged_in'] === false) {
 <?php if ($_SESSION['logged_in'] === false) { ?>
 <body onload="loadPage('login')">
 <?php } else { ?>
-<body onload="loadPage('home')">
+<body onload="loadPage('add_edit_building')">
 <?php } ?>
 
 <div id="header">

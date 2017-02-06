@@ -49,7 +49,7 @@ function checkForm(e) {
     else {
         alert("Form is valid.");
         $.ajax({
-            url: "php/url",
+            url: "php/api/BuildingResource.php",
             type: "POST",
             dataType: "JSON",
             data: {
@@ -68,7 +68,7 @@ function checkForm(e) {
                 }
                 else {
                     loadPage('building');
-                    // $("#content").load("tools/contacts/index.php", function () {
+                    //$("#content").load("tools/contacts/index.php", function () {
                     //     if (url == "tools/contacts/add_contact_db.php") {
                     //         alert("Contact successfully added");
                     //     }

@@ -7,34 +7,26 @@
 Class API extends SQLJSON{
     private $data;
     private $db;
-
     public function getData(){
         return $this->data;
     }
-
     public function setData($data){
         $this->data = $data;
     }
-
     public function getDB(){
         return $this->db;
     }
-
     public function setDB($db){
         $this->$db = $db;
     }
-
     public function __construct($db) {
         $this->db = $db;
     }
-
     /*
      * API Resources Function for Buildings
      * REST SERVER CALLS FOR BUILDING RESOURCES
      */
-
     public function buildingResourceRun($resource,$verb, $id = NULL ,$inputData = NULL ){
-
     if ( 'building' === $resource ) {
         $buildingResource = new BuildingResource($this->getDB());
         if ( 'GET' === $verb ) {
@@ -44,7 +36,6 @@ Class API extends SQLJSON{
                 $this->setData($buildingResource->get($id));
             }
         }
-
         if ( 'POST' === $verb ) {
             if ($inputData === NULL) {
                 throw new Exception('Building could not be added');
@@ -52,7 +43,6 @@ Class API extends SQLJSON{
                 $this->setData($buildingResource->post($inputData));
             }
         }
-
         if ( 'PUT' === $verb ) {
             //if put is the verb, check the ID. If null, throw an exception looking for a id.
             if ( NULL === $id && $inputData === NULL) {
@@ -62,7 +52,6 @@ Class API extends SQLJSON{
                 $this->setData($buildingResource->put($id,$inputData));
             }
         }
-
         if ('DELETE' === $verb) {
             //if the delete verb is selected, check the the id is not null, and if so, throw an exception.
             if ( NULL === $id ) {
@@ -76,14 +65,12 @@ Class API extends SQLJSON{
         // IMPORTANT!!! Return coming up.
         return $this->convertToJSON($this->getData());
     }
-
     /*
      * API Resource for Campus
      * REST SERVER CALLS NEEDS TO BE FIXED
      */
     public function campusResource($resource, $verb, $id = NULL ,$inputData = NULL ){
         if ( 'campus' === $resource ) {
-
             $campusResource = new CampusResource($this->getDB());
             if ( 'GET' === $verb ) {
                 if ( NULL === $id ) {
@@ -92,17 +79,13 @@ Class API extends SQLJSON{
                     $this->setData($campusResource->get($id));
                 }
             }
-
             if ( 'POST' === $verb ) {
-
                 if ($inputData === NULL) {
-
                     throw new Exception('Building could not be added');
                 } else {
                     $this->setData($campusResource->post($inputData));
                 }
             }
-
             if ( 'PUT' === $verb ) {
                 //if put is the verb, check the ID. If null, throw an exception looking for a id.
                 if ( NULL === $id && $inputData === NULL) {
@@ -112,7 +95,6 @@ Class API extends SQLJSON{
                     $this->setData($campusResource->put($id,$inputData));
                 }
             }
-
             if ('DELETE' === $verb) {
                 //if the delete verb is selected, check the the id is not null, and if so, throw an exception.
                 if ( NULL === $id ) {
@@ -123,9 +105,7 @@ Class API extends SQLJSON{
                 }
             }
         }
-
         // IMPORTANT!!! Return coming up.
         return $this->convertToJSON($this->getData());
-
         }
 }
