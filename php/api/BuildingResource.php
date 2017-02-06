@@ -51,7 +51,7 @@ switch($_SERVER['REQUEST_METHOD']){
     $id = $_POST['id'];
     $message = buildingResourceRun('PUT', $id, $data, $dbc);
     break;
-    
+
   case 'DELETE':
     $id = $_POST['id'];
     $message = buildingResourceRun('DELETE', $id, NULL, $dbc);
@@ -66,7 +66,6 @@ echo json_encode($message);
 
 function buildingResourceRun($verb, $id = NULL ,$inputData = NULL, $db){
 $returnMessage;
-//$buildingResource = new BuildingResource($db);
 if ( 'GET' === $verb ) {
     if ( NULL === $id ) {
       $returnMessage = getAll($db);
