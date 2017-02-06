@@ -66,7 +66,6 @@ echo json_encode($message);
 
 function buildingResourceRun($verb, $id = NULL ,$inputData = NULL, $db){
 $returnMessage;
-//$buildingResource = new BuildingResource($db);
 if ( 'GET' === $verb ) {
     if ( NULL === $id ) {
       $returnMessage = getAll($db);
