@@ -30,23 +30,21 @@
      break;
 
    case 'POST':
-     $data['course_id'] = '1';//$_POST['campusName'];
-     $data['course_name'] = $_POST['course_name'];
-     $data['course_number'] = $_POST['course_number'];
-     $data['credit_hours'] = $_POST['credit_hours'];
-     $data['semester_number'] = $_POST['semester_number'];
+     $data['course_name'] = $_POST['courseName'];
+     $data['course_number'] = $_POST['courseNumber'];
+     $data['credit_hours'] = $_POST['creditHours'];
+     $data['semester_number'] = $_POST['semesterNumber'];
      $message = courseResourceRun('POST', NULL, $data, $dbc);
      break;
 
    case 'PUT':
-   $data['course_id'] = '1';//$_POST['campusName'];
-   $data['course_name'] = $_POST['course_name'];
-   $data['course_number'] = $_POST['course_number'];
-   $data['credit_hours'] = $_POST['credit_hours'];
-   $data['semester_number'] = $_POST['semester_number'];
-     $id = $_POST['id'];
-     $message = courseResourceRun('PUT', $id, $data, $dbc);
-     break;
+    $data['course_name'] = $_POST['courseName'];
+    $data['course_number'] = $_POST['courseNumber'];
+    $data['credit_hours'] = $_POST['creditHours'];
+    $data['semester_number'] = $_POST['semesterNumber'];
+    $id = $_POST['id'];
+    $message = courseResourceRun('PUT', $id, $data, $dbc);
+    break;
 
    case 'DELETE':
      $id = $_POST['id'];

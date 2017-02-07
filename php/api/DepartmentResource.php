@@ -29,14 +29,12 @@
      break;
 
    case 'POST':
-     $data['departments_id'] = '1';//$_POST['campusName'];
-     $data['department_name'] = $_POST['department_name'];
+     $data['department_name'] = $_POST['departmentName'];
      $message = departmentResourceRun('POST', NULL, $data, $dbc);
      break;
 
    case 'PUT':
-   $data['departments_id'] = '1';//$_POST['campusName'];
-   $data['department_name'] = $_POST['department_name'];
+    $data['department_name'] = $_POST['departmentName'];
      $id = $_POST['id'];
      $message = departmentResourceRun('PUT', $id, $data, $dbc);
      break;
@@ -147,9 +145,9 @@
 
         if($db->sql("SELECT * from Departments WHERE departments_id ='".$id."';").length == 0)
         {
-          return "Attribute Deleted";
+          return "Department Deleted";
         }  else {
-          return "Error Attribute not Deleted";
+          return "Error Department not Deleted";
         }
 
     }

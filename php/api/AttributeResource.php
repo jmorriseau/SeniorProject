@@ -1,6 +1,6 @@
 <?php
 /**
- * Class that contains the resources for making any changes to the 'Building' table in the database.
+ * Class that contains the resources for making any changes to the 'Attribute' table in the database.
  *
  * @author Mike
  */
@@ -30,16 +30,14 @@
      break;
 
    case 'POST':
-     $data['attributes_id'] = '1';//$_POST['campusName'];
-     $data['attribute_type_id'] = $_POST['attribute_type_id'];
-     $data['attributes_name'] = $_POST['attributes_name'];
+     $data['attribute_type_id'] = $_POST['attributeTypeId'];
+     $data['attributes_name'] = $_POST['attributesName'];
      $message = attributeResourceRun('POST', NULL, $data, $dbc);
      break;
 
    case 'PUT':
-   $data['attributes_id'] = '1';//$_POST['campusName'];
-   $data['attribute_type_id'] = $_POST['attribute_type_id'];
-   $data['attributes_name'] = $_POST['attributes_name'];
+     $data['attribute_type_id'] = $_POST['attributeTypeId'];
+     $data['attributes_name'] = $_POST['attributesName'];
      $id = $_POST['id'];
      $message = attributeResourceRun('PUT', $id, $data, $dbc);
      break;
@@ -56,7 +54,7 @@
  * REST SERVER CALLS FOR BUILDING RESOURCES
  */
 
- function buildingResourceRun($verb, $id = NULL ,$inputData = NULL, $db){
+ function attributeResourceRun($verb, $id = NULL ,$inputData = NULL, $db){
  $returnMessage;
  //$buildingResource = new BuildingResource($db);
  if ( 'GET' === $verb ) {
