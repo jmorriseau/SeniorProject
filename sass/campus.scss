@@ -123,15 +123,15 @@
   width: 150px;
 
   &.access-road{
-    background-image: url(../images/access_campus.jpg);
+    background-image: url("../images/access_campus.jpg");
   }
 
   &.east-green{
-    background-image: url(../images/eg_campus.jpg);
+    background-image: url("../images/eg_campus.jpg");
   }
 
   &.post-road{
-    background-image: url(../images/post_campus.jpg);
+    background-image: url("../images/post_campus.jpg");
   }
 
 }

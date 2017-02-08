@@ -16,7 +16,7 @@ gulp.task('scripts', function(){
   //the same location
   .pipe(concat('main.js')) //think of pipe as "then" - it waits
   //until the previous task is finished to fire
-  .pipe(uglify()) //minify the file
+  //.pipe(uglify()) //minify the file
   .pipe(gulp.dest('./dist')); // put it in the dist folder
 })
 
@@ -34,7 +34,7 @@ gulp.task('sass-watch', function(){
 //start the default web server
 gulp.task('webserver', function(){
   connect.server({
-	port: 80,
+	port: 1234,
 	}); // can be blank of take arguments for the port etc
 })
 
