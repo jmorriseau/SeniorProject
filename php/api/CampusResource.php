@@ -30,18 +30,12 @@
      break;
 
    case 'POST':
-     $data['campus_name'] = '1';//$_POST['campusName'];
+     $data['campus_name'] = $_POST['campusName'];
      $message = campusResourceRun('POST', NULL, $data, $dbc);
      break;
 
    case 'PUT':
-     $data['campus_id'] = '1';//$_POST['campusName'];
-     $data['building_abbreviation'] = 'TS';
-     $data['building_name'] = $_POST['buildingName'];
-     $data['address'] = $_POST['addressLine1'];
-     $data['city'] = $_POST['city'];
-     $data['state'] = 'RI'; //$_POST['state']'';
-     $data['zip'] = $_POST['zip'];
+     $data['campus_name'] = $_POST['campusName'];
      $id = $_POST['id'];
      $message = campusResourceRun('PUT', $id, $data, $dbc);
      break;
@@ -122,8 +116,8 @@
           $db->sql("INSERT INTO Campus (
             campus_name)
             VALUES(
-          '" .$data['campus_name']. "')
-         ;");
+          '" .$data['campus_name']. "'
+          );");
           return 'Campus Added';
 
       }
@@ -137,7 +131,7 @@
       //Put function uses a statement written to update a pre-existing db entry.
       try {
           $db->sql("Update Campus SET campus_name ='" .$data['campus_name'] .
-              "', WHERE campus_id = '" . $id . "'");
+              "' WHERE campus_id = '" . $id . "'");
           return 'Campus Updated';
       } catch (Exception $e){
           throw new Exception('Campus could not be updated');
