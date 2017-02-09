@@ -57,10 +57,11 @@
     var eastGreen = "";
     var postRd = "";
 
+console.log(campuses.length);
     for(var i = 0; i < campuses.length; i++){
-
+console.log(campuses[i]);
       if(campuses[i].campusName == "Access Road"){
-
+        console.log(campuses[i].buildings);
          for(var x = 0; x < campuses[i].buildings.length; x++){
            access += "<div class='buildings-row'>";
            access += campuses[i].buildings[x].name;

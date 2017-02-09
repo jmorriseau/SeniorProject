@@ -90,3 +90,70 @@ function closeEdit(){
 function deleteAlert(){
   alert("Are you sure?");
 }
+
+
+var campuses = [
+  {
+    "campusName": "Access Road",
+    "buildings":[
+      {
+        "name": "North Building",
+        "addressLineOne" : "123 Access Road",
+        "addressLineTwo" : "Suite 200",
+        "city" : "Warwick",
+        "state" : "RI",
+        "zipCode" : "02709"
+      },
+      {
+        "name": "South Building",
+        "addressLineOne" : "123 Access Road",
+        "addressLineTwo" : "Suite 300",
+        "city" : "Warwick",
+        "state" : "RI",
+        "zipCode" : "02709"
+      }
+    ]
+  },
+  {
+    "campusName" : "East Greenwich",
+    "buildings" : [
+      {
+        "name" : "East Building",
+        "addressLineOne" : "123 NE Tech Way",
+        "addressLineTwo" : "Suite 100",
+        "city" : "East Greenwich",
+        "state" : "RI",
+        "zipCode" : "02710"
+      },
+      {
+        "name" : "West Building",
+        "addressLineOne" : "123 NE Tech Way",
+        "addressLineTwo" : "Suite 200",
+        "city" : "East Greenwich",
+        "state" : "RI",
+        "zipCode" : "02710"
+      }
+    ]
+  },
+  {
+    "campusName" : "Post Road",
+    "buildings" : [
+      {
+        "name" : "Sun Building",
+        "addressLineOne" : "123 Post Road",
+        "addressLineTwo" : "Suite 100",
+        "city" : "Warwick",
+        "state" : "RI",
+        "zipCode" : "02710"
+      },
+      {
+        "name" : "Moon Building",
+        "addressLineOne" : "123 Post Road",
+        "addressLineTwo" : "Suite 200",
+        "city" : "Warwick",
+        "state" : "RI",
+        "zipCode" : "02710"
+      }
+    ]
+  }
+]

@@ -1,4 +1,4 @@
-var form = document.querySelector('form');
+var form = document.querySelector('form'); 
 
 form.addEventListener('submit', checkForm);
 
