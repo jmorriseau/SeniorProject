@@ -1,14 +1,14 @@
 <h1>Add/Edit Classroom</h1>
 <hr/>
 
-<form>
+<form id="add_classroom" action="#" method="post">
 	<div class="form-container edit-classroom-container">
 
 	<div class="form-row">
 		<label>Building Name:</label>
 		<select name="buildingName" class="validate" required>
 			<option value="">--Choose One--></option>
-			<option value="access_road" selected="selected">Main Building</option>
+			<option value="12" selected="selected">Main Building</option>
 		</select>
 	  </div>
 	  
@@ -21,9 +21,9 @@
 		<label>Classroom Type:</label>
 		<select name="classroomType" class="validate" required>
 		  <option value="">--Choose One--</option>
-		  <option value="hall">Hall</option>
-		  <option value="lab" selected="selected">Lab</option>
-		  <option value="lecture">Lecture</option>
+		  <option value="1">Hall</option>
+		  <option value="2" selected="selected">Lab</option>
+		  <option value="3">Lecture</option>
 		</select>
 	  </div>
 	  

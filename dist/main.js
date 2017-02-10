@@ -2676,9 +2676,9 @@ function checkForm(e){
 			type: "POST",
 			dataType: "JSON",
 			data: {
-				buildingName: $("input[name=buildingName]").val(),
+				buildingId: $("select[name=buildingName]").val(),
 				roomNumber: $("input[name=roomNumber]").val(),
-				classroomType: $("input[name=classroomType]").val(),
+				classroomTypeId: $("select[name=classroomType]").val(),
 				roomCap: $("input[name=roomCap]").val()
 			},
 			//if ajax is successful, return to classroom main page and alert the user

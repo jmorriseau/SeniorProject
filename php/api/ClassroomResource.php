@@ -29,10 +29,11 @@ switch($_SERVER['REQUEST_METHOD']){
    break;
 
  case 'POST':
+
    $data['building_id'] = $_POST['buildingId'];
-   $data['room_type_id'] = $_POST['roomTypeId'];
-   $data['class_number'] = $_POST['classNumber'];
-   $data['capacity'] = $_POST['capacity'];
+   $data['class_number'] = $_POST['roomNumber'];
+   $data['room_type_id'] = $_POST['classroomTypeId'];   
+   $data['capacity'] = $_POST['roomCap'];
    $message = classroomResourceRun('POST', NULL, $data, $dbc);
    break;
 
@@ -57,7 +58,7 @@ echo json_encode($message);
 * REST SERVER CALLS FOR BUILDING RESOURCES
 */
 
-function classroomResourceRun($verb, $id = NULL ,$inputData = NULL, $db){
+function classroomResourceRun($verb, $id = NULL, $inputData = NULL, $db){
   $returnMessage;
   //$buildingResource = new BuildingResource($db);
   if ( 'GET' === $verb ) {
@@ -69,11 +70,10 @@ function classroomResourceRun($verb, $id = NULL ,$inputData = NULL, $db){
   }
 
   if ( 'POST' === $verb ) {
-
      if ($inputData === NULL) {
          throw new Exception('Classroom could not be added');
      } else {
-         $returnMessage = post($inputData,$db);
+        $returnMessage = post($inputData,$db);  
      }
   }
 
