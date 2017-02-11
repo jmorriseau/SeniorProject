@@ -1,3 +1,18 @@
+<?php
+echo 'hello';
+include('./autoload.php');
+
+ $db = new DAO();
+
+ $data = array();
+ $buildings = array();
+
+ $data = $db->sql("SELECT * FROM Building");
+ var_dump(count($data));
+ var_dump($data);
+ ?>
+
+
 <h1>Add/Edit Building</h1>
 <hr/>
 
