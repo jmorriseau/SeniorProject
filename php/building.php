@@ -1,56 +1,55 @@
+<?php
+echo 'hello';
+include('./autoload.php');
+
+ $db = new DAO();
+
+ $data = array();
+ $campuses = array();
+ ?>
+
+
+
 <div class="header">
 <h1>Current Campuses</h1>
 </div>
 <hr />
 
 <div class="campus-container">
-  <section>
-    <span class="close-edit fa fa-times" onClick="closeEdit()"></span>
-    <div class="campus-info-container">
-      <div class="campus-image access-road"></div>
-      <div class="campus-address">
-          <div class="campus-card-header">Access Road Campus</div>
-          100 Access Road<br />
-          Warwick, RI 02886
-      </div>
-    </div>
-    <button class="btn btn-success edit-campus-btn" onclick="editCampus(this)">Edit</button>
-    <div id="access-buildings" class="campus-buildings">
-    </div>
-  </section>
+<?php
+$data = $db->sql("SELECT * FROM Campus");
+var_dump(count($data));
+var_dump($data);
 
-  <section>
-    <span class="close-edit fa fa-times" onClick="closeEdit()"></span>
-    <div class="campus-info-container">
-      <div class="campus-image east-green"></div>
-      <div class="campus-address">
-          <div class="campus-card-header">East Greenwich Campus</div>
-          One New England Tech Blvd<br />
-          East Greenwich, RI 02818-1205
-      </div>
-    </div>
-    <button class="btn btn-success edit-campus-btn" onclick="editCampus(this)">Edit</button>
-    <div id="eg-buildings" class="campus-buildings">
-    </div>
-  </section>
+if (count($data) > 0) {
+  echo "pickles";
+  foreach($data as $d) {
+    echo '<section>';
+    echo "<span class='close-edit fa fa-times' onClick='closeEdit()'></span>";
+    echo '<div class="campus-info-container">';
+    echo '<div class="campus-image access-road"></div>';
+    echo '<div class="campus-address">';
 
-  <section>
-    <span class="close-edit fa fa-times" onClick="closeEdit()"></span>
-    <div class="campus-info-container">
-      <div class="campus-image post-road"></div>
-      <div class="campus-address">
-          <div class="campus-card-header">Post Road Campus</div>
-          2480 Post Road<br />
-          Warwick, RI 02886
-      </div>
-    </div>
-    <button class="btn btn-success edit-campus-btn" onclick="editCampus(this)">Edit</button>
-    <div id="post-rd-buildings" class="campus-buildings">
-    </div>
-  </section>
+    echo '<div class="campus-card-header">' . $d['campus_name'] .'</div>';
+    echo '</div>';
+    echo '</div>';
+    echo "<button class='btn btn-success edit-campus-btn' onClick='editCampus(this)'>Edit</button>";
+    echo '<div class="campus_cid" data-cid="' .$d["campus_id"]. '">'.$d["campus_id"]. '</div>';
+    echo '<div id="access-buildings" class="campus-buildings">';
+    echo '</div>';
+    echo '</section>';
+
+  }
+}
+
+?>
 </div>
 
 <script type="text/javascript">
+<<<<<<< HEAD
+function editCampus(elem){
+  console.log(elem);
+=======
   $(function() {
     console.log("Did It");
     var access = "";
@@ -98,34 +97,16 @@ console.log(campuses[i]);
            postRd += '</div>';
          }
       }
+>>>>>>> 472c16c2443c623cac5cf54a4f2d03e2848fa233
 
-    }
+  $(".campus-container section").not(".active").addClass("inactive");
+  $(elem).parent("section").removeClass("inactive").addClass("active");
 
-    // for(var i = 0; i < campuses.length; i++) {
-    //   console.log(campuses[i].buildings.length);
-    //   html += '<div class="accordian-container collapsed">';
-    //   html += '<div class="accordian-header" onclick="toggleAccordian(this)">';
-    //   html += '<span class="fa fa-plus"></span>';
-    //   html += campuses[i].campusName;
-    //   html += '</div>';
-    //   html += '<div class="accordian-body">';
-    //
-    //     for(var x = 0; x < campuses[i].buildings.length; x++) {
-    //       html += campuses[i].buildings[x].name;
-    //     }
-    //
-    //     html += '<span class="fa fa-trash pull-right" onClick="deleteAlert()"></span>';
-    //     html += '<span class="fa fa-pencil-square-o pull-right" onClick="loadPage(\'add_edit_building\')"></span>';
-    //     html += '</div>';
-    //     html += '</div>';
-    // }
+console.log($(elem).siblings(".campus_cid").data("cid"));
+}
 
-    $("#access-buildings").html(access);
-    $("#eg-buildings").html(eastGreen);
-    $("#post-rd-buildings").html(postRd);
+function closeEdit(){
+  $(".campus-container section").removeClass("active inactive");
+}
 
-    access = "";
-    eastGreen = "";
-    postRd = "";
-  })
 </script>
