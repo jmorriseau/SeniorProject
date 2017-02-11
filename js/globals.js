@@ -80,6 +80,11 @@ function editCampus(elem){
   console.log(elem);
   $(".campus-container section").not(".active").addClass("inactive");
   $(elem).parent("section").removeClass("inactive").addClass("active");
+
+  
+  var campus_id = $(elem).siblings(".campus_cid").data("cid");
+  console.log(campus_id);
+  return campus_id;
 }
 
 function closeEdit(){
