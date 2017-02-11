@@ -8,7 +8,7 @@
 		<label>Building Name:</label>
 		<select name="buildingName" class="validate" required>
 			<option value="">--Choose One--></option>
-			<option value="12" selected="selected">Main Building</option>
+			<option value="1" selected="selected">Main Building</option>
 		</select>
 	  </div>
 	  
