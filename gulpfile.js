@@ -12,11 +12,12 @@ gulp.task('sass', function(){
 });
 
 gulp.task('scripts', function(){
-  return gulp.src(['./node_modules/jquery/dist/jquery.js','./node_modules/bootstrap/dist/js/bootstrap.js','./js/*.js'])// array of files since they are not all in
+  //return gulp.src(['./node_modules/jquery/dist/jquery.js','./node_modules/bootstrap/dist/js/bootstrap.js','./js/*.js'])// array of files since they are not all in
+  return gulp.src(['./node_modules/jquery/dist/jquery.js','./js/*.js'])// array of files since they are not all in
   //the same location
   .pipe(concat('main.js')) //think of pipe as "then" - it waits
   //until the previous task is finished to fire
-  .pipe(uglify()) //minify the file
+  //.pipe(uglify()) //minify the file
   .pipe(gulp.dest('./dist')); // put it in the dist folder
 })
 
