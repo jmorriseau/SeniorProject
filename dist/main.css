@@ -2662,6 +2662,7 @@ span {
     border-radius: 3px;
     box-sizing: border-box;
     min-width: 200px;
+    max-width: 200px;
     background-color: #fff;
     font-family: 'Open Sans', arial, sans-serif;
     font-size: 14px;
@@ -3049,11 +3050,11 @@ div.alpha-search {
   height: 150px;
   width: 150px; }
   .campus-image.access-road {
-    background-image: url(../images/access_campus.jpg); }
+    background-image: url("../images/access_campus.jpg"); }
   .campus-image.east-green {
-    background-image: url(../images/eg_campus.jpg); }
+    background-image: url("../images/eg_campus.jpg"); }
   .campus-image.post-road {
-    background-image: url(../images/post_campus.jpg); }
+    background-image: url("../images/post_campus.jpg"); }
 
 .campus-address {
   margin: 30px 0 10px 0;

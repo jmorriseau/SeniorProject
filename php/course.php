@@ -1,3 +1,7 @@
+<<?php
+
+ ?>
+
 <div class="header">
   <h1>Current Courses
     <button class="btn btn-success pull-right btn-pad" onclick="loadPage('add_edit_subject')">

@@ -1,4 +1,4 @@
-var form = document.querySelector('form');
+var form = document.querySelector('form'); 
 
 form.addEventListener('submit', checkForm);
 
@@ -29,7 +29,7 @@ function checkForm(e) {
         $("input[name=addressLine2]").removeClass('validate');
     }
 
-    //for each field in the add_edit_building form on the with the validate class, see if the field is empty or fails regex validation
+    //for each field in the add_edit_building form the with the validate class, see if the field is empty or fails regex validation
     //if so set the isValid flag to false and add the error class to signify an error to the user else remove the error class
     $('#add_building .validate').each(function () {
         //$(this).length <= 0) ||
@@ -47,6 +47,8 @@ function checkForm(e) {
         alert("Please correct all fields.");
     }
     else {
+		var addressLineConcat = $("input[name=addressLine1]").val() + " " + $("input[name=addressLine2]").val();
+		//alert(addressLineConcat);
         alert("Form is valid.");
         $.ajax({
             url: "php/api/BuildingResource.php",
@@ -55,8 +57,8 @@ function checkForm(e) {
             data: {
                 buildingName: $("input[name=buildingName]").val(),
                 campusName: $("input[name=campusName]").val(),
-                addressLine1: $("input[name=addressLine1]").val(),
-                addressLine2: $("input[name=addressLine2]").val(),
+                addressLine1: addressLineConcat,
+                //addressLine2: $("input[name=addressLine2]").val(),
                 city: $("input[name=city]").val(),
                 state: $("input[name=state]").val(),
                 zip: $("input[name=zip]").val()

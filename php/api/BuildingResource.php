@@ -33,7 +33,7 @@ switch($_SERVER['REQUEST_METHOD']){
     $data['campus_id'] = '1';//$_POST['campusName'];
     $data['building_abbreviation'] = 'TS';
     $data['building_name'] = $_POST['buildingName'];
-    $data['address'] = $_POST['addressLine1'];
+    $data['address'] = $_POST['addressLine1']. '-' . $_POST['addressLine2'];
     $data['city'] = $_POST['city'];
     $data['state'] = 'RI'; //$_POST['state']'';
     $data['zip'] = $_POST['zip'];

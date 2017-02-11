@@ -35,13 +35,16 @@
       <input type="text" name="city" class="validate" placeholder="North Attleboro" maxlength="150" minlength="2" required/>
     </div>
 
-    <div class="form-row">
-      <label>State</label>
-      <select name="state" class="vaildate">
-        <option value="">--Choose One--</option>
-        <option value="ri">Rhode Island</option>
-        <option value="ma">Massachusetts</option>
-        <option value="ct">Connecticut</option>
+	<div class="form-row">
+		<label>State</label>
+			<select name="state" class="vaildate" required>
+				<option value="">--Choose One--</option>
+				<?php
+					include 'states.php';
+					foreach ($states as $key => $value){
+						echo '<option value="', $key, '">', $value, '</option>';
+					}
+				?>
       </select>
     </div>
 

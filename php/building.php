@@ -46,8 +46,58 @@ if (count($data) > 0) {
 </div>
 
 <script type="text/javascript">
+<<<<<<< HEAD
 function editCampus(elem){
   console.log(elem);
+=======
+  $(function() {
+    console.log("Did It");
+    var access = "";
+    var eastGreen = "";
+    var postRd = "";
+
+console.log(campuses.length);
+    for(var i = 0; i < campuses.length; i++){
+console.log(campuses[i]);
+      if(campuses[i].campusName == "Access Road"){
+        console.log(campuses[i].buildings);
+         for(var x = 0; x < campuses[i].buildings.length; x++){
+           access += "<div class='buildings-row'>";
+           access += campuses[i].buildings[x].name;
+           access += "<button class='btn btn-success pull-right' onclick='loadSubPage(\"add_edit_building\")'>";
+           access += '<span class="fa fa-plus-circle"></span>';
+           access += 'Add building';
+           access += '</button>';
+           access += '</div>';
+         }
+
+      }
+      else if(campuses[i].campusName == "East Greenwich"){
+
+         for(var x = 0; x < campuses[i].buildings.length; x++){
+           eastGreen += "<div class='buildings-row'>";
+           eastGreen += campuses[i].buildings[x].name;
+           eastGreen += "<button class='btn btn-success pull-right' onclick='loadPage(\"add_edit_building\")'>";
+           eastGreen += '<span class="fa fa-plus-circle"></span>';
+           eastGreen += 'Add building';
+           eastGreen += '</button>';
+           eastGreen += '</div>';
+         }
+
+      }
+      else if(campuses[i].campusName == "Post Road"){
+
+         for(var x = 0; x < campuses[i].buildings.length; x++){
+           postRd += "<div class='buildings-row'>";
+           postRd += campuses[i].buildings[x].name;
+           postRd += "<button class='btn btn-success pull-right' onclick='loadPage(\"add_edit_building\")'>";
+           postRd += '<span class="fa fa-plus-circle"></span>';
+           postRd += 'Add building';
+           postRd += '</button>';
+           postRd += '</div>';
+         }
+      }
+>>>>>>> 472c16c2443c623cac5cf54a4f2d03e2848fa233
 
   $(".campus-container section").not(".active").addClass("inactive");
   $(elem).parent("section").removeClass("inactive").addClass("active");

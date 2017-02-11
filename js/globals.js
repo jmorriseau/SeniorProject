@@ -17,7 +17,7 @@ function loadPage(page){
       $("#side-bar ul li").removeClass("active");
       $(".nav-" + page).addClass("active");
     }
-  })
+  });
 }
 
 function loadSubPage(subPage){
@@ -75,6 +75,7 @@ function updateSlidingSelect(current, next){
   }
 }
 
+
 function editCampus(elem){
   console.log(elem);
   $(".campus-container section").not(".active").addClass("inactive");
@@ -84,6 +85,12 @@ function editCampus(elem){
 function closeEdit(){
   $(".campus-container section").removeClass("active inactive");
 }
+
+
+function deleteAlert(){
+  alert("Are you sure?");
+}
+
 
 var campuses = [
   {
@@ -150,7 +157,3 @@ var campuses = [
     ]
   }
 ]
-
-function deleteAlert(){
-  alert("Are you sure?");
-}
