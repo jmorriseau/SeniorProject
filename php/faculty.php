@@ -1,16 +1,16 @@
 <?php
-include('./autoload.php');
-$util = new Util();
+//include('./autoload.php');
+//$util = new Util();
 //$dbc = new DB_Connect($util->getDBConfig());
 //$connection = $dbc->getDBConnection();
 //("Select * FROM [dbo].[Campus]");
 
-$campus_sql_result = $db->sql("SELECT * FROM Building where building_id ='". 6 ."'");
+//$campus_sql_result = $db->sql("SELECT * FROM Building where building_id ='". 6 ."'");
 //echo "<ul>";
 //while ($campus_sql_result = $db->fetch(PDO::FETCH_ASSOC)){
 //var_dump($campus_sql_result);
 //var_dump($campus_sql_result);
-var_dump(json_encode($campus_sql_result));
+//var_dump(json_encode($campus_sql_result));
 //}
 //echo "</ul>";
 
@@ -18,7 +18,8 @@ var_dump(json_encode($campus_sql_result));
 //$building = $db->sql("SELECT * FROM Building WHERE building_id = 4");
 //var_dump($campus_sql_result);
 //var_dump($building);
-die();
+//die();
+
 ?>
 This is the faculty page.
 <!--?php
