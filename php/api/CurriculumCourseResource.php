@@ -19,11 +19,11 @@ $message;
 switch($_SERVER['REQUEST_METHOD']){
   case 'GET':
     $id;
-    if($_POST['id'] === ''){
+    if($_GET['id'] === ''){
       $id = NULL;
     }
     else{
-      $id = $_POST['id'];
+      $id = $_GET['id'];
     }
     $message = curriculumCourseResourceRun('GET', $id , NULL, $dbc);
     break;
@@ -48,7 +48,7 @@ switch($_SERVER['REQUEST_METHOD']){
     break;
 
   case 'DELETE':
-    $id = $_POST['id'];
+    $id = $_GET['id'];
     $message = curriculumCourseResourceRun('DELETE', $id, NULL, $dbc);
     break;
 }

@@ -20,11 +20,11 @@
  switch($_SERVER['REQUEST_METHOD']){
    case 'GET':
      $id;
-     if($_POST['id'] === ''){
+     if($_GET['id'] === ''){
        $id = NULL;
      }
      else{
-       $id = $_POST['id'];
+       $id = $_GET['id'];
      }
      $message = campusResourceRun('GET', $id , NULL, $dbc);
      break;
@@ -41,7 +41,7 @@
      break;
 
    case 'DELETE':
-     $id = $_POST['id'];
+     $id = $_GET['id'];
      $message = campusResourceRun('DELETE', $id, NULL, $dbc);
      break;
  }
