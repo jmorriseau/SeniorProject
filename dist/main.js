@@ -94,10 +94,7 @@ function editCampus(elem){
 
 function closeEdit(){
   $(".campus-container section").removeClass("active inactive");
-<<<<<<< HEAD
-=======
   $(".campus-container").css({"height": "400px", "background-color": "transparent"});
->>>>>>> 67075062f65aa524e485bec15860c5257edde1c1
 }
 
 
@@ -172,8 +169,6 @@ var campuses = [
   }
 ]
 
-<<<<<<< HEAD
-=======
 $(function () {
 //    if delete contact  button is clicked run ajax to delete contact
     $(".delete_building").on('click', function (e) {
@@ -194,7 +189,6 @@ $(function () {
 });
 
 
->>>>>>> 67075062f65aa524e485bec15860c5257edde1c1
 var form = document.querySelector('form'); 
 
 form.addEventListener('submit', checkForm);
@@ -228,23 +222,20 @@ function checkForm(e) {
 
     //for each field in the add_edit_building form the with the validate class, see if the field is empty or fails regex validation
     //if so set the isValid flag to false and add the error class to signify an error to the user else remove the error class
-    $('#add_building .validate').each(function () {
-        //$(this).length <= 0) ||
-        if ($(this).val() == "" || !regexValidations[this.name].test(this.value)) {
-            $(this).parent().addClass('error');
-            isValid = false;
-        }
-        else {
-            $(this).parent().removeClass('error');
-        }
-    });
+    // $('#add_building .validate').each(function () {
+    //     //$(this).length <= 0) ||
+    //     if ($(this).val() == "" || !regexValidations[this.name].test(this.value)) {
+    //         $(this).parent().addClass('error');
+    //         console.log(this.name + " " + this.value);
+    //         isValid = false;
+    //     }
+    //     else {
+    //         $(this).parent().removeClass('error');
+    //     }
+    // });
 
     //if the isValid flag gets set to false, alert the user else, send to php via ajax
-<<<<<<< HEAD
     if (isValid == false) {
-=======
-    if (isValid == muffin) {
->>>>>>> 67075062f65aa524e485bec15860c5257edde1c1
         alert("Please correct all fields.");
     }
     else {
@@ -257,11 +248,11 @@ function checkForm(e) {
             dataType: "JSON",
             data: {
                 buildingName: $("input[name=buildingName]").val(),
-                campusName: $("input[name=campusName]").val(),
+                campusName: $("select[name=campusName]").val(),
                 addressLine1: addressLineConcat,
                 //addressLine2: $("input[name=addressLine2]").val(),
                 city: $("input[name=city]").val(),
-                state: $("input[name=state]").val(),
+                state: $("select[name=state]").val(),
                 zip: $("input[name=zip]").val()
             },
             //if ajax is successful, return to building main page and alert the user
@@ -270,16 +261,8 @@ function checkForm(e) {
                     alert(data);
                 }
                 else {
+                    alert("Building added successfully.")
                     loadPage('building');
-                    //$("#content").load("tools/contacts/index.php", function () {
-                    //     if (url == "tools/contacts/add_contact_db.php") {
-                    //         alert("Contact successfully added");
-                    //     }
-                    //     else if (url == "tools/contacts/edit_contact_db.php") {
-                    //         alert("Contact successfully edited");
-                    //     }
-
-                    // });
                 }
             },
             //if ajax is unsuccessful, show response text in console

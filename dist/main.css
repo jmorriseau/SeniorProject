@@ -2987,13 +2987,17 @@ div.alpha-search {
       visibility: visible;
       transition: all 0.3s ease;
       display: block; }
+    .campus-container section .add-campus-btn {
+      opacity: 0;
+      visibility: hidden; }
     .campus-container section .campus-buildings {
       opacity: 0;
       visibility: hidden;
       width: 0;
       float: left; }
       .campus-container section .campus-buildings .buildings-row {
-        height: 50px; }
+        height: 50px;
+        padding: 0 30px 0 0; }
     .campus-container section .close-edit {
       opacity: 0;
       visibility: hidden;
@@ -3009,6 +3013,12 @@ div.alpha-search {
         opacity: 0;
         visibility: hidden;
         animation: all 0.5s ease 0.5s; }
+      .campus-container section.active .add-campus-btn {
+        margin: 60px auto;
+        transition: all 0.3s ease;
+        display: block;
+        visibility: visible;
+        opacity: 1; }
       .campus-container section.active .close-edit {
         opacity: 1;
         visibility: visible;
