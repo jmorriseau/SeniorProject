@@ -1,22 +1,23 @@
  <script>
   $(function(){
       //if an existing contact is clicked go to add contact page and fill existing information 
-      $(".edit").on("click",function(){
+      $(".edit-campus-btn").on("click",function(){
           var id = $(this).data("cid");
+          var cn = $(this).data("cn");
+          cn = cn.replace(/ /g, '\u00a0');
           console.log("got the id " + id);
-          //$("#content").load("tools/contacts/add_contact.php?cid=" + id);
+          console.log("got the campus name " + cn);
+          $(".campus-buildings").load('php/building_list.php?cid=' + id + '&cn=' + cn);
       });
   });
 </script>
 
 <?php
-echo 'hello';
 include('./autoload.php');
 
  $db = new DAO();
-
  $data = array();
- $campuses = array();
+
  ?>
 
 <div class="header">
@@ -27,20 +28,26 @@ include('./autoload.php');
 <div class="campus-container">
   <?php
   $data = $db->sql("SELECT * FROM Campus");
-  var_dump(count($data));
-  //var_dump($data);
 
     if (count($data) > 0) {
       foreach($data as $d) {
-        echo '<section class="edit" data-cid="' .$d["campus_id"]. '">';
+        echo '<section>';
         echo "<span class='close-edit fa fa-times' onClick='closeEdit()'></span>";
         echo '<div class="campus-info-container">';
-        echo '<div class="campus-image access-road"></div>';
+          if($d["campus_id"] == 1){
+            echo '<div class="campus-image east-green"></div>';
+          }
+          else if($d["campus_id"] == 2){
+            echo '<div class="campus-image access-road"></div>';
+          }
+          else if($d["campus_id"] == 3){
+            echo '<div class="campus-image post-road"></div>';
+          }
         echo '<div class="campus-address">';
         echo '<div class="campus-card-header">' . $d['campus_name'] .'</div>';
         echo '</div>';
         echo '</div>';
-        echo "<button class='btn btn-success edit-campus-btn' onClick='editCampus(this)'>Edit</button>";
+        echo '<button class="btn btn-success edit-campus-btn" data-cid="' .$d["campus_id"]. '" data-cn="' .$d["campus_name"]. '" onClick="editCampus(this)">Edit</button>';
         echo '<div id="access-buildings" class="campus-buildings">';
         echo '</div>';
         echo '</section>';

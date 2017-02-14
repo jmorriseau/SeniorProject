@@ -3033,7 +3033,7 @@ div.alpha-search {
       visibility: hidden;
       z-index: -1000;
       transition: all 0.5s ease; }
-    .campus-container section:hover {
+    .campus-container section:not(.active):hover {
       background-color: #efefef;
       box-shadow: 1px 1px 10px #cccccc;
       transition: all 0.5s ease-in-out; }

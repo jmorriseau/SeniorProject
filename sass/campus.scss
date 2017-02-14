@@ -100,7 +100,7 @@
         transition: all 0.5s ease;
       }
 
-      &:hover{
+      &:not(.active):hover{
           background-color:#efefef;
           box-shadow: 1px 1px 10px #cccccc;
           transition: all 0.5s ease-in-out;
