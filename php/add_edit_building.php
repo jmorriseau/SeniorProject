@@ -10,7 +10,7 @@ if(isset($_GET['cid'])){
     $campus_id = $_GET['cid'];
 }
 
-//var_dump($campus_id);
+//var_dump($campus_name);
 include('./autoload.php');
 
  $db = new DAO();
@@ -119,14 +119,10 @@ include('./autoload.php');
       <div class="form-row">
         <label>Zip</label>
         <input type="text" name="zip" class="validate" placeholder="02903" maxlength="10" minlength="5" required 
-        value="<?php
-            if(isset($building[0]['zip'])){
-                echo $building[0]['zip'];
-            }
-        ?>"/>
+        value="<?php if(isset($building[0]['zip'])){echo $building[0]['zip'];}?>"/>
       </div>
 
-      <input type="hidden" name="campus_id" value="<?php if (isset($campus_id)) {echo $campus_id;} ?> "/>
+      <input type="hidden" name="campus_id" value="<?php if(isset($campus_id)){echo $campus_id;} else {echo $campus_selected;} ?>"/>
 
       <div class="form-row">
         <label></label>
@@ -136,7 +132,7 @@ include('./autoload.php');
                 echo '<button class="delete_building btn btn-default" data-delete="' . $building[0]['building_id'] . '">Delete</button>';
              }
         ?>       
-        <button class="btn btn-success <?php echo $action ?>" name="save" type="submit"><?php echo $action ?></button>
+        <button class="btn btn-success submit-form <?php echo $action ?>" name="save" type="submit"><?php echo $action ?></button>
       </div>
 
     </div>

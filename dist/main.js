@@ -226,7 +226,7 @@ function checkForm(e) {
     //     //$(this).length <= 0) ||
     //     if ($(this).val() == "" || !regexValidations[this.name].test(this.value)) {
     //         $(this).parent().addClass('error');
-    //         console.log(this.name + " " + this.value);
+    //         console.log($(this).val());
     //         isValid = false;
     //     }
     //     else {
@@ -239,14 +239,22 @@ function checkForm(e) {
         alert("Please correct all fields.");
     }
     else {
+        var type;
 		var addressLineConcat = $("input[name=addressLine1]").val() + " " + $("input[name=addressLine2]").val();
-		//alert(addressLineConcat);
-        alert("Form is valid.");
+        var campus_id = $("input[name=campus_id]").val()
+        if ($(".submit-form").hasClass("Add")) {
+            type = "POST";
+        }
+        else {
+            type = "PUT";
+        }
+        //alert(type + " Form is valid. The campus ID is: " + campus_id + " is it missing?");
         $.ajax({
             url: "php/api/BuildingResource.php",
-            type: "POST",
+            type: type,
             dataType: "JSON",
             data: {
+                //campus_id: campus_id,
                 buildingName: $("input[name=buildingName]").val(),
                 campusName: $("select[name=campusName]").val(),
                 addressLine1: addressLineConcat,
@@ -257,12 +265,15 @@ function checkForm(e) {
             },
             //if ajax is successful, return to building main page and alert the user
             success: function (data) {
-                if (data !== "") {
-                    alert(data);
-                }
-                else {
+                if (data !== "" && data == 'Building Added') {
+                    alert(data + "this is where I am in the add");
                     alert("Building added successfully.")
-                    loadPage('building');
+                        loadPage('building');
+                }
+                else if (data !== "" && data == 'Building Updated'){
+                    alert(data + "this is where I am in the update");
+                        alert("Building updated successfully.")
+                        loadPage('building');   
                 }
             },
             //if ajax is unsuccessful, show response text in console
