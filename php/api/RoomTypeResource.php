@@ -19,11 +19,11 @@ $message;
 switch($_SERVER['REQUEST_METHOD']){
   case 'GET':
     $id;
-    if($_POST['id'] === ''){
+    if($_GET['id'] === ''){
       $id = NULL;
     }
     else{
-      $id = $_POST['id'];
+      $id = $_GET['id'];
     }
     $message = roomTypeResourceRun('GET', $id , NULL, $dbc);
     break;
