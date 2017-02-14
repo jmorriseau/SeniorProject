@@ -127,7 +127,7 @@
         }
         catch(Exception $e){
           //return new Exception($e);
-          return $e;
+          return $e->getMessage();
         }
 
     }

@@ -25,7 +25,7 @@ switch($_SERVER['REQUEST_METHOD']){
     else{
       $id = $_POST['id'];
     }
-    $message = curriculumResourceRun('GET', $id , NULL, $dbc);
+    $message = curriculumCourseResourceRun('GET', $id , NULL, $dbc);
     break;
 
   case 'POST':
@@ -34,7 +34,7 @@ switch($_SERVER['REQUEST_METHOD']){
     $data['degree_type_id'] = $_POST['degreeTypeId'];
     $data['start_term'] = $_POST['startTerm'];
     $data['end_term'] = $_POST['endTerm'];
-    $message = curriculumResourceRun('POST', NULL, $data, $dbc);
+    $message = curriculumCourseResourceRun('POST', NULL, $data, $dbc);
     break;
 
   case 'PUT':
@@ -44,12 +44,12 @@ switch($_SERVER['REQUEST_METHOD']){
     $data['start_term'] = $_POST['startTerm'];
     $data['end_term'] = $_POST['endTerm'];
     $id = $_POST['id'];
-    $message = curriculumResourceRun('PUT', $id, $data, $dbc);
+    $message = curriculumCourseResourceRun('PUT', $id, $data, $dbc);
     break;
 
   case 'DELETE':
     $id = $_POST['id'];
-    $message = curriculumResourceRun('DELETE', $id, NULL, $dbc);
+    $message = curriculumCourseResourceRun('DELETE', $id, NULL, $dbc);
     break;
 }
 
@@ -59,7 +59,7 @@ echo json_encode($message);
 * REST SERVER CALLS FOR BUILDING RESOURCES
 */
 
-function curriculumResourceRun($verb, $id = NULL ,$inputData = NULL, $db){
+function curriculumCourseResourceRun($verb, $id = NULL ,$inputData = NULL, $db){
 $returnMessage;
 if ( 'GET' === $verb ) {
     if ( NULL === $id ) {
@@ -103,13 +103,13 @@ return $returnMessage;
 
 function getAll($db) {
     //Very similar statement to get(), except this function requires no parameters and returns all entries in the db.
-    return $db->sql("SELECT Curriculum.curriculum_id, Curriculum.department_id, Curriculum.curriculum_name, Curriculum.degree_type_id, Degree_Types.degree_type_name, Curriculum.start_term, Curriculum.end_term FROM Curriculum, Degree_Types WHERE Curriculum.degree_type_id = Degree_Types.degree_type_id;");
+    return $db->sql("SELECT Curriculum_Course_Relation.curriculum_id, Curriculum.curriculum_name, Curriculum_Course_Relation.course_id, Courses.course_name from Courses, Curriculum, Curriculum_Course_Relation WHERE Curriculum_Course_Relation.course_id = Courses.course_id AND Curriculum_Course_Relation.curriculum_id = Curriculum.curriculum_id");
     //return $this->db;
 }
 
 function get($id,$db) {
     //Creates statement used to get specific entry from the database based on an id given via endpoint
-    return $db->sql("SELECT Curriculum.curriculum_id, Curriculum.department_id, Curriculum.curriculum_name, Curriculum.degree_type_id, Degree_Types.degree_type_name, Curriculum.start_term, Curriculum.end_term FROM Curriculum, Degree_Types WHERE Curriculum.degree_type_id = Degree_Types.degree_type_id AND curriculum_id ='".$id ."'");
+    return $db->sql("SELECT Curriculum_Course_Relation.curriculum_id, Curriculum.curriculum_name, Curriculum_Course_Relation.course_id, Courses.course_name from Courses, Curriculum, Curriculum_Course_Relation WHERE Curriculum_Course_Relation.course_id = Courses.course_id AND Curriculum_Course_Relation.curriculum_id = Curriculum.curriculum_id AND curriculum_course_relation_id ='".$id ."'");
 }
 
 function post($data,$db)
@@ -117,17 +117,14 @@ function post($data,$db)
     //Setups up the insert for SQL for post function as well as binding JSON data provided by the data array to the statement
     //return 'yay';
     try{
-       $db->sql("INSERT INTO Curriculum (
-         department_id, curriculum_name, degree_type_id, start_term, end_term)
+       $db->sql("INSERT INTO Curriculum_Course_Relation (
+         curriculum_id, course_id)
          VALUES(
-       '" .$data['department_id']. "',
-       '" .$data['curriculum_name']. "',
-       '" .$data['degree_type_id']. "',
-       '" .$data['start_term']. "',
-       '" .$data['end_term']. "')
+       '" .$data['curriculum_id']. "',
+       '" .$data['course_id']. "')
       ;");
 
-      return 'Curriculum Added';
+      return 'Curriculum Course Added';
     }
     catch(Exception $e){
       //return new Exception($e);
@@ -140,27 +137,24 @@ function put($id,$data,$db)
 {
 //Put function uses a statement written to update a pre-existing db entry.
   try {
-    $db->sql("UPDATE Curriculum SET
-      department_id = '" .$data['department_id'] ."'
-    , curriculum_name = '". $data['curriculum_name'] . "'
-    , degree_type_id = '" . $data['degree_type_id'] . "'
-    , start_term = '" . $data['start_term'] . "'
-    , end_term = '" . $data['end_term'] . "'
-    WHERE curriculum_id = '" .$id. "'");
-    return 'Curriculum Updated';
+    $db->sql("UPDATE Curriculum_Course_Relation SET
+      curriculum_id = '" .$data['curriculum_id'] ."'
+    , course_id = '". $data['course_id'] . "'
+    WHERE curriculum_course_relation_id = '" .$id. "'");
+    return 'Curriculum Course Updated';
   } catch (Exception $e){
-          throw new Exception('Curriculum could not be updated');
+          throw new Exception('Curriculum Course could not be updated');
   }
 }
 
 function delete($id,$db) {
   //Delete uses a statment written to delete from the db where the id matches the one located in the endpoint.
-  $db->sql("DELETE FROM Curriculum WHERE curriculum_id = '".$id."';");
+  $db->sql("DELETE FROM Curriculum_Course_Relation WHERE curriculum_course_relation_id = '".$id."';");
 
-  if($db->sql("select * from Curriculum where curriculum_id ='".$id."';").length == 0)
+  if($db->sql("SELECT * from Curriculum_Course_Relation where curriculum_course_relation_id ='".$id."';").length == 0)
   {
-    return "Curriculum Deleted";
+    return "Curriculum Course Deleted";
   }  else {
-    return "Error Curriculum not Deleted";
+    return "Error Curriculum Course not Deleted";
   }
 }

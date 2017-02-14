@@ -11,12 +11,12 @@
 			<option value="1" selected="selected">Main Building</option>
 		</select>
 	  </div>
-	  
+
 	  <div class="form-row">
 		<label>Room Number:</label>
 		<input type="text" name="roomNumber" class="validate"placeholder="N210" maxlength="20" minlength="1" required />
 	  </div>
-	  
+
 	  <div class="form-row">
 		<label>Classroom Type:</label>
 		<select name="classroomType" class="validate" required>
@@ -26,12 +26,12 @@
 		  <option value="3">Lecture</option>
 		</select>
 	  </div>
-	  
+
 	  <div class="form-row">
 		<label>Room Capacity:</label>
 		<input type="number" name="roomCap" class="validate" placeholder="15" min="0" max="30" required/>
 	  </div>
-	  
+
 	  <div class="form-row">
 		<div class="accordian-container collapsed">
 		  <div class="accordian-header" onclick="toggleAccordian(this)">
@@ -53,13 +53,13 @@
 		  </div>
 		</div>
 	  </div>
-	  
+
 	  <div class="form-row">
 		<label></label>
 		<button class="btn btn-default" onclick="loadPage('classroom')">Cancel</button>
 		<button class="btn btn-success" name="save" type="submit">Save</button>
 	  </div>
-	  
+
 	</div>
 </form>
 

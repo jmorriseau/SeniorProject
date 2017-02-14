@@ -25,30 +25,26 @@ switch($_SERVER['REQUEST_METHOD']){
    else{
      $id = $_POST['id'];
    }
-   $message = classroomResourceRun('GET', $id , NULL, $dbc);
+   $message = classroomAttrResourceRun('GET', $id , NULL, $dbc);
    break;
 
  case 'POST':
 
-   $data['building_id'] = $_POST['buildingId'];
-   $data['class_number'] = $_POST['roomNumber'];
-   $data['room_type_id'] = $_POST['classroomTypeId'];
-   $data['capacity'] = $_POST['roomCap'];
-   $message = classroomResourceRun('POST', NULL, $data, $dbc);
-   break;
+    $data['attributes_id'] = $_POST['attributesId'];
+    $data['classroom_id'] = $_POST['classroomId'];
+    $message = classroomAttrResourceRun('POST', NULL, $data, $dbc);
+    break;
 
  case 'PUT':
-   $data['building_id'] = $_POST['buildingId'];
-   $data['room_type_id'] = $_POST['roomTypeId'];
-   $data['class_number'] = $_POST['classNumber'];
-   $data['capacity'] = $_POST['capacity'];
-   $id = $_POST['id'];
-   $message = classroomResourceRun('PUT', $id, $data, $dbc);
-   break;
+    $data['attributes_id'] = $_POST['attributesId'];
+    $data['classroom_id'] = $_POST['classroomId'];
+    $id = $_POST['id'];
+    $message = classroomAttrResourceRun('PUT', $id, $data, $dbc);
+    break;
 
  case 'DELETE':
    $id = $_POST['id'];
-   $message = classroomResourceRun('DELETE', $id, NULL, $dbc);
+   $message = classroomAttrResourceRun('DELETE', $id, NULL, $dbc);
    break;
 }
 
@@ -58,7 +54,7 @@ echo json_encode($message);
 * REST SERVER CALLS FOR BUILDING RESOURCES
 */
 
-function classroomResourceRun($verb, $id = NULL, $inputData = NULL, $db){
+function classroomAttrResourceRun($verb, $id = NULL, $inputData = NULL, $db){
   $returnMessage;
   if ( 'GET' === $verb ) {
      if ( NULL === $id ) {
@@ -70,7 +66,7 @@ function classroomResourceRun($verb, $id = NULL, $inputData = NULL, $db){
 
   if ( 'POST' === $verb ) {
      if ($inputData === NULL) {
-         throw new Exception('Classroom could not be added');
+         throw new Exception('Classroom Attribute could not be added');
      } else {
         $returnMessage = post($inputData,$db);
      }
@@ -79,7 +75,7 @@ function classroomResourceRun($verb, $id = NULL, $inputData = NULL, $db){
   if ( 'PUT' === $verb ) {
      //if put is the verb, check the ID. If null, throw an exception looking for a id.
      if ( NULL === $id && $inputData === NULL) {
-         throw new InvalidArgumentException('Classroom ID ' . $id . ' was not found');
+         throw new InvalidArgumentException('Classroom Attribute ID ' . $id . ' was not found');
      } else {
          //if not, run the put function and set the message to the return.
          $returnMessage = put($id,$inputData,$db);
@@ -89,7 +85,7 @@ function classroomResourceRun($verb, $id = NULL, $inputData = NULL, $db){
   if ('DELETE' === $verb) {
      //if the delete verb is selected, check the the id is not null, and if so, throw an exception.
      if ( NULL === $id ) {
-         throw new InvalidArgumentException('Classroom ID ' . $id . ' was not found');
+         throw new InvalidArgumentException('Classroom Attribute ID ' . $id . ' was not found');
      } else {
          // if its all clear, set the message to the delete function return.
        $returnMessage = delete($id,$db);
@@ -101,13 +97,13 @@ function classroomResourceRun($verb, $id = NULL, $inputData = NULL, $db){
 
 function getAll($db) {
     //Very similar statement to get(), except this function requires no parameters and returns all entries in the db.
-    return $db->sql("SELECT * FROM Classroom");
+    return $db->sql("SELECT Class_Attribute_Relation.classroom_id, Classroom.class_number, Class_Attribute_Relation.attributes_id, Attributes.attributes_name from Classroom, Attributes, Class_Attribute_Relation WHERE Class_Attribute_Relation.classroom_id = Classroom.classroom_id AND Class_Attribute_Relation.attributes_id = Attributes.attributes_id;");
     //return $this->db;
 }
 
 function get($id,$db) {
     //Creates statement used to get specific entry from the database based on an id given via endpoint
-    return $db->sql("SELECT * FROM Classroom where classroom_id ='".$id ."'");
+    return $db->sql("SELECT Class_Attribute_Relation.classroom_id, Classroom.class_number, Class_Attribute_Relation.attributes_id, Attributes.attributes_name from Classroom, Attributes, Class_Attribute_Relation WHERE Class_Attribute_Relation.classroom_id = Classroom.classroom_id AND Class_Attribute_Relation.attributes_id = Attributes.attributes_id AND class_attr_relation_id ='".$id ."'");
 }
 
 function post($data,$db)
@@ -115,15 +111,13 @@ function post($data,$db)
     //Setups up the insert for SQL for post function as well as binding JSON data provided by the data array to the statement
 
     try{
-       $db->sql("INSERT INTO Classroom (
-         building_id, room_type_id, class_number, capacity)
+       $db->sql("INSERT INTO Class_Attribute_Relation (
+         attributes_id, classroom_id)
          VALUES(
-       '" .$data['building_id']. "',
-       '" .$data['room_type_id']. "',
-       '" .$data['class_number']. "',
-       '" .$data['capacity']. "' )
+       '" .$data['attributes_id']. "',
+       '" .$data['classroom_id']. "')
       ;");
-      return 'Classroom Added';
+      return 'Classroom Attribute Added';
     }
     catch(Exception $e){
       //return new Exception($e);
@@ -138,26 +132,24 @@ function put($id,$data,$db)
 {
     //Put function uses a statement written to update a pre-existing db entry.
     try {
-      $db->sql("Update Classroom SET building_id ='" .$data['building_id'] ."'
-      , room_type_id = '". $data['room_type_id'] . "'
-      , class_number = '" . $data['class_number'] . "'
-      , capacity = '" . $data['capacity'] . "'
-      WHERE classroom_id = '" . $id . "'");
-        return 'Classroom Updated';
+      $db->sql("Update Class_Attribute_Relation SET attributes_id ='" .$data['attributes_id'] ."'
+      , classroom_id = '". $data['classroom_id'] . "'
+      WHERE class_attr_relation_id = '" . $id . "'");
+        return 'Classroom Attribute Updated';
     } catch (Exception $e){
-            throw new Exception('Classroom could not be updated');
+            throw new Exception('Classroom Attribute could not be updated');
     }
 }
 
 function delete($id,$db) {
     //Delete uses a statment written to delete from the db where the id matches the one located in the endpoint.
-    $db->sql("DELETE FROM Classroom WHERE classroom_id = '".$id."';");
+    $db->sql("DELETE FROM Class_Attribute_Relation WHERE class_attr_relation_id = '".$id."';");
 
-    if($db->sql("select * from Classroom where classroom_id ='".$id."';").length == 0)
+    if($db->sql("select * from Class_Attribute_Relation where class_attr_relation_id ='".$id."';").length == 0)
     {
-      return "Classroom Deleted";
+      return "Classroom Attribute Deleted";
     }  else {
-      return "Error Classroom not Deleted";
+      return "Error Classroom Attribute not Deleted";
     }
 
 }
