@@ -94,6 +94,10 @@ function editCampus(elem){
 
 function closeEdit(){
   $(".campus-container section").removeClass("active inactive");
+<<<<<<< HEAD
+=======
+  $(".campus-container").css({"height": "400px", "background-color": "transparent"});
+>>>>>>> 67075062f65aa524e485bec15860c5257edde1c1
 }
 
 
@@ -168,6 +172,29 @@ var campuses = [
   }
 ]
 
+<<<<<<< HEAD
+=======
+$(function () {
+//    if delete contact  button is clicked run ajax to delete contact
+    $(".delete_building").on('click', function (e) {
+        e.stopPropagation();
+        e.preventDefault();
+        var building_id = $(this).data("delete");
+        $.ajax({
+            url: "php/api/BuildingResource.php?id=" + building_id,
+            dataType: "JSON",
+            method: "DELETE",
+            success: function (data) {
+                console.log("success " + data);
+                alert('Building has been deleted.');
+                loadPage('building');
+            }
+        });
+    });
+});
+
+
+>>>>>>> 67075062f65aa524e485bec15860c5257edde1c1
 var form = document.querySelector('form'); 
 
 form.addEventListener('submit', checkForm);
@@ -213,7 +240,11 @@ function checkForm(e) {
     });
 
     //if the isValid flag gets set to false, alert the user else, send to php via ajax
+<<<<<<< HEAD
     if (isValid == false) {
+=======
+    if (isValid == muffin) {
+>>>>>>> 67075062f65aa524e485bec15860c5257edde1c1
         alert("Please correct all fields.");
     }
     else {

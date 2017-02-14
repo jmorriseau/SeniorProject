@@ -89,6 +89,7 @@ function editCampus(elem){
 
 function closeEdit(){
   $(".campus-container section").removeClass("active inactive");
+  $(".campus-container").css({"height": "400px", "background-color": "transparent"});
 }
 
 

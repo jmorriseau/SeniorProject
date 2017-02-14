@@ -53,7 +53,7 @@ switch($_SERVER['REQUEST_METHOD']){
     break;
 
   case 'DELETE':
-    $id = $_GET['id'];
+    $id = $_POST['id'];
     $message = buildingResourceRun('DELETE', $id, NULL, $dbc);
     break;
 }
