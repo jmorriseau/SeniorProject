@@ -14,46 +14,35 @@
 //}
 //echo "</ul>";
 
-
 //$building = $db->sql("SELECT * FROM Building WHERE building_id = 4");
 //var_dump($campus_sql_result);
 //var_dump($building);
 //die();
 
+include('./autoload.php');
+
+/*$dbc = new DAO();
+$enrollments = array();
+$classTally = array();
+$found = FALSE;
+
+$enrollments = $dbc->sql("SELECT course_id from Enrollment;");
+
+foreach ($enrollments as $id => $value) {
+  foreach ($classTally as $course => $enr) {
+    if($course === $value){
+      $enr = $enr + 1;
+      $found = TRUE;
+    } elseif($found === FALSE){
+      $classTally;
+    }
+  }
+}
+
+var_dump($classTally);*/
+
 ?>
 This is the faculty page.
-<!--?php
-$serverName = "sql.neit.edu,4500";
-$database = "SE414_GroupProject";
-$uid = 'SE414_GroupProject';
-$pwd = '1234567890';
-try {
-$conn = new PDO(
-"sqlsrv:server=$serverName;Database=$database",
-$uid,
-$pwd,
-array(
-//PDO::ATTR_PERSISTENT => true,
-PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION
-)
-);
-}
-catch(PDOException $e) {
-die("Error connecting to SQL Server: " . $e->getMessage());
-}
-$query = 'select * from Building';
-$stmt = $conn->query( $query );
-$row = array();
-//echo "<ul>";
-    while ($row = $stmt->fetch(PDO::FETCH_ASSOC)){
-        echo json_encode($row);
-    }
-    //echo "</ul>";
-// Free statement and connection resources.
-$stmt = null;
-$conn = null;
-?-->
-
 
 <h1>Faculty</h1>
 <hr/>

@@ -189,7 +189,7 @@ $(function () {
 });
 
 
-var form = document.querySelector('form'); 
+var form = document.querySelector('form');
 
 form.addEventListener('submit', checkForm);
 
@@ -271,8 +271,8 @@ function checkForm(e) {
                 else if (data !== "" && data == 'Building Updated'){
                     alert(data + "this is where I am in the update");
                         alert("Building updated successfully.")
-                        loadPage('building');   
-                }
+                        loadPage('building');
+                } 
             },
             //if ajax is unsuccessful, show response text in console
             error: function (data) {

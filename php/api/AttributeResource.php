@@ -36,9 +36,10 @@
      break;
 
    case 'PUT':
-     $data['attribute_type_id'] = $_POST['attributeTypeId'];
-     $data['attributes_name'] = $_POST['attributesName'];
-     $id = $_POST['id'];
+     parse_str(file_get_contents('php://input'), $put);
+     $data['attribute_type_id'] = $put['attributeTypeId'];
+     $data['attributes_name'] = $put['attributesName'];
+     $id = $put['id'];
      $message = attributeResourceRun('PUT', $id, $data, $dbc);
      break;
 

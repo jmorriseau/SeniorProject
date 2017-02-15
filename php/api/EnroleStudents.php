@@ -18,12 +18,16 @@
 
     foreach ($csv as $header => $value) {
       $dbc->sql("INSERT INTO Enrollment (
-        class_id, student_id)
+        course_id, student_id)
         VALUES(
-      '" .$value['class_id']. "',
+      '" .$value['course_id']. "',
       '" .$value['student_id']. "' )
      ;"); #Inserts enrollment into database
     }
+
+  }
+
+  function createClasses($dbc){
 
   }
 ?>

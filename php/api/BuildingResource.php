@@ -41,15 +41,16 @@ switch($_SERVER['REQUEST_METHOD']){
     break;
 
   case 'PUT':
-    $data['campus_id'] = $_POST['campusName'];
+    parse_str(file_get_contents('php://input'), $put);
+    $data['campus_id'] = $put['campusName'];
     $data['building_abbreviation'] = 'TS';
-    $data['building_name'] = $_POST['buildingName'];
-    $data['address'] = $_POST['addressLine1'];
-    $data['city'] = $_POST['city'];
-    $data['state'] = $_POST['state'];
-    $data['zip'] = $_POST['zip'];
-    $id = $_POST['id'];
-    $message = $data['campus_id'];
+    $data['building_name'] = $put['buildingName'];
+    $data['address'] = $put['addressLine1'];
+    $data['city'] = $put['city'];
+    $data['state'] = $put['state'];
+    $data['zip'] = $put['zip'];
+    $id = $put['id'];
+    $message = buildingResourceRun('PUT', $id, $data, $dbc);
     break;
 
   case 'DELETE':
@@ -59,6 +60,7 @@ switch($_SERVER['REQUEST_METHOD']){
 }
 
 echo json_encode($message);
+
 /*
 * API Resources Function for Buildings
 * REST SERVER CALLS FOR BUILDING RESOURCES

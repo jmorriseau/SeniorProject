@@ -35,8 +35,9 @@
      break;
 
    case 'PUT':
-     $data['campus_name'] = $_POST['campusName'];
-     $id = $_POST['id'];
+   parse_str(file_get_contents('php://input'), $put);
+     $data['campus_name'] = $put['campusName'];
+     $id = $put['id'];
      $message = campusResourceRun('PUT', $id, $data, $dbc);
      break;
 
