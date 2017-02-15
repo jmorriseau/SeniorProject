@@ -122,7 +122,7 @@ include('./autoload.php');
         value="<?php if(isset($building[0]['zip'])){echo $building[0]['zip'];}?>"/>
       </div>
 
-      <input type="hidden" name="campus_id" value="<?php if(isset($campus_id)){echo $campus_id;} else {echo $campus_selected;} ?>"/>
+      <input type="hidden" name="buildingId" value="<?php if(isset($building[0]['building_id'])){echo $building[0]['building_id'];}?>"/>
 
       <div class="form-row">
         <label></label>

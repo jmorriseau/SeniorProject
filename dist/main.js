@@ -241,27 +241,25 @@ function checkForm(e) {
     else {
         var type;
 		var addressLineConcat = $("input[name=addressLine1]").val() + " " + $("input[name=addressLine2]").val();
-        var campus_id = $("input[name=campus_id]").val()
         if ($(".submit-form").hasClass("Add")) {
             type = "POST";
         }
         else {
             type = "PUT";
         }
-        //alert(type + " Form is valid. The campus ID is: " + campus_id + " is it missing?");
+        alert("Type: " + type);
         $.ajax({
             url: "php/api/BuildingResource.php",
             type: type,
             dataType: "JSON",
             data: {
-                //campus_id: campus_id,
                 buildingName: $("input[name=buildingName]").val(),
                 campusName: $("select[name=campusName]").val(),
                 addressLine1: addressLineConcat,
-                //addressLine2: $("input[name=addressLine2]").val(),
                 city: $("input[name=city]").val(),
                 state: $("select[name=state]").val(),
-                zip: $("input[name=zip]").val()
+                zip: $("input[name=zip]").val(),
+                id: $("input[name=buildingId]").val()
             },
             //if ajax is successful, return to building main page and alert the user
             success: function (data) {
