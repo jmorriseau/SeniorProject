@@ -49,7 +49,7 @@ switch($_SERVER['REQUEST_METHOD']){
     $data['state'] = $_POST['state'];
     $data['zip'] = $_POST['zip'];
     $id = $_POST['id'];
-    $message = buildingResourceRun('PUT', $id, $data, $dbc);
+    $message = $data['campus_id'];
     break;
 
   case 'DELETE':
