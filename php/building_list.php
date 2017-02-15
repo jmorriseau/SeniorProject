@@ -16,12 +16,12 @@ include('./autoload.php');
  $data = $db->sql("SELECT * FROM Building where campus_id = '" .$campus_id ."'");
  //var_dump(count($data));  
  //var_dump($data);
-  
+
  foreach($data as $d){
     echo '<div class="buildings-row edit_building" data-cn="' .$campus_name. '" data-bid="' .$d[building_id]. '">' . $d[building_name];
     echo "<button class='btn btn-success pull-right'>";
-    echo '<span class="fa fa-plus-circle"></span>';
-    echo 'Add building';
+    echo '<span class="fa fa-plus-circle"></span> ';
+    echo 'Edit building';
     echo '</button>';
     echo '</div></div>';    
  }

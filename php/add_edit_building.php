@@ -4,10 +4,13 @@ if (isset($_GET['bid'])) {
     $building_id = $_GET['bid'];
 }
 if(isset($_GET['cn'])){
-  $campus_name = $_GET['cn'];
+    $campus_name = $_GET['cn'];
+}
+if(isset($_GET['cid'])){
+    $campus_id = $_GET['cid'];
 }
 
-//var_dump($building_id);
+//var_dump($campus_name);
 include('./autoload.php');
 
  $db = new DAO();
@@ -17,12 +20,12 @@ include('./autoload.php');
 //if 
  if (isset($building_id)){
     $building = $db->sql("SELECT * FROM Building where building_id = '" .$building_id ."'");
-    var_dump($building);
+    //var_dump($building);
     //var_dump(count($building)); 
     //Ask boys, why do I need to specify which is there is only one?
     //echo $building[0]['building_name'];
 
-    $action = "Save";
+    $action = "Edit";
  }
  else {
      $action = "Add";
@@ -33,13 +36,12 @@ include('./autoload.php');
 ?>
 
 <div class="hide building-form">
-  <h1>Add/Edit Building</h1>
+  <h1><?php echo $action ?> Building</h1>
   <hr/>
 
   <form id="add_building" action="#" method="post">
     <div class="form-container building-container">
 
-    
       <div class="form-row">
         <label>Building Name</label>
         <input type="text" name="buildingName" class="validate" placeholder="North Building" maxlength="40" minlength="2" required 
@@ -47,8 +49,7 @@ include('./autoload.php');
             if(isset($building[0]['building_name'])){
                 echo $building[0]['building_name'];
             } 
-            ?>
-        "/>
+            ?>"/>
         <span class="hide">*</span>
       </div>
 
@@ -62,9 +63,7 @@ include('./autoload.php');
               echo "<option value='$campus_selected' selected='selected'>$campus_name</option>";
           }
           else{
-              echo '<option value="access_road">Access Road</option>';
-              echo '<option value="east_greenwich">East Greenwich</option>';
-              echo '<option value="post_road">Post Road</option>';
+              echo "<option value='$campus_id' selected='selected'>$campus_name</option>";
           }         
           ?>
         </select>
@@ -77,13 +76,12 @@ include('./autoload.php');
             if(isset($building[0]['address'])){
                 echo $building[0]['address'];
             }
-        ?>
-        "/>
+        ?>"/>
       </div>
 
       <div class="form-row">
         <label>Address Line 2</label>
-        <input type="text" name="addressLine2" class="validate" placeholder="Suite 200" maxlength="40" minlength="2" />
+        <input type="text" name="addressLine2"  placeholder="Suite 200" maxlength="40" minlength="2" />
       </div>
 
       <div class="form-row">
@@ -93,8 +91,7 @@ include('./autoload.php');
             if(isset($building[0]['city'])){
                 echo $building[0]['city'];
             }
-        ?>
-        "/>
+        ?>"/>
       </div>
 
     <div class="form-row">
@@ -122,23 +119,20 @@ include('./autoload.php');
       <div class="form-row">
         <label>Zip</label>
         <input type="text" name="zip" class="validate" placeholder="02903" maxlength="10" minlength="5" required 
-        value="<?php
-            if(isset($building[0]['zip'])){
-                echo $building[0]['zip'];
-            }
-        ?>
-        "/>
+        value="<?php if(isset($building[0]['zip'])){echo $building[0]['zip'];}?>"/>
       </div>
+
+      <input type="hidden" name="buildingId" value="<?php if(isset($building[0]['building_id'])){echo $building[0]['building_id'];}?>"/>
 
       <div class="form-row">
         <label></label>
         <!--<button class="btn btn-default" onclick="loadPage('building')">Cancel</button>-->
         <?php 
-            if($action == "Save"){
+            if($action == "Edit"){
                 echo '<button class="delete_building btn btn-default" data-delete="' . $building[0]['building_id'] . '">Delete</button>';
              }
         ?>       
-        <button class="btn btn-success <?php echo $action ?>" name="save" type="submit"><?php echo $action ?></button>
+        <button class="btn btn-success submit-form <?php echo $action ?>" name="save" type="submit"><?php echo $action ?></button>
       </div>
 
     </div>
