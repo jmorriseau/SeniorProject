@@ -17,11 +17,11 @@ include('./autoload.php');
  $building;
  $action;
 
-//if 
+//if
  if (isset($building_id)){
     $building = $db->sql("SELECT * FROM Building where building_id = '" .$building_id ."'");
     //var_dump($building);
-    //var_dump(count($building)); 
+    //var_dump(count($building));
     //Ask boys, why do I need to specify which is there is only one?
     //echo $building[0]['building_name'];
 
@@ -44,11 +44,11 @@ include('./autoload.php');
 
       <div class="form-row">
         <label>Building Name</label>
-        <input type="text" name="buildingName" class="validate" placeholder="North Building" maxlength="40" minlength="2" required 
-        value="<?php 
+        <input type="text" name="buildingName" class="validate" placeholder="North Building" maxlength="40" minlength="2" required
+        value="<?php
             if(isset($building[0]['building_name'])){
                 echo $building[0]['building_name'];
-            } 
+            }
             ?>"/>
         <span class="hide">*</span>
       </div>
@@ -57,21 +57,21 @@ include('./autoload.php');
         <label>Campus</label>
         <select name="campusName" class="validate" required disabled>
           <option value="">--Choose One--</option>
-          <?php 
+          <?php
           if(isset($building[0]['campus_id'])){
               $campus_selected = $building[0]['campus_id'];
               echo "<option value='$campus_selected' selected='selected'>$campus_name</option>";
           }
           else{
               echo "<option value='$campus_id' selected='selected'>$campus_name</option>";
-          }         
+          }
           ?>
         </select>
       </div>
 
       <div class="form-row">
         <label>Address Line 1</label>
-        <input type="text" name="addressLine1" class="validate" placeholder="15 Main St" maxlength="40" minlength="2" required 
+        <input type="text" name="addressLine1" class="validate" placeholder="15 Main St" maxlength="40" minlength="2" required
         value="<?php
             if(isset($building[0]['address'])){
                 echo $building[0]['address'];
@@ -100,7 +100,7 @@ include('./autoload.php');
           <option value="">--Choose One--</option>
            <?php
                 if (isset($building[0]['state'])) {
-                    $state_selected = $building[0]['state'];                    
+                    $state_selected = $building[0]['state'];
                 }
                 include 'states.php';
 
@@ -118,7 +118,7 @@ include('./autoload.php');
 
       <div class="form-row">
         <label>Zip</label>
-        <input type="text" name="zip" class="validate" placeholder="02903" maxlength="10" minlength="5" required 
+        <input type="text" name="zip" class="validate" placeholder="02903" maxlength="10" minlength="5" required
         value="<?php if(isset($building[0]['zip'])){echo $building[0]['zip'];}?>"/>
       </div>
 
@@ -127,11 +127,11 @@ include('./autoload.php');
       <div class="form-row">
         <label></label>
         <!--<button class="btn btn-default" onclick="loadPage('building')">Cancel</button>-->
-        <?php 
+        <?php
             if($action == "Edit"){
                 echo '<button class="delete_building btn btn-default" data-delete="' . $building[0]['building_id'] . '">Delete</button>';
              }
-        ?>       
+        ?>
         <button class="btn btn-success submit-form <?php echo $action ?>" name="save" type="submit"><?php echo $action ?></button>
       </div>
 
