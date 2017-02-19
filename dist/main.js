@@ -356,24 +356,24 @@ function checkForm(e){
 	
 	
 }
-// $(function () {
-// //    if delete department(subject) button is clicked run ajax to delete department(subject)
-//     $(".delete_subject").on('click', function (e) {
-//         e.stopPropagation();
-//         e.preventDefault();
-//         var department_id = $(this).data("delete");
-//         $.ajax({
-//             url: "php/api/DepartmentResource.php?id=" + department_id,
-//             dataType: "JSON",
-//             method: "DELETE",
-//             success: function (data) {
-//                 console.log("success " + data);
-//                 alert('Subject has been deleted.');
-//                 loadPage('course');
-//             }
-//         });
-//     });
-// });
+$(function () {
+//    if delete course button is clicked run ajax to delete course
+    $(".delete_course").on('click', function (e) {
+        e.stopPropagation();
+        e.preventDefault();
+        var course_id = $(this).data("delete");
+        $.ajax({
+            url: "php/api/CourseResource.php?id=" + course_id,
+            dataType: "JSON",
+            method: "DELETE",
+            success: function (data) {
+                console.log("success " + data);
+                alert('Course has been deleted.');
+                loadPage('course');
+            }
+        });
+    });
+});
 
 
 var form = document.querySelector('form');
@@ -395,7 +395,7 @@ function checkForm(e) {
 
     //for each field in the add_subject form the with the validate class, see if the field is empty or fails regex validation
     //if so set the isValid flag to false and add the error class to signify an error to the user else remove the error class
-    // $('#add_subject .validate').each(function () {
+    // $('#add_course .validate').each(function () {
     //     //$(this).length <= 0) ||
     //     if ($(this).val() == "" || !regexValidations[this.name].test(this.value)) {
     //         $(this).parent().addClass('error');
@@ -419,7 +419,7 @@ function checkForm(e) {
         else {
             type = "PUT";
         }
-        //alert("Type: " + type + $("input[name=creditHours]").val());
+        alert("Type: " + type + $("input[name=creditHours]").val());
         $.ajax({
             url: "php/api/CourseResource.php",
             type: type,
@@ -428,7 +428,8 @@ function checkForm(e) {
                 courseName: $("input[name=courseName]").val(),
                 courseNumber: $("input[name=courseNumber]").val(),
                 creditHours: $("input[name=creditHours]").val(),
-                semesterNumber: 25
+                semesterNumber: 25,
+                id: $("input[name=courseId]").val()
             },
             //if ajax is successful, return to building main page and alert the user
             success: function (data) {

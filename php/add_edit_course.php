@@ -1,7 +1,7 @@
 <?php
 //if course id is passed set it to a php variable
-if (isset($_GET['course_id'])) {
-    $course_id = $_GET['course_id'];
+if (isset($_GET['courseId'])) {
+    $course_id = $_GET['courseId'];
 }
 
 include('./autoload.php');
@@ -90,15 +90,17 @@ $action;
 
   </div>
 
+  <input type="hidden" name="courseId" value="<?php if(isset($course[0]['course_id'])){echo $course[0]['course_id'];}?>"/>
+
   <div class="form-row">
     <label></label>
     <!--<button class="btn btn-default" onclick="loadPage('course')">Cancel</button>
     <button class="btn btn-success" onclick="loadPage('course')">Save</button>-->
-    <!--<?php
+    <?php
         if($action == "Edit"){
-                echo '<button class="delete_subject btn btn-default" data-delete="' . $building[0]['building_id'] . '">Delete</button>';
+                echo '<button class="delete_course btn btn-default" data-delete="' . $course[0]['course_id'] . '">Delete</button>';
         }
-    ?>-->
+    ?>
         <button class="btn btn-success submit-form <?php echo $action ?>" name="save" type="submit"><?php echo $action ?></button>
   </div>
 </div>

@@ -43,7 +43,7 @@ $selectedSubject = 19;
        echo '<option value="">Please select a subject</option>';
     } else {
      
-      $courses = $db->sql("SELECT * FROM Courses");
+      $courses = $db->sql("SELECT * FROM Courses ORDER BY course_name");
       if(count($courses) > 0){
         foreach($courses as $course){
           echo "<option value=" . $course['course_id'] ." class='edit-course'>" . $course['course_name'] . "</option>";
@@ -84,7 +84,7 @@ $selectedSubject = 19;
           var courseId = $(this).val();
           console.log("got the course id " + courseId);
           $("#edit-course-btn").remove()
-          $(".add-edit-course-btn").append("<button id='edit-course-btn' class='btn btn-success pull-right'> <span class='fa fa-plus-circle'></span> Edit Course</button>");
+          $(".add-edit-course-btn").append("<button id='edit-course-btn' data-course=" + courseId + " class='btn btn-success pull-right'> <span class='fa fa-plus-circle'></span> Edit Course</button>");
       });
 
       function editSubject(subjectId){
@@ -97,6 +97,14 @@ $selectedSubject = 19;
         var subjectId = $(this).data("sub");
         console.log("the subject id for editing: " + subjectId);
         $(".content-container").load("php/add_edit_subject.php?subjectId=" + subjectId);
+      });
+
+      //if an existing course is clicked load edit subject and fill existing information 
+      $("body").on("click", "#edit-course-btn",function(){
+        console.log("Here i am");
+        var courseId = $(this).data("course");
+        console.log("the course id for editing: " + courseId);
+        $(".content-container").load("php/add_edit_course.php?courseId=" + courseId);
       });
   });
 </script>

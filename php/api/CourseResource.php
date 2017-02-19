@@ -38,6 +38,7 @@
      break;
 
    case 'PUT':
+    parse_str(file_get_contents('php://input'), $put);
     $data['course_name'] = $_POST['courseName'];
     $data['course_number'] = $_POST['courseNumber'];
     $data['credit_hours'] = $_POST['creditHours'];
