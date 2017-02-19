@@ -45,7 +45,7 @@ $action;
               ?>"/>
   </div>
 
-Classroom type needs to be added to the DB.
+<!-- boys say we dont need this 
   <div class="form-row">    
     <label>Classroom Type:</label>
     <select>
@@ -54,7 +54,7 @@ Classroom type needs to be added to the DB.
       <option value="lab" selected="selected">Lab</option>
       <option value="lecture">Lecture</option>
     </select>
-  </div>
+  </div>-->
 
   <div class="form-row">
     <label>Credit Hours:</label>

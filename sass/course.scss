@@ -71,3 +71,12 @@
 
 }
 
+.edit-subject-container{
+  width:600px;
+  margin:50px auto;
+
+  .form-row input[type=text]{
+    min-width: 300px;
+  }
+}
+

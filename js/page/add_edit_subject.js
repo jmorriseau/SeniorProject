@@ -1,21 +1,21 @@
-// $(function () {
-// //    if delete department(subject) button is clicked run ajax to delete department(subject)
-//     $(".delete_subject").on('click', function (e) {
-//         e.stopPropagation();
-//         e.preventDefault();
-//         var department_id = $(this).data("delete");
-//         $.ajax({
-//             url: "php/api/DepartmentResource.php?id=" + department_id,
-//             dataType: "JSON",
-//             method: "DELETE",
-//             success: function (data) {
-//                 console.log("success " + data);
-//                 alert('Subject has been deleted.');
-//                 loadPage('course');
-//             }
-//         });
-//     });
-// });
+$(function () {
+//    if delete department(subject) button is clicked run ajax to delete department(subject)
+    $(".delete_subject").on('click', function (e) {
+        e.stopPropagation();
+        e.preventDefault();
+        var department_id = $(this).data("delete");
+        $.ajax({
+            url: "php/api/DepartmentResource.php?id=" + department_id,
+            dataType: "JSON",
+            method: "DELETE",
+            success: function (data) {
+                console.log("success " + data);
+                alert('Subject has been deleted.');
+                loadPage('course');
+            }
+        });
+    });
+});
 
 
 var form = document.querySelector('form');
@@ -61,21 +61,22 @@ function checkForm(e) {
         else {
             type = "PUT";
         }
-        //alert("Type: " + type + $("input[name=subjectName]").val());
+        alert("Type: " + type + $("input[name=subjectId]").val());
         $.ajax({
             url: "php/api/DepartmentResource.php",
             type: type,
             dataType: "JSON",
             data: {
-                subjectName: $("input[name=subjectName]").val()
+                subjectName: $("input[name=subjectName]").val(),
+                id: $("input[name=subjectId]").val()
             },
-            //if ajax is successful, return to building main page and alert the user
+            //if ajax is successful, return to course main page and alert the user
             success: function (data) {
                 if (data !== "" && data == 'Department Added') {
                     alert("Subject added successfully.")
                         loadPage('course');
                 }
-                else if (data !== "" && data == 'Building Updated'){
+                else if (data !== "" && data == 'Department Updated'){
                         alert("Subject updated successfully.")
                         loadPage('course');
                 } 

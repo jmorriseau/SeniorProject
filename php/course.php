@@ -1,24 +1,3 @@
- <script>
-  $(function(){
-      //if an existing subject is clicked add edit button
-      $(".edit-subject").on("click",function(){
-          var subjectId = $(this).val();
-          console.log("got the subject id " + subjectId);
-          $("#edit-sub-btn").remove()
-          $(".add-edit-sub-btn").append("<button id='edit-sub-btn' class='btn btn-success pull-right'> <span class='fa fa-plus-circle'></span> Edit Subject</button>");
-      });
-
-      $(".edit-course").on("click",function(){
-          var courseId = $(this).val();
-
-          console.log("got the course id " + courseId);
-          $("#edit-course-btn").remove()
-          $(".add-edit-course-btn").append("<button id='edit-course-btn' class='btn btn-success pull-right'> <span class='fa fa-plus-circle'></span> Edit Course</button>");
-      });
-  });
-</script>
-
-
 <?php
 include('./autoload.php');
 
@@ -89,3 +68,35 @@ $selectedSubject = 19;
 </div>
 
 </div>-->
+
+ <script>
+
+  $(function(){
+      //if an existing subject is clicked add edit button
+      $(".edit-subject").on("click",function(){
+          var subjectId = $(this).val();
+          console.log("got the subject id " + subjectId + " I got into the edit-subject function");
+          $("#edit-sub-btn").remove()
+          $(".add-edit-sub-btn").append("<button id='edit-sub-btn' data-sub=" + subjectId + " class='btn btn-success pull-right'> <span class='fa fa-plus-circle'></span> Edit Subject</button>");
+      });
+
+      $(".edit-course").on("click",function(){
+          var courseId = $(this).val();
+          console.log("got the course id " + courseId);
+          $("#edit-course-btn").remove()
+          $(".add-edit-course-btn").append("<button id='edit-course-btn' class='btn btn-success pull-right'> <span class='fa fa-plus-circle'></span> Edit Course</button>");
+      });
+
+      function editSubject(subjectId){
+        console.log("Run the new function, got the subjectId: " + subjectId);
+      }
+
+      //if an existing subject is clicked load edit subject and fill existing information 
+      $("body").on("click", "#edit-sub-btn",function(){
+        console.log("Here i am");
+        var subjectId = $(this).data("sub");
+        console.log("the subject id for editing: " + subjectId);
+        $(".content-container").load("php/add_edit_subject.php?subjectId=" + subjectId);
+      });
+  });
+</script>

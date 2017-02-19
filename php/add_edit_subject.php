@@ -1,7 +1,7 @@
 <?php
 //if department id is passed set it to a php variable
-if (isset($_GET['did'])) {
-    $department_id = $_GET['did'];
+if (isset($_GET['subjectId'])) {
+    $department_id = $_GET['subjectId'];
 }
 
 include('./autoload.php');
@@ -22,7 +22,7 @@ $action;
 
 <h1>Add/Edit Subject</h1>
 <hr/>
-<div class="form-container edit-classroom-container">
+<div class="form-container edit-subject-container">
 <form id="add_subject" action="#" method="post">
   <div class="form-row">
     <label>Subject Name:</label>
@@ -34,15 +34,17 @@ $action;
               ?>"/>
   </div>
 
+  <input type="hidden" name="subjectId" value="<?php if(isset($department[0]['departments_id'])){echo $department[0]['departments_id'];}?>"/>
+
   <div class="form-row">
     <label></label>
     <!--<button class="btn btn-default" onclick="loadPage('course')">Cancel</button>
     <button class="btn btn-success" onclick="loadPage('course')">Save</button>-->
-    <!--<?php
+    <?php
         if($action == "Edit"){
-                echo '<button class="delete_subject btn btn-default" data-delete="' . $building[0]['building_id'] . '">Delete</button>';
+                echo '<button class="delete_subject btn btn-default" data-delete="' . $department[0]['departments_id'] . '">Delete</button>';
         }
-    ?>-->
+    ?>
     <button class="btn btn-success submit-form <?php echo $action ?>" name="save" type="submit"><?php echo $action ?></button>
   </div>
 </div>
