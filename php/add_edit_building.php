@@ -17,22 +17,14 @@ include('./autoload.php');
  $building;
  $action;
 
-//if
+//if there is a building Id, pull building information
  if (isset($building_id)){
     $building = $db->sql("SELECT * FROM Building where building_id = '" .$building_id ."'");
-    //var_dump($building);
-    //var_dump(count($building));
-    //Ask boys, why do I need to specify which is there is only one?
-    //echo $building[0]['building_name'];
-
     $action = "Edit";
  }
  else {
      $action = "Add";
  }
-
-
-
 ?>
 
 <div class="hide building-form">

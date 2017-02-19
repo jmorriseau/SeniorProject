@@ -29,7 +29,7 @@
      break;
 
    case 'POST':
-     $data['department_name'] = $_POST['departmentName'];
+     $data['department_name'] = $_POST['subjectName'];
      $message = departmentResourceRun('POST', NULL, $data, $dbc);
      break;
 

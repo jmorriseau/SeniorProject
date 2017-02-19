@@ -93,14 +93,12 @@ function checkForm(e) {
             //if ajax is successful, return to building main page and alert the user
             success: function (data) {
                 if (data !== "" && data == 'Building Added') {
-                    alert(data + "this is where I am in the add");
                     alert("Building added successfully.")
-                        loadPage('building');
+                    loadPage('building');
                 }
                 else if (data !== "" && data == 'Building Updated'){
-                    alert(data + "this is where I am in the update");
-                        alert("Building updated successfully.")
-                        loadPage('building');
+                    alert("Building updated successfully.")
+                    loadPage('building');
                 } 
             },
             //if ajax is unsuccessful, show response text in console
