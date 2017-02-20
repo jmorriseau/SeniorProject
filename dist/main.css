@@ -2944,7 +2944,7 @@ div.alpha-search {
       background-color: #eaeaea; }
 
 #find {
-  background-color: #8DABA7;
+  background-color: #22305d;
   height: 25px;
   margin-top: 10px;
   float: left;
@@ -2953,7 +2953,8 @@ div.alpha-search {
   #find #search-input {
     width: 150px;
     float: left;
-    margin-right: 20px; }
+    margin-right: 10px;
+    margin-left: 30px; }
   #find #search-icon {
     background-image: url("/images/search.png");
     background-repeat: no-repeat;
@@ -2965,11 +2966,12 @@ div.alpha-search {
   #find li {
     float: left;
     padding: 0px 12px 0px 10px;
+    color: #fff;
     cursor: pointer; }
   #find ul {
     list-style: outside none none;
     float: left;
-    margin: 0px; }
+    margin: 0 25px; }
   #find li a {
     text-decoration: none;
     position: relative;

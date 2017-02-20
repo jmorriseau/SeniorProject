@@ -1,6 +1,5 @@
 <!--Search menu at the top of faculty -->
 <ul id="alphabet-search">
-<li>123</li>
 <li>A</li> 
 <li>B</li> 
 <li>C</li> 

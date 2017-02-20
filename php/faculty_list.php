@@ -10,6 +10,7 @@ include('./autoload.php');
 
 $db = new DAO();
 $searchResults = array();
+$empty;
 $faculty = array();
 
 // $faculty = $db->sql("SELECT * FROM Faculty");
@@ -17,19 +18,21 @@ $faculty = array();
 
 //if there is a search criteria pull faculty information
  if (isset($searchCriteria)){
-    $searchResults = $db->sql("SELECT * FROM Faculty where first_name LIKE '%" .$searchCriteria ."%'");
-    //var_dump($searchResults);
+    $searchResults = $db->sql("SELECT * FROM Faculty WHERE first_name LIKE '%" . $searchCriteria ."%' ORDER BY last_name");
 
-    echo '<ul>';
-    foreach($searchResults as $sr){
-        echo "<li>". $sr[first_name] . " " . $sr[last_name] . "<span class='pull-right'><span class='mock-link' onclick='loadPage(\"add_edit_faculty\")'>Edit</span> | <a href='#'>Delete</a></span></li>";
+    if(count($searchCriteria) > 0){
+        echo '<ul>';
+            foreach($searchResults as $sr){
+                echo '<li data-fid="' .$sr[faculty_id]. '">'. $sr[first_name] . ' ' . $sr[last_name] . '<span class="pull-right"x>Edit | Delete</span></li>';
+            }
+        echo '</ul>';
     }
-    echo '</ul>';
+    else {
+        echo 'No result returned';
+    }
+
+    
  }
- else {
-     $searchResults = "No results to display";
-     echo $searchResults;
- }
- 
+
  
 ?>

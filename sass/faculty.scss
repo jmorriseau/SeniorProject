@@ -24,7 +24,7 @@ div.alpha-search{
 }
 
 #find {
-    background-color: #8DABA7;
+    background-color: $primaryColor;
     height: 25px;
     margin-top: 10px;
     float: left;
@@ -34,7 +34,8 @@ div.alpha-search{
     #search-input {
       width: 150px;
       float: left;
-      margin-right: 20px;
+      margin-right: 10px;
+      margin-left:30px;
     }
 
     #search-icon {
@@ -50,12 +51,13 @@ div.alpha-search{
     li{
       float: left;
       padding: 0px 12px 0px 10px;
+      color:#fff;
       cursor: pointer;
     }
     ul {
       list-style: outside none none;
       float: left;
-      margin: 0px;
+      margin: 0 25px;
     }
     li a {
       text-decoration: none;
