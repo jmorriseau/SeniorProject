@@ -1,5 +1,12 @@
-
+// $(function(){
+//   console.log("Before the click");
+//   $(document).on('click', '.julie', function(){
+//     console.log(this);
+//    // loadPage('course');
+//   })
+// });
 function loadPage(page){
+  console.log("Getting to this function " + page);
   if(page === 'login'){
     $("#side-bar,#header").hide();
     $(".content-wrapper").addClass("full-height");

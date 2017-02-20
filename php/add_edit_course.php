@@ -13,7 +13,7 @@ $action;
 //if there is a course Id, pull course information
  if (isset($course_id)){
     $course = $db->sql("SELECT * FROM Courses where course_id = '" .$course_id ."'");
-    $action = "Edit";
+    $action = "Update";
  }
  else {
      $action = "Add";
@@ -23,6 +23,7 @@ $action;
 
 <h1><?php echo $action ?> Course</h1>
 <hr/>
+<span class="fa fa-times pull-right" onclick="loadPage('course')"></span>
 <div class="form-container edit-classroom-container">
 <form id="add_course" action="#" method="post">
   <div class="form-row">
@@ -97,7 +98,7 @@ $action;
     <!--<button class="btn btn-default" onclick="loadPage('course')">Cancel</button>
     <button class="btn btn-success" onclick="loadPage('course')">Save</button>-->
     <?php
-        if($action == "Edit"){
+        if($action == "Update"){
                 echo '<button class="delete_course btn btn-default" data-delete="' . $course[0]['course_id'] . '">Delete</button>';
         }
     ?>
