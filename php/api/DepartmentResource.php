@@ -35,8 +35,8 @@
 
    case 'PUT':
     parse_str(file_get_contents('php://input'), $put);
-    $data['department_name'] = $_POST['subjectName'];
-     $id = $_POST['id'];
+    $data['department_name'] = $put['subjectName'];
+     $id = $put['id'];
      $message = departmentResourceRun('PUT', $id, $data, $dbc);
      break;
 
@@ -132,7 +132,8 @@
     {
         //Put function uses a statement written to update a pre-existing db entry.
         try {
-          $db->sql("Update Departments SET department_name ='" .$data['department_name'] ."'
+          $db->sql("Update Departments 
+          SET department_name ='" .$data['department_name'] ."'
           WHERE departments_id = '" . $id . "'");
             return 'Department Updated';
         } catch (Exception $e){
