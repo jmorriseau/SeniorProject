@@ -20,7 +20,7 @@ $action;
  }
 ?>
 
-<h1>Add/Edit Subject</h1>
+<h1><?php echo $action ?> Subject</h1>
 <hr/>
 <div class="form-container edit-subject-container">
 <form id="add_subject" action="#" method="post">

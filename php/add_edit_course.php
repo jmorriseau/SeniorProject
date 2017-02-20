@@ -21,7 +21,7 @@ $action;
 ?>
 
 
-<h1>Add/Edit Course</h1>
+<h1><?php echo $action ?> Course</h1>
 <hr/>
 <div class="form-container edit-classroom-container">
 <form id="add_course" action="#" method="post">

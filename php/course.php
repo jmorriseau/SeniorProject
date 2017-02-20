@@ -54,21 +54,6 @@ $selectedSubject = 19;
   </select>
 <div>
 
-
-
-
-<!--<div class="accordian-container collapsed">
-  <div class="accordian-header" onclick="toggleAccordian(this)">
-    <span class="fa fa-plus"></span>
-    English
-  </div>
-  <div class="accordian-body">
-    English 101
-  </div>
-</div>
-
-</div>-->
-
  <script>
 
   $(function(){

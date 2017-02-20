@@ -61,7 +61,7 @@ function checkForm(e) {
         else {
             type = "PUT";
         }
-        alert("Type: " + type + $("input[name=creditHours]").val());
+        //alert("Type: " + type + $("input[name=creditHours]").val());
         $.ajax({
             url: "php/api/CourseResource.php",
             type: type,

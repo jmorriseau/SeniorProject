@@ -2929,17 +2929,51 @@ div.alpha-search {
   color: blue;
   text-align: center; }
 
-.result-faculty ul li {
-  width: 80%;
-  padding: 15px 10px;
-  box-sizing: border-box;
-  border-bottom: solid 1px #cccccc;
-  display: block;
-  margin: 0 auto; }
-  .result-faculty ul li:last-child {
-    border-bottom: none; }
-  .result-faculty ul li:nth-child(even) {
-    background-color: #eaeaea; }
+.result-faculty {
+  padding: 75px 0; }
+  .result-faculty ul li {
+    width: 80%;
+    padding: 15px 10px;
+    box-sizing: border-box;
+    border-bottom: solid 1px #cccccc;
+    display: block;
+    margin: 0 auto; }
+    .result-faculty ul li:last-child {
+      border-bottom: none; }
+    .result-faculty ul li:nth-child(even) {
+      background-color: #eaeaea; }
+
+#find {
+  background-color: #8DABA7;
+  height: 25px;
+  margin-top: 10px;
+  float: left;
+  padding: 10px;
+  width: calc(100% - 20px); }
+  #find #search-input {
+    width: 150px;
+    float: left;
+    margin-right: 20px; }
+  #find #search-icon {
+    background-image: url("/images/search.png");
+    background-repeat: no-repeat;
+    height: 22px;
+    width: 27px;
+    float: left;
+    background-position: 0px -44px;
+    cursor: pointer; }
+  #find li {
+    float: left;
+    padding: 0px 12px 0px 10px;
+    cursor: pointer; }
+  #find ul {
+    list-style: outside none none;
+    float: left;
+    margin: 0px; }
+  #find li a {
+    text-decoration: none;
+    position: relative;
+    right: 10px; }
 
 .result-myschedule ul li {
   width: 100%;
