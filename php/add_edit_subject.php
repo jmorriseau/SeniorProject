@@ -13,7 +13,7 @@ $action;
 //if there is a department Id, pull building information
  if (isset($department_id)){
     $department = $db->sql("SELECT * FROM Departments where departments_id = '" .$department_id ."'");
-    $action = "Edit";
+    $action = "Update";
  }
  else {
      $action = "Add";
@@ -22,6 +22,7 @@ $action;
 
 <h1><?php echo $action ?> Subject</h1>
 <hr/>
+<span class="fa fa-times pull-right" onclick="loadPage('course')"></span>
 <div class="form-container edit-subject-container">
 <form id="add_subject" action="#" method="post">
   <div class="form-row">
@@ -41,7 +42,7 @@ $action;
     <!--<button class="btn btn-default" onclick="loadPage('course')">Cancel</button>
     <button class="btn btn-success" onclick="loadPage('course')">Save</button>-->
     <?php
-        if($action == "Edit"){
+        if($action == "Update"){
                 echo '<button class="delete_subject btn btn-default" data-delete="' . $department[0]['departments_id'] . '">Delete</button>';
         }
     ?>

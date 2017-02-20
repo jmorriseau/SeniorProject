@@ -38,12 +38,13 @@ switch($_SERVER['REQUEST_METHOD']){
     break;
 
   case 'PUT':
-    $data['department_id'] = $_POST['departmentID'];
-    $data['curriculum_name'] = $_POST['curriculumName'];
-    $data['degree_type_id'] = $_POST['degreeTypeId'];
-    $data['start_term'] = $_POST['startTerm'];
-    $data['end_term'] = $_POST['endTerm'];
-    $id = $_POST['id'];
+    parse_str(file_get_contents('php://input'), $put);
+    $data['department_id'] = $put['departmentID'];
+    $data['curriculum_name'] = $put['curriculumName'];
+    $data['degree_type_id'] = $put['degreeTypeId'];
+    $data['start_term'] = $put['startTerm'];
+    $data['end_term'] = $put['endTerm'];
+    $id = $put['id'];
     $message = curriculumResourceRun('PUT', $id, $data, $dbc);
     break;
 

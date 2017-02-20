@@ -37,10 +37,11 @@
      break;
 
    case 'PUT':
-    $data['user_id'] = $_POST['userId'];
-    $data['first_name'] = $_POST['firstName'];
-    $data['last_name'] = $_POST['lastName'];
-    $id = $_POST['id'];
+    parse_str(file_get_contents('php://input'), $put);
+    $data['user_id'] = $put['userId'];
+    $data['first_name'] = $put['firstName'];
+    $data['last_name'] = $put['lastName'];
+    $id = $put['id'];
     $message = facultyResourceRun('PUT', $id, $data, $dbc);
     break;
 

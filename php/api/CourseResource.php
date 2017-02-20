@@ -39,11 +39,11 @@
 
    case 'PUT':
     parse_str(file_get_contents('php://input'), $put);
-    $data['course_name'] = $_POST['courseName'];
-    $data['course_number'] = $_POST['courseNumber'];
-    $data['credit_hours'] = $_POST['creditHours'];
-    $data['semester_number'] = $_POST['semesterNumber'];
-    $id = $_POST['id'];
+    $data['course_name'] = $put['courseName'];
+    $data['course_number'] = $put['courseNumber'];
+    $data['credit_hours'] = $put['creditHours'];
+    $data['semester_number'] = $put['semesterNumber'];
+    $id = $put['id'];
     $message = courseResourceRun('PUT', $id, $data, $dbc);
     break;
 

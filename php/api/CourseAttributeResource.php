@@ -36,9 +36,10 @@ switch($_SERVER['REQUEST_METHOD']){
     break;
 
  case 'PUT':
-    $data['attributes_id'] = $_POST['attributesId'];
-    $data['course_id'] = $_POST['courseId'];
-    $id = $_POST['id'];
+   parse_str(file_get_contents('php://input'), $put);
+    $data['attributes_id'] = $put['attributesId'];
+    $data['course_id'] = $put['courseId'];
+    $id = $put['id'];
     $message = courseAttrResourceRun('PUT', $id, $data, $dbc);
     break;
 

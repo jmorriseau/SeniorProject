@@ -38,11 +38,12 @@ switch($_SERVER['REQUEST_METHOD']){
    break;
 
  case 'PUT':
-   $data['building_id'] = $_POST['buildingId'];
-   $data['room_type_id'] = $_POST['roomTypeId'];
-   $data['class_number'] = $_POST['classNumber'];
-   $data['capacity'] = $_POST['capacity'];
-   $id = $_POST['id'];
+  parse_str(file_get_contents('php://input'), $put);
+   $data['building_id'] = $put['buildingId'];
+   $data['room_type_id'] = $put['roomTypeId'];
+   $data['class_number'] = $put['classNumber'];
+   $data['capacity'] = $put['capacity'];
+   $id = $put['id'];
    $message = classroomResourceRun('PUT', $id, $data, $dbc);
    break;
 

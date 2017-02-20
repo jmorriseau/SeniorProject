@@ -20,7 +20,7 @@ include('./autoload.php');
 //if there is a building Id, pull building information
  if (isset($building_id)){
     $building = $db->sql("SELECT * FROM Building where building_id = '" .$building_id ."'");
-    $action = "Edit";
+    $action = "Update";
  }
  else {
      $action = "Add";
@@ -120,7 +120,7 @@ include('./autoload.php');
         <label></label>
         <!--<button class="btn btn-default" onclick="loadPage('building')">Cancel</button>-->
         <?php
-            if($action == "Edit"){
+            if($action == "Update"){
                 echo '<button class="delete_building btn btn-default" data-delete="' . $building[0]['building_id'] . '">Delete</button>';
              }
         ?>
