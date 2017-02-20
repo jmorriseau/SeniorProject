@@ -36,9 +36,10 @@
      break;
 
    case 'PUT':
-    $data['faculty_id'] = $_POST['facultyId'];
-    $data['departments_id'] = $_POST['departmentsId'];
-    $id = $_POST['id'];
+   parse_str(file_get_contents('php://input'), $put);
+    $data['faculty_id'] = $put['facultyId'];
+    $data['departments_id'] = $put['departmentsId'];
+    $id = $put['id'];
     $message = facultyDeptResourceRun('PUT', $id, $data, $dbc);
     break;
 

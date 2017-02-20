@@ -35,8 +35,8 @@
 
    case 'PUT':
     parse_str(file_get_contents('php://input'), $put);
-    $data['department_name'] = $_POST['subjectName'];
-     $id = $_POST['id'];
+    $data['department_name'] = $put['subjectName'];
+     $id = $put['id'];
      $message = departmentResourceRun('PUT', $id, $data, $dbc);
      break;
 
