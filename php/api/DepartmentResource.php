@@ -32,7 +32,7 @@
      $data['department_name'] = $_POST['subjectName'];
      $message = departmentResourceRun('POST', NULL, $data, $dbc);
      break;
-
+    //Test
    case 'PUT':
     parse_str(file_get_contents('php://input'), $put);
     $data['department_name'] = $put['subjectName'];
