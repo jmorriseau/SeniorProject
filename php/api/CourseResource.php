@@ -34,6 +34,7 @@
      $data['course_number'] = $_POST['courseNumber'];
      $data['credit_hours'] = $_POST['creditHours'];
      $data['semester_number'] = $_POST['semesterNumber'];
+     $data['departments_id'] = $_POST['departmentsId'];
      $message = courseResourceRun('POST', NULL, $data, $dbc);
      break;
 
@@ -43,6 +44,7 @@
     $data['course_number'] = $put['courseNumber'];
     $data['credit_hours'] = $put['creditHours'];
     $data['semester_number'] = $put['semesterNumber'];
+    $data['departments_id'] = $put['departmentsId'];
     $id = $put['id'];
     $message = courseResourceRun('PUT', $id, $data, $dbc);
     break;
@@ -119,12 +121,13 @@
         //return 'yay';
         try{
            $db->sql("INSERT INTO Courses (
-             course_name, course_number, credit_hours, semester_number)
+             course_name, course_number, credit_hours, semester_number, departments_id)
              VALUES(
            '" .$data['course_name']. "',
            '" .$data['course_number']. "',
            '" .$data['credit_hours']. "',
-           '" .$data['semester_number']. "')
+           '" .$data['semester_number']. "',
+            '" .$data['departments_id']. "')
           ;");
 
           return 'Course Added';
@@ -146,6 +149,7 @@
           , course_number = '". $data['course_number'] . "'
           , credit_hours = '" . $data['credit_hours'] . "'
           , semester_number = '" . $data['semester_number'] . "'
+          , departments_id = '" . $data['departments_id'] . "'
           WHERE course_id = '" .$id. "'");
           return 'Course Updated';
         } catch (Exception $e){
