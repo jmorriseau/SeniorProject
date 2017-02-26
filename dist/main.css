@@ -2755,6 +2755,11 @@ div.loading {
   .mock-link:visited, .mock-link:link, .mock-link:active {
     color: #141d38; }
 
+.date {
+  margin-top: -60px;
+  color: #fff;
+  margin-right: 20px; }
+
 .classroom-container {
   position: relative;
   display: block;
@@ -2930,14 +2935,16 @@ div.alpha-search {
   text-align: center; }
 
 .result-faculty {
-  padding: 75px 0; }
+  width: 900px;
+  margin: 80px auto; }
   .result-faculty ul li {
     width: 80%;
-    padding: 15px 10px;
+    padding: 15px 20px;
     box-sizing: border-box;
     border-bottom: solid 1px #cccccc;
     display: block;
-    margin: 0 auto; }
+    margin: 0 auto;
+    cursor: pointer; }
     .result-faculty ul li:last-child {
       border-bottom: none; }
     .result-faculty ul li:nth-child(even) {
@@ -3171,3 +3178,26 @@ div.alpha-search {
   margin: 50px auto; }
   .edit-subject-container .form-row input[type=text] {
     min-width: 300px; }
+
+.home-container {
+  display: block;
+  height: auto;
+  min-height: 400px;
+  width: 900px;
+  margin: 30px auto;
+  border: 1px solid #22305d;
+  border-radius: 5px; }
+
+.home-header {
+  width: 100%;
+  padding: 15px;
+  box-sizing: border-box;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+  background-color: #22305d;
+  font-size: 16px;
+  color: #fff; }
+
+.home-announcements {
+  padding: 20px;
+  color: #383838; }

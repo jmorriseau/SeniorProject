@@ -1,4 +1,14 @@
-This is the home page.
+<div class="home-container">
+  <div class="home-header">
+    <h2>Welcome, Tester!</h2>
+  </div>
+  <div class="home-announcements">
+    <h3>Announcements:</h3>
+    <p>Student enrollments are due by <strong>Friday, March 17th, 2017 at 12:00 PM</strong>.</p> 
+    <p>Please ensure any changes to buildings, classrooms, courses, curriculum and faculty are complete by <br /><strong>Wednesday, March 15th, 2017 at 
+      12:00 PM</strong>. These updates are critical to establishing accurate scheduling. We appreciate your cooperation!</p>
+  </div>
+ </div> 
 <!--
 Notes for Saturday:
 Build the pages out
@@ -13,9 +23,6 @@ browerify/ browser sync
 
 from Sunday:
 increase height of modal header
-
- -->
-
 
 <div class="alert-box info">
   <div class="alert-icon">
@@ -96,3 +103,4 @@ increase height of modal header
 
 <div class="loading">
 </div>
+ -->
