@@ -1,5 +1,4 @@
 <?php
-//phpinfo();
 require_once './php/autoload.php';
 $util = new Util();
 $login = new Login();
@@ -11,8 +10,6 @@ if ($util->isPostRequest() && $_SESSION['logged_in'] === false) {
     $password = filter_input(INPUT_POST, 'login-password');
 
     $login->getLogin($email, $password, $db);
-
-
 }
 
 ?>
@@ -29,12 +26,14 @@ if ($util->isPostRequest() && $_SESSION['logged_in'] === false) {
 <?php if ($_SESSION['logged_in'] === false) { ?>
 <body onload="loadPage('login')">
 <?php } else { ?>
-<body onload="loadPage('add_edit_building')">
+<body onload="loadPage('home')">
 <?php } ?>
 
 <div id="header">
-    <div id="header-image" <span><?php echo "Welcome " . " " . $_SESSION['account'][0]['user_name']; ?></span>
+    <div id="header-image"> 
+        <span><?php echo "Welcome " . " " . $_SESSION['account'][0]['user_name']; ?></span>
     </div>
+    <span class="pull-right date"><?php date_default_timezone_set('America/New_York'); echo date("l, F d, Y");?></span>
 </div>
 
 <div class="content-wrapper">
@@ -58,7 +57,7 @@ if ($util->isPostRequest() && $_SESSION['logged_in'] === false) {
             <li onclick="loadPage('myschedule')" class="nav-myschedule"><span class="fa fa-user-circle-o"></span>My
                 Schedule
             </li>
-            <li onclick="loadPage('login')">Log Out</li>
+            <li onclick="loadPage('login')"><span class="fa fa-sign-out"></span>Log Out</li>
             <!--<li onclick="loadPage('login')">Log In</li>-->
             <!--?php } ?-->
         </ul>

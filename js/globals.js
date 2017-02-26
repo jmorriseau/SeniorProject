@@ -82,6 +82,21 @@ function updateSlidingSelect(current, next){
   }
 }
 
+function getCampusBuildings(){
+  //console.log($('.campuses-drop-down').val());
+  var campusId = $('.campuses-drop-down').val();
+  $.ajax({
+      method:"GET",
+      url: 'php/classroom_list.php?cid=' + campusId,
+      success: function(result){
+        // for(var i = 0; i < result.length; i++){
+        //   $('.buildings-drop-down').append('<option')
+        // }
+        console.log(result);
+      }
+    })
+}
+
 
 function editCampus(elem){
   console.log(elem);

@@ -1,15 +1,13 @@
-<!-- <button class="btn" onclick="launchModal('.edit-classroom','add_edit_building')">Test model edit</button> -->
+<?php
+include('./autoload.php');
 
-<div class="modal-container edit-classroom">
-  <div class="modal-header">
-    Edit Classroom
-  </div>
-  <div class="modal-body">
-  </div>
-  <div class="modal-footer">
-    <button class="pull-right" onclick="closeModal('.edit-classroom')">Close</button>
-  </div>
-</div>
+ $db = new DAO();
+ $campus = array();
+ $building = array();
+ $floor = array();
+
+
+ ?>
 
 <div class="header">
   <h1>Current Classrooms</h1>
@@ -20,21 +18,26 @@
 
   <div class="classroom-selector select-campus">
     <label>Select a campus:</label>
-    <select onchange="updateSlidingSelect('.select-campus','.select-building')">
+    <select class="campuses-drop-down" onchange="updateSlidingSelect('.select-campus','.select-building');getCampusBuildings()">
       <option value="">--Choose One--</option>
-      <option value="access_road">Access Road</option>
-      <option value="east_greenwich">East Greenwich</option>
-      <option value="post_road">Post Road</option>
+      <?php
+        $campus = $db->sql("SELECT * FROM Campus");
+
+        if(count($campus) > 0){
+          foreach($campus as $c){
+            echo '<option value="'.$c['campus_id'].'">' . $c['campus_name'] . '</option>';
+          }
+        }
+      ?>
     </select>
   </div>
 
   <div class="classroom-selector select-building">
     <label>Select a building:</label>
-    <select onchange="updateSlidingSelect('.select-building','.select-floor')">
+    <select class="buildings-drop-down" onchange="updateSlidingSelect('.select-building','.select-floor')">
       <option value="">--Choose One--</option>
-      <option value="main_building">Main Building</option>
-      <option value="east_building">East Building</option>
-      <option value="west_building">West Building</option>
+
+
     </select>
   </div>
 
