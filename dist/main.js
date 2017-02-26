@@ -426,7 +426,7 @@ function checkForm(e) {
         else {
             type = "PUT";
         }
-        //alert("Type: " + type + $("input[name=creditHours]").val());
+        alert("subject is " + $("input[name=subId]").val());
         $.ajax({
             url: "php/api/CourseResource.php",
             type: type,
@@ -436,6 +436,7 @@ function checkForm(e) {
                 courseNumber: $("input[name=courseNumber]").val(),
                 creditHours: $("input[name=creditHours]").val(),
                 semesterNumber: 25,
+                departmentsId: $("input[name=subId]").val(),
                 id: $("input[name=courseId]").val()
             },
             //if ajax is successful, return to building main page and alert the user

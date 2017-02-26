@@ -3,6 +3,9 @@
 if (isset($_GET['courseId'])) {
     $course_id = $_GET['courseId'];
 }
+if (isset($_GET['sid'])) {
+    $subId = $_GET['sid'];
+}
 
 include('./autoload.php');
 
@@ -92,6 +95,8 @@ $action;
   </div>
 
   <input type="hidden" name="courseId" value="<?php if(isset($course[0]['course_id'])){echo $course[0]['course_id'];}?>"/>
+  <input type="hidden" name="subId" value="<?php 
+  if(isset($course[0]['departments_id'])){echo $course[0]['departments_id'];}else{echo $subId;}?>"/>
 
   <div class="form-row">
     <label></label>
