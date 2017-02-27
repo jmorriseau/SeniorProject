@@ -8,8 +8,10 @@ include('./autoload.php');
 $db = new DAO();
 
 if (isset($campus_id)){
-    $buldings = $db->sql("SELECT * FROM Building WHERE campus_id = '" .$campus_id ."'");
-    echo json_encode($buldings);
+    $buildings = $db->sql("SELECT * FROM Building WHERE campus_id = '" .$campus_id ."'");
+    foreach($buildings as $b){
+        echo '<option value="'. $b['building_id'] .'">' . $b['building_name'] . '</option>';
+    } 
 }
 
 ?>

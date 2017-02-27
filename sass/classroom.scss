@@ -65,10 +65,10 @@
 
 .result-classrooms{
   position:absolute;
-  top:250px;
+  top:175px;
   right:-100%;
   transition:all 0.3s ease-in-out;
-  width:800px;
+  width:840px;
 
   &.active {
     right: calc(50% - 400px);
@@ -81,6 +81,7 @@
   box-sizing:border-box;
   border-bottom:solid 1px #cccccc;
   display:block;
+  cursor:pointer;
 
   &:last-child{
     border-bottom:none;

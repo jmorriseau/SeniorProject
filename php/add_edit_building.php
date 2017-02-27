@@ -10,7 +10,7 @@ if(isset($_GET['cid'])){
     $campus_id = $_GET['cid'];
 }
 
-//var_dump($campus_name);
+
 include('./autoload.php');
 
  $db = new DAO();
@@ -118,7 +118,6 @@ include('./autoload.php');
 
       <div class="form-row">
         <label></label>
-        <!--<button class="btn btn-default" onclick="loadPage('building')">Cancel</button>-->
         <?php
             if($action == "Update"){
                 echo '<button class="delete_building btn btn-default" data-delete="' . $building[0]['building_id'] . '">Delete</button>';
