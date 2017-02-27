@@ -37,7 +37,10 @@ switch($_SERVER['REQUEST_METHOD']){
     $data['city'] = $_POST['city'];
     $data['state'] = $_POST['state'];
     $data['zip'] = $_POST['zip'];
-    $message = buildingResourceRun('POST', NULL, $data, $dbc);
+    if(dataCheck($data)){
+      $message = buildingResourceRun('POST', NULL, $data, $dbc);
+    }
+    else{ $message = "Data not in correct format";}
     break;
 
   case 'PUT':
@@ -50,7 +53,10 @@ switch($_SERVER['REQUEST_METHOD']){
     $data['state'] = $put['state'];
     $data['zip'] = $put['zip'];
     $id = $put['id'];
-    $message = buildingResourceRun('PUT', $id, $data, $dbc);
+    if(dataCheck($data)){
+      $message = buildingResourceRun('PUT', $id, $data, $dbc);
+    }
+    else{ $message = "Data not in correct format";}
     break;
 
   case 'DELETE':
@@ -169,5 +175,66 @@ function delete($id,$db) {
     }  else {
       return "Error Building not Deleted";
     }
+}
 
+function dataCheck($data) {
+    //The dataCheck function uses the JSON data to make sure that all form objects were properly filled out.
+    $errors = array();
+
+    if ($data['campus_id'] === '' ){
+      if(preg_match('/^[0-9]*$/', $data['campus_id'])){
+        $errors[] = 'Campus ID in the wrong format';
+      } else {
+        $errors[] = 'No Campus ID ';
+      }
+    }
+    if ($data['building_abbreviation'] === '' ){
+      if(preg_match('/^[a-zA-Z 0-9]*$/', $data['building_abbreviation'])){
+        $errors[] = 'Building Abbreviation in the wrong format';
+      } else {
+        $errors[] = 'No Building Abbreviation ';
+      }
+    }
+    if ($data['building_name'] === '' ){
+      if(preg_match('/^[a-zA-Z 0-9]*$/', $data['building_name'])){
+        $errors[] = 'Building Name in the wrong format';
+      } else {
+        $errors[] = 'No Building Name ';
+      }
+    }
+    if ($data['address'] === '' ){
+      if(preg_match('/^\d{1,6}\040([A-Z]{1}[a-z]{1,}\040[A-Z]{1}[a-z]{1,})$|^\d{1,6}\040([A-Z]{1}[a-z]{1,}\040[A-Z]{1}[a-z]{1,}\040[A-Z]{1}[a-z]{1,})$|^\d{1,6}\040([A-Z]{1}[a-z]{1,}\040[A-Z]{1}[a-z]{1,}\040[A-Z]{1}[a-z]{1,}\040[A-Z]{1}[a-z]{1,})$/', $data['address'])){
+        $errors[] = 'Address in the wrong format';
+      } else {
+        $errors[] = 'No Address ';
+      }
+    }
+    if ($data['city'] === '' ){
+      if(preg_match('/.*/', $data['city'])){
+        $errors[] = 'City in the wrong format';
+      } else {
+        $errors[] = 'No City ';
+      }
+    }
+    if ($data['state'] === '' ){
+      if(preg_match('/^[A-Z]{2}$/', $data['state'])){
+        $errors[] = 'State in the wrong format';
+      } else {
+        $errors[] = 'No State ';
+      }
+    }
+    if ($data['zip'] === '' ){
+      if(preg_match('/^\d{5}(?:[-\s]\d{4})?$/', $data['zip'])){
+        $errors[] = 'Zip in the wrong format';
+      } else {
+        $errors[] = 'No Zip ';
+      }
+    }
+    if (count($errors) > 0)
+    {
+        throw new Exception('Form not fully filled');
+    }
+    else{
+        return true;
+    }
 }
