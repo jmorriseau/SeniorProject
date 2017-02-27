@@ -22,7 +22,7 @@ if ( (isset($campus_id)) && (isset($building_id)) && (isset($floor_id)) ){
     if(count($classroomList) > 0){
         echo '<ul>';
             foreach($classroomList as $c){
-                echo '<li class="edit-classroom" data-cid="' .$c[classroom_id]. '">Room ' .$c[class_number]. '<span class="pull-right">Edit</span></li>';
+                echo '<li class="edit-classroom" data-bid="' .$building_id. '" data-cid="' .$c[classroom_id]. '">Room ' .$c[class_number]. '<span class="pull-right">Edit</span></li>';
             }
         echo '</ul>';
     }

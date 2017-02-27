@@ -1,5 +1,4 @@
 $(function () {
-    console.log("here ryan");
 //    if delete contact  button is clicked run ajax to delete contact
     $(".delete_building").on('click', function (e) {
         e.stopPropagation();
