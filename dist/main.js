@@ -505,6 +505,7 @@ $(function () {
         e.stopPropagation();
         e.preventDefault();
         var faculty_id = $(this).data("delete");
+        console.log(faculty_id + " julie");
         $.ajax({
             url: "php/api/FacultyResource.php?id=" + faculty_id,
             dataType: "JSON",
@@ -568,9 +569,10 @@ function checkForm(e) {
             type: type,
             dataType: "JSON",
             data: {
-                userId: $("input[name=userId]").val(),
                 firstName: $("input[name=firstName]").val(),
                 lastName: $("input[name=lastName]").val(),
+                phoneNumber: $("input[name=phoneNumber]").val(),
+                email: $("input[name=email]").val(),
                 id: $("input[name=facultyId]").val()
             },
             //if ajax is successful, return to course main page and alert the user
