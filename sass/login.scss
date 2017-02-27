@@ -49,7 +49,52 @@
     border:solid 1px #fff;
     color:#fff;
     font-size:16px;
-  }
+
+      &:focus {
+        // removing default focus style
+        outline: 0;
+        // adding new one
+        background: transparent;
+
+        & + login-label {
+          opacity: 0;
+        }
+      }
+
+      &:valid {
+        background-size: 20px;
+        background-repeat: no-repeat;
+        background-position: 20px 20px;
+        & + login-label {
+          opacity: 0;
+        }
+      }
+
+      &:invalid:not(:focus) {
+        background: pink;
+        & + login-label {
+          opacity: 0;
+        }
+      }
+
+      &:invalid:focus {
+        & ~ .requirements {
+          max-height: 150px;
+          padding: 0 15px 10px 25px;
+        }
+      }
+
+}
+  .requirements {
+        padding: 0 15px 0 25px;
+        color: #999;
+        max-height: 0;
+        transition: 0.28s;
+        overflow: hidden;
+        color: red;
+        font-style: italic;
+        font-size: 15px;
+      }
 
   ::-webkit-input-placeholder { /* Chrome/Opera/Safari */
   color: #fff;

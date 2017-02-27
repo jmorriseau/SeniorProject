@@ -2,14 +2,20 @@
 require_once './php/autoload.php';
 $util = new Util();
 $login = new Login();
+$errorMsg = '';
 
 
 // Find future way to determine where POST requests come from ie. Whether they are from the login form or from the
 if ($util->isPostRequest() && $_SESSION['logged_in'] === false) {
-    $email = filter_input(INPUT_POST, 'login-email');
-    $password = filter_input(INPUT_POST, 'login-password');
+    if( isset($_POST['login-email']) && isset($_POST['login-password']) ) {
+      $email = filter_input(INPUT_POST, 'login-email');
+      $password = filter_input(INPUT_POST, 'login-password');
 
-    $login->getLogin($email, $password, $db);
+      $login->getLogin($email, $password, $db);
+    }
+    else{
+      echo "Please make sure all fields are filled in correctly.";
+    }
 }
 
 ?>
@@ -30,7 +36,7 @@ if ($util->isPostRequest() && $_SESSION['logged_in'] === false) {
 <?php } ?>
 
 <div id="header">
-    <div id="header-image"> 
+    <div id="header-image">
         <span><?php echo "Welcome " . " " . $_SESSION['account'][0]['user_name']; ?></span>
     </div>
     <span class="pull-right date"><?php date_default_timezone_set('America/New_York'); echo date("l, F d, Y");?></span>
