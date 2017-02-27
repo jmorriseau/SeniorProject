@@ -13,6 +13,7 @@ $action;
 //if there is a faculty Id, pull information
  if (isset($faculty_id)){
     $faculty = $db->sql("SELECT * FROM Faculty where faculty_id = '" . $faculty_id ."'");
+    var_dump($faculty);
     $action = "Update";
  }
  else {
@@ -45,18 +46,27 @@ $action;
               ?>"/>
     </div>
 
-    <!--<div class="form-row">
+    <div class="form-row">
       <label>Phone:</label>
       <input type="text" name="phoneNumber" class="validate" placeholder="(401)739-5000" maxlength="10" minlength="10" required
-      value=""/>
+      value="<?php
+              if(isset($faculty[0]['phone_number'])){
+                echo $faculty[0]['phone_number'];
+                }
+              ?>"/>
     </div>
 
     <div class="form-row">
       <label>Email:</label>
-      <input type="text" value="gsaban@neit.edu" />
-    </div>-->
+      <input type="text" name="email" class="validate" placeholder="gsaban@neit.edu" maxlength="100" minlength="7" required
+      value="<?php
+              if(isset($faculty[0]['email'])){
+                echo $faculty[0]['email'];
+                }
+              ?>"/>
+    </div>
 
-    <input type="hidden" name="userId" value="<?php if(isset($faculty[0]['user_id'])){echo $faculty[0]['user_id'];}?>"/>
+    <!--<input type="hidden" name="userId" value="<?php if(isset($faculty[0]['user_id'])){echo $faculty[0]['user_id'];}?>"/>-->
     <input type="hidden" name="facultyId" value="<?php if(isset($faculty[0]['faculty_id'])){echo $faculty[0]['faculty_id'];}?>"/>
 
     <div class="form-row">

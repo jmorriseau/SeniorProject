@@ -2,10 +2,6 @@
 include('./autoload.php');
 
  $db = new DAO();
- $campus = array();
- $building = array();
- $floor = array();
-
 
  ?>
 
@@ -34,31 +30,33 @@ include('./autoload.php');
 
   <div class="classroom-selector select-building">
     <label>Select a building:</label>
-    <select class="buildings-drop-down" onchange="updateSlidingSelect('.select-building','.select-floor')">
+    <select class="buildings-drop-down" onchange="updateSlidingSelect('.select-building','.select-floor');getBuildingFloors()">
       <option value="">--Choose One--</option>
-
-
     </select>
   </div>
 
   <div class="classroom-selector select-floor">
     <label>Select a floor:</label>
-    <select onchange="updateSlidingSelect('.select-floor','.result-classrooms')">
+    <select class="floor-drop-down" onchange="updateSlidingSelect('.select-floor','.result-classrooms');getClassrooms()">
       <option value="">--Choose One--</option>
-      <option value="floor_one">Frist Floor</option>
-      <option value="floor_two">Second Floor</option>
-      <option value="floor_three">Third Floor</option>
     </select>
   </div>
 
   <div class="result-classrooms">
-    Available Classrooms
-    <ul>
-      <li>N208 <span class="pull-right"><span class="mock-link" onclick="loadPage('add_edit_classroom')">Edit</span> | <a href="#">Delete</a></span></li>
-      <li>N209 <span class="pull-right"><a href="#">Edit</a> | <a href="#">Delete</a></span></li>
-      <li>N210 <span class="pull-right"><a href="#">Edit</a> | <a href="#">Delete</a></span></li>
-      <li>N215 <span class="pull-right"><a href="#">Edit</a> | <a href="#">Delete</a></span></li>
-    </ul>
+    <h3>Available Classrooms</h3>
   </div>
 
 </div>
+
+<script>
+  $(function(){
+
+    //if existing classroom edit is clicked go to add edit classroom
+    $("body").on("click", ".edit-classroom", function(){
+      var classroomId = $(this).data("cid");
+      console.log("Got the classroom Id: " + classroomId);
+      $(".content-container").load("php/add_edit_classroom.php?cid=" + classroomId);
+    });
+    
+  });
+</script>

@@ -88,18 +88,42 @@ function updateSlidingSelect(current, next){
 }
 
 function getCampusBuildings(){
-  //console.log($('.campuses-drop-down').val());
   var campusId = $('.campuses-drop-down').val();
   $.ajax({
       method:"GET",
       url: 'php/classroom_list.php?cid=' + campusId,
       success: function(result){
-        // for(var i = 0; i < result.length; i++){
-        //   $('.buildings-drop-down').append('<option')
-        // }
-        console.log(result);
+        $('.buildings-drop-down').append(result);
+        $('.campuses-drop-down').attr('disabled',true);
       }
     })
+}
+
+function getBuildingFloors(){
+  var buildingId = $('.buildings-drop-down').val();
+  $.ajax({
+      method:"GET",
+      url: 'php/floor_list.php?bid=' + buildingId,
+      success: function(result){
+        $('.floor-drop-down').append(result);
+        $('.buildings-drop-down').attr('disabled',true);
+      }
+    })
+}
+
+function getClassrooms(){
+  var campusId = $('.campuses-drop-down').val();
+  var buildingId = $('.buildings-drop-down').val();
+  var floorId = $('.floor-drop-down').val();
+  console.log("campus id: " + campusId + " building id: " + buildingId + " floor: " + floorId);
+  $.ajax({
+    method:"GET",
+    url: 'php/classroom_list_full.php?cid=' + campusId + '&bid=' + buildingId + '&fid=' + floorId,
+    success: function(result){
+      //console.log(result);
+      $('.result-classrooms').append(result);
+    }
+  })
 }
 
 
@@ -192,6 +216,7 @@ var campuses = [
 ]
 
 $(function () {
+    console.log("here ryan");
 //    if delete contact  button is clicked run ajax to delete contact
     $(".delete_building").on('click', function (e) {
         e.stopPropagation();
@@ -480,6 +505,7 @@ $(function () {
         e.stopPropagation();
         e.preventDefault();
         var faculty_id = $(this).data("delete");
+        console.log(faculty_id + " julie");
         $.ajax({
             url: "php/api/FacultyResource.php?id=" + faculty_id,
             dataType: "JSON",
@@ -543,9 +569,10 @@ function checkForm(e) {
             type: type,
             dataType: "JSON",
             data: {
-                userId: $("input[name=userId]").val(),
                 firstName: $("input[name=firstName]").val(),
                 lastName: $("input[name=lastName]").val(),
+                phoneNumber: $("input[name=phoneNumber]").val(),
+                email: $("input[name=email]").val(),
                 id: $("input[name=facultyId]").val()
             },
             //if ajax is successful, return to course main page and alert the user

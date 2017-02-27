@@ -2448,6 +2448,33 @@ span {
     border: solid 1px #fff;
     color: #fff;
     font-size: 16px; }
+    #login-container input[type=text]:focus, #login-container input[type=password]:focus {
+      outline: 0;
+      background: transparent; }
+      #login-container input[type=text]:focus + login-label, #login-container input[type=password]:focus + login-label {
+        opacity: 0; }
+    #login-container input[type=text]:valid, #login-container input[type=password]:valid {
+      background-size: 20px;
+      background-repeat: no-repeat;
+      background-position: 20px 20px; }
+      #login-container input[type=text]:valid + login-label, #login-container input[type=password]:valid + login-label {
+        opacity: 0; }
+    #login-container input[type=text]:invalid:not(:focus), #login-container input[type=password]:invalid:not(:focus) {
+      background: pink; }
+      #login-container input[type=text]:invalid:not(:focus) + login-label, #login-container input[type=password]:invalid:not(:focus) + login-label {
+        opacity: 0; }
+    #login-container input[type=text]:invalid:focus ~ .requirements, #login-container input[type=password]:invalid:focus ~ .requirements {
+      max-height: 150px;
+      padding: 0 15px 10px 25px; }
+  #login-container .requirements {
+    padding: 0 15px 0 25px;
+    color: #999;
+    max-height: 0;
+    transition: 0.28s;
+    overflow: hidden;
+    color: red;
+    font-style: italic;
+    font-size: 15px; }
   #login-container ::-webkit-input-placeholder {
     /* Chrome/Opera/Safari */
     color: #fff; }
@@ -2811,10 +2838,10 @@ div.loading {
 
 .result-classrooms {
   position: absolute;
-  top: 250px;
+  top: 175px;
   right: -100%;
   transition: all 0.3s ease-in-out;
-  width: 800px; }
+  width: 840px; }
   .result-classrooms.active {
     right: calc(50% - 400px); }
 
@@ -2823,7 +2850,8 @@ div.loading {
   padding: 15px 10px;
   box-sizing: border-box;
   border-bottom: solid 1px #cccccc;
-  display: block; }
+  display: block;
+  cursor: pointer; }
   .result-classrooms ul li:last-child {
     border-bottom: none; }
   .result-classrooms ul li:nth-child(even) {
