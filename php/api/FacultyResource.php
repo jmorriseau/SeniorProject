@@ -30,17 +30,19 @@
      break;
 
    case 'POST':
-     $data['user_id'] = $_POST['userId'];
      $data['first_name'] = $_POST['firstName'];
      $data['last_name'] = $_POST['lastName'];
+     $data['phone_number'] = $_POST['phoneNumber'];
+     $data['email'] = $_POST['email'];
      $message = facultyResourceRun('POST', NULL, $data, $dbc);
      break;
 
    case 'PUT':
     parse_str(file_get_contents('php://input'), $put);
-    $data['user_id'] = $put['userId'];
     $data['first_name'] = $put['firstName'];
     $data['last_name'] = $put['lastName'];
+    $data['phone_number'] = $_POST['phoneNumber'];
+    $data['email'] = $_POST['email'];
     $id = $put['id'];
     $message = facultyResourceRun('PUT', $id, $data, $dbc);
     break;
@@ -117,11 +119,12 @@
         //return 'yay';
         try{
            $db->sql("INSERT INTO Faculty (
-             user_id ,first_name ,last_name)
+             first_name ,last_name, phone_number, email)
              VALUES(
-           '" .$data['user_id']. "'
-           , '" .$data['first_name']. "'
-           , '" .$data['last_name']. "')
+           '" .$data['first_name']. "'
+           , '" .$data['last_name']. "'
+           , '" .$data['phone_number']. "'
+           , '" .$data['email']. "')
           ;");
 
           return 'Faculty Added';
@@ -139,9 +142,10 @@
         //Put function uses a statement written to update a pre-existing db entry.
         try {
           $db->sql("UPDATE Faculty SET
-            user_id = '" .$data['user_id'] ."'
-          , first_name = '". $data['first_name'] . "'
+            first_name = '". $data['first_name'] . "'
           , last_name = '" . $data['last_name'] . "'
+          , phone_number = '" . $data['phone_number'] . "'
+          , email = '" . $data['email'] . "'
           WHERE faculty_id = '" .$id. "'");
           return 'Faculty Updated';
         } catch (Exception $e){
