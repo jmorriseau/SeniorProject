@@ -30,14 +30,20 @@
 
    case 'POST':
      $data['department_name'] = $_POST['subjectName'];
-     $message = departmentResourceRun('POST', NULL, $data, $dbc);
+     if(dataCheck($data)){
+       $message = departmentResourceRun('POST', NULL, $data, $dbc);
+     }
+     else{ $message = "Data not in correct format";}
      break;
 
    case 'PUT':
     parse_str(file_get_contents('php://input'), $put);
     $data['department_name'] = $put['subjectName'];
      $id = $put['id'];
-     $message = departmentResourceRun('PUT', $id, $data, $dbc);
+     if(dataCheck($data)){
+       $message = departmentResourceRun('PUT', $id, $data, $dbc);
+     }
+     else{ $message = "Data not in correct format";}
      break;
 
    case 'DELETE':
@@ -151,4 +157,24 @@
           return "Error Department not Deleted";
         }
 
+    }
+
+    function dataCheck($data) {
+        //The dataCheck function uses the JSON data to make sure that all form objects were properly filled out.
+        $errors = array();
+
+        if ($data['department_name'] === '' ){
+          if(preg_match('/^[a-zA-Z 0-9]*$/', $data['department_name'])){
+            $errors[] = 'Department Name in the wrong format';
+          } else {
+            $errors[] = 'No Department Name ';
+          }
+        }
+        if (count($errors) > 0)
+        {
+            throw new Exception('Form not fully filled');
+        }
+        else{
+            return true;
+        }
     }
