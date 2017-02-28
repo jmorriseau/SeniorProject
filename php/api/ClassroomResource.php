@@ -47,10 +47,12 @@ switch($_SERVER['REQUEST_METHOD']){
    $data['class_number'] = $put['classNumber'];
    $data['capacity'] = $put['capacity'];
    $id = $put['id'];
-   if(dataCheck($data)){
+   //echo "<script>console.log( 'Debug Objects: " . $data['building_id'] . '\t' . $data['room_type_id'] . '\t' . $data['class_number'] . '\t' . $data['capacity'] . '\t'. "' );</script>";
+   /*if(dataCheck($data)){
      $message = classroomResourceRun('PUT', $id, $data, $dbc);
    }
-   else{ $message = "Data not in correct format";}
+   else{ $message = "Data not in correct format";}*/
+   $message = "Data not in correct format";
    break;
 
  case 'DELETE':
@@ -173,31 +175,35 @@ function dataCheck($data) {
     $errors = array();
 
     if ($data['building_id'] === '' ){
-      if(preg_match('/^[0-9]*$/', $data['building_id'])){
-        $errors[] = 'Building ID in the wrong format';
-      } else {
         $errors[] = 'No Building ID ';
+    } else {
+      if(preg_match('/^[0-9]*$/', $data['building_id'])){
+      } else {
+        $errors[] = 'Building ID in the wrong format';
       }
     }
     if ($data['room_type_id'] === '' ){
-      if(preg_match('/^[0-9]*$/', $data['room_type_id'])){
-        $errors[] = 'Room Type ID in the wrong format';
-      } else {
         $errors[] = 'No Room Type ID ';
+    } else {
+      if(preg_match('/^[0-9]*$/', $data['room_type_id'])){
+      } else {
+        $errors[] = 'Room Type ID in the wrong format';
       }
     }
     if ($data['class_number'] === '' ){
-      if(preg_match('/^[a-zA-Z 0-9]*$/', $data['class_number'])){
-        $errors[] = 'Classroom Number in the wrong format';
-      } else {
         $errors[] = 'No Classroom Number ';
+    } else {
+      if(preg_match('/^[a-zA-Z 0-9]*$/', $data['class_number'])){
+      } else {
+        $errors[] = 'Classroom Number in the wrong format';
       }
     }
     if ($data['capacity'] === '' ){
-      if(preg_match('/^[0-9]*$/', $data['capacity'])){
-        $errors[] = 'Capacity in the wrong format';
-      } else {
         $errors[] = 'No Capacity ';
+    } else {
+      if(preg_match('/^[0-9]*$/', $data['capacity'])){
+      } else {
+        $errors[] = 'Capacity in the wrong format';
       }
     }
     if (count($errors) > 0)

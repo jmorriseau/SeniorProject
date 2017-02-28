@@ -31,14 +31,20 @@
 
    case 'POST':
      $data['campus_name'] = $_POST['campusName'];
-     $message = campusResourceRun('POST', NULL, $data, $dbc);
+     if(dataCheck($data)){
+       $message = campusResourceRun('POST', NULL, $data, $dbc);
+     }
+     else{ $message = "Data not in correct format";}
      break;
 
    case 'PUT':
     parse_str(file_get_contents('php://input'), $put);
      $data['campus_name'] = $put['campusName'];
      $id = $put['id'];
-     $message = campusResourceRun('PUT', $id, $data, $dbc);
+     if(dataCheck($data)){
+       $message = campusResourceRun('PUT', $id, $data, $dbc);
+     }
+     else{ $message = "Data not in correct format";}
      break;
 
    case 'DELETE':
@@ -157,14 +163,18 @@
 
       if ($data['campus_name'] === '' ){
           $errors[] = 'No Campus Name ';
+      } else {
+        if(preg_match('/^[a-zA-Z 0-9]*$/', $data['campus_name'])){
+        } else {
+          $errors[] = 'Campus Name in the wrong format';
+        }
       }
-
       if (count($errors) > 0)
       {
           throw new Exception('Form not fully filled');
+          return false;
       }
       else{
           return true;
       }
-
   }

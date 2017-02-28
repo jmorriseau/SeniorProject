@@ -164,10 +164,11 @@
         $errors = array();
 
         if ($data['department_name'] === '' ){
-          if(preg_match('/^[a-zA-Z 0-9]*$/', $data['department_name'])){
-            $errors[] = 'Department Name in the wrong format';
-          } else {
             $errors[] = 'No Department Name ';
+        } else {
+          if(preg_match('/^[a-zA-Z 0-9]*$/', $data['department_name'])){ 
+          } else {
+            $errors[] = 'Department Name in the wrong format';
           }
         }
         if (count($errors) > 0)

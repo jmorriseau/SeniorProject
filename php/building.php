@@ -1,6 +1,6 @@
  <script>
   $(function(){
-      //if an existing building is clicked go to add building page and fill existing information 
+      //if an existing building is clicked go to add building page and fill existing information
       $(".edit-campus-btn").on("click",function(){
           var id = $(this).data("cid");
           var cn = $(this).data("cn");
@@ -68,7 +68,7 @@ include('./autoload.php');
         echo '<button class="btn btn-success add-campus-btn" data-cid="' .$d["campus_id"]. '" data-cn="' .$d["campus_name"]. '">Add New Building</button>';
         echo '</div>';
         echo '</div>';
-        echo '<button class="btn btn-success edit-campus-btn" data-cid="' .$d["campus_id"]. '" data-cn="' .$d["campus_name"]. '" onClick="editCampus(this)">Edit</button>';        
+        echo '<button class="btn btn-success edit-campus-btn" data-cid="' .$d["campus_id"]. '" data-cn="' .$d["campus_name"]. '" onClick="editCampus(this)">Edit</button>';
         echo '<div id="access-buildings" class="campus-buildings">';
         echo '</div>';
         echo '</section>';
@@ -76,8 +76,5 @@ include('./autoload.php');
     }
 
   ?>
-  
+
 </div>
-
-
-

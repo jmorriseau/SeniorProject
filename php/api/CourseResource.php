@@ -44,7 +44,7 @@
    case 'PUT':
     parse_str(file_get_contents('php://input'), $put);
     $data['course_name'] = $put['courseName'];
-    $data['course_number'] = $put['courseNumber'];
+    $data['course_number'] = trim($put['courseNumber']);
     $data['credit_hours'] = $put['creditHours'];
     $data['semester_number'] = $put['semesterNumber'];
     $data['departments_id'] = $put['departmentsId'];
@@ -181,43 +181,50 @@ function dataCheck($data) {
     $errors = array();
 
     if ($data['course_name'] === '' ){
-      if(preg_match('/^[a-zA-Z 0-9]*$/', $data['course_name'])){
-        $errors[] = 'Course Name in the wrong format';
-      } else {
         $errors[] = 'No Course Name ';
+    } else {
+      if(preg_match('/^[a-zA-Z 0-9&]*$/', $data['course_name'])){
+      } else {
+        $errors[] = 'Course Name in the wrong format';
       }
     }
     if ($data['course_number'] === '' ){
-      if(preg_match('/^[a-zA-Z 0-9]*$/', $data['course_number'])){
-        $errors[] = 'Course Number in the wrong format';
-      } else {
         $errors[] = 'No Course Number ';
+    } else {
+      if(preg_match('/^[a-zA-Z 0-9.]*$/', $data['course_number'])){
+      } else {
+          $errors[] = 'Course Number in the wrong format';
       }
     }
     if ($data['credit_hours'] === '' ){
-      if(preg_match('/^[0-9]*$/', $data['credit_hours'])){
-        $errors[] = 'Credit Hours in the wrong format';
-      } else {
         $errors[] = 'No Credit Hours ';
+    } else {
+      if(preg_match('/^[0-9.]*$/', $data['credit_hours'])){
+      } else {
+        $errors[] = 'Credit Hours in the wrong format';
       }
     }
     if ($data['semester_number'] === '' ){
-      if(preg_match('/^[0-9]*$/', $data['semester_number'])){
-        $errors[] = 'Semester Number in the wrong format';
-      } else {
         $errors[] = 'No Semester Number ';
+    } else {
+      if(preg_match('/^[0-9]*$/', $data['semester_number'])){
+      } else {
+        $errors[] = 'Semester Number in the wrong format';
       }
     }
     if ($data['departments_id'] === '' ){
-      if(preg_match('/^[0-9]*$/', $data['departments_id'])){
-        $errors[] = 'Department ID in the wrong format';
-      } else {
         $errors[] = 'No Department ID ';
+    } else {
+      if(preg_match('/^[0-9]*$/', $data['departments_id'])){
+      } else {
+        $errors[] = 'Department ID in the wrong format';
       }
     }
+
     if (count($errors) > 0)
     {
         throw new Exception('Form not fully filled');
+        return false;
     }
     else{
         return true;

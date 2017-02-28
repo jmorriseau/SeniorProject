@@ -34,7 +34,10 @@ switch($_SERVER['REQUEST_METHOD']){
     $data['degree_type_id'] = $_POST['degreeTypeId'];
     $data['start_term'] = $_POST['startTerm'];
     $data['end_term'] = $_POST['endTerm'];
-    $message = curriculumResourceRun('POST', NULL, $data, $dbc);
+    if(dataCheck($data)){
+      $message = curriculumResourceRun('POST', NULL, $data, $dbc);
+    }
+    else{ $message = "Data not in correct format";}
     break;
 
   case 'PUT':
@@ -45,7 +48,10 @@ switch($_SERVER['REQUEST_METHOD']){
     $data['start_term'] = $put['startTerm'];
     $data['end_term'] = $put['endTerm'];
     $id = $put['id'];
-    $message = curriculumResourceRun('PUT', $id, $data, $dbc);
+    if(dataCheck($data)){
+      $message = curriculumResourceRun('PUT', $id, $data, $dbc);
+    }
+    else{ $message = "Data not in correct format";}
     break;
 
   case 'DELETE':
@@ -164,4 +170,57 @@ function delete($id,$db) {
   }  else {
     return "Error Curriculum not Deleted";
   }
+}
+
+function dataCheck($data) {
+    //The dataCheck function uses the JSON data to make sure that all form objects were properly filled out.
+    $errors = array();
+
+    if ($data['department_id'] === '' ){
+        $errors[] = 'No Department ID ';
+    } else {
+      if(preg_match('/^[0-9]*$/', $data['department_id'])){
+      } else {
+        $errors[] = 'Department ID in the wrong format';
+      }
+    }
+    if ($data['curriculum_name'] === '' ){
+        $errors[] = 'No Curriculum Name ';
+    } else {
+      if(preg_match('/^[a-zA-Z 0-9]*$/', $data['curriculum_name'])){
+      } else {
+        $errors[] = 'Curriculum Name in the wrong format';
+      }
+    }
+    if ($data['degree_type_id'] === '' ){
+        $errors[] = 'No Degree Type ID ';
+    } else {
+      if(preg_match('/^[0-9]*$/', $data['degree_type_id'])){
+      } else {
+        $errors[] = 'Degree Type ID in the wrong format';
+      }
+    }
+    if ($data['start_term'] === '' ){
+        $errors[] = 'No Start Term ';
+    } else {
+      if(preg_match('/^[0-9]{4}-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1])$/', $data['start_term'])){
+      } else {
+        $errors[] = 'Start Term in the wrong format';
+      }
+    }
+    if ($data['end_term'] === '' ){
+        $errors[] = 'No End Term ';
+    } else {
+      if(preg_match('/^[0-9]{4}-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1])$/', $data['end_term'])){ 
+      } else {
+        $errors[] = 'End Term in the wrong format';
+      }
+    }
+    if (count($errors) > 0)
+    {
+        throw new Exception('Form not fully filled');
+    }
+    else{
+        return true;
+    }
 }
