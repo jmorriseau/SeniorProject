@@ -30,19 +30,27 @@
      break;
 
    case 'POST':
-     $data['user_id'] = $_POST['userId'];
      $data['first_name'] = $_POST['firstName'];
      $data['last_name'] = $_POST['lastName'];
-     $message = facultyResourceRun('POST', NULL, $data, $dbc);
+     $data['phone_number'] = $_POST['phoneNumber'];
+     $data['email'] = $_POST['email'];
+     if(dataCheck($data)){
+       $message = facultyResourceRun('POST', NULL, $data, $dbc);
+     }
+     else{ $message = "Data not in correct format";}
      break;
 
    case 'PUT':
     parse_str(file_get_contents('php://input'), $put);
-    $data['user_id'] = $put['userId'];
     $data['first_name'] = $put['firstName'];
     $data['last_name'] = $put['lastName'];
+    $data['phone_number'] = $_POST['phoneNumber'];
+    $data['email'] = $_POST['email'];
     $id = $put['id'];
-    $message = facultyResourceRun('PUT', $id, $data, $dbc);
+    if(dataCheck($data)){
+      $message = facultyResourceRun('PUT', $id, $data, $dbc);
+    }
+    else{ $message = "Data not in correct format";}
     break;
 
    case 'DELETE':
@@ -117,11 +125,12 @@
         //return 'yay';
         try{
            $db->sql("INSERT INTO Faculty (
-             user_id ,first_name ,last_name)
+             first_name ,last_name, phone_number, email)
              VALUES(
-           '" .$data['user_id']. "'
-           , '" .$data['first_name']. "'
-           , '" .$data['last_name']. "')
+           '" .$data['first_name']. "'
+           , '" .$data['last_name']. "'
+           , '" .$data['phone_number']. "'
+           , '" .$data['email']. "')
           ;");
 
           return 'Faculty Added';
@@ -139,9 +148,10 @@
         //Put function uses a statement written to update a pre-existing db entry.
         try {
           $db->sql("UPDATE Faculty SET
-            user_id = '" .$data['user_id'] ."'
-          , first_name = '". $data['first_name'] . "'
+            first_name = '". $data['first_name'] . "'
           , last_name = '" . $data['last_name'] . "'
+          , phone_number = '" . $data['phone_number'] . "'
+          , email = '" . $data['email'] . "'
           WHERE faculty_id = '" .$id. "'");
           return 'Faculty Updated';
         } catch (Exception $e){
@@ -160,4 +170,45 @@
           return "Error Faculty not Deleted";
         }
 
+    }
+
+    function dataCheck($data) {
+        //The dataCheck function uses the JSON data to make sure that all form objects were properly filled out.
+        $errors = array();
+
+        if ($data['first_name'] === '' ){
+          if(preg_match('/^[a-zA-Z 0-9]*$/', $data['first_name'])){
+            $errors[] = 'First Name in the wrong format';
+          } else {
+            $errors[] = 'No First Name ';
+          }
+        }
+        if ($data['last_name'] === '' ){
+          if(preg_match('/^[a-zA-Z 0-9]*$/', $data['last_name'])){
+            $errors[] = 'Last Name in the wrong format';
+          } else {
+            $errors[] = 'No Last Name ';
+          }
+        }
+        if ($data['phone_number'] === '' ){
+          if(preg_match('/^(?:(?:\+?1\s*(?:[.-]\s*)?)?(?:\(\s*([2-9]1[02-9]|[2-9][02-8]1|[2-9][02-8][02-9])\s*\)|([2-9]1[02-9]|[2-9][02-8]1|[2-9][02-8][02-9]))\s*(?:[.-]\s*)?)?([2-9]1[02-9]|[2-9][02-9]1|[2-9][02-9]{2})\s*(?:[.-]\s*)?([0-9]{4})(?:\s*(?:#|x\.?|ext\.?|extension)\s*(\d+))?$/', $data['phone_number'])){
+            $errors[] = 'Phone Number in the wrong format';
+          } else {
+            $errors[] = 'No Phone Number ';
+          }
+        }
+        if ($data['email'] === '' ){
+          if(preg_match('/^[A-Za-z0-9@.]*$/', $data['email'])){
+            $errors[] = 'Email in the wrong format';
+          } else {
+            $errors[] = 'No Email ';
+          }
+        }
+        if (count($errors) > 0)
+        {
+            throw new Exception('Form not fully filled');
+        }
+        else{
+            return true;
+        }
     }

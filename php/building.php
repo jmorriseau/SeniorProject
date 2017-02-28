@@ -1,6 +1,6 @@
  <script>
   $(function(){
-      //if an existing contact is clicked go to add building page and fill existing information 
+      //if an existing building is clicked go to add building page and fill existing information 
       $(".edit-campus-btn").on("click",function(){
           var id = $(this).data("cid");
           var cn = $(this).data("cn");

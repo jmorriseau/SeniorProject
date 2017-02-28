@@ -34,7 +34,10 @@ switch($_SERVER['REQUEST_METHOD']){
    $data['class_number'] = $_POST['roomNumber'];
    $data['room_type_id'] = $_POST['classroomTypeId'];
    $data['capacity'] = $_POST['roomCap'];
-   $message = classroomResourceRun('POST', NULL, $data, $dbc);
+   if(dataCheck($data)){
+     $message = classroomResourceRun('POST', NULL, $data, $dbc);
+   }
+   else{ $message = "Data not in correct format";}
    break;
 
  case 'PUT':
@@ -44,7 +47,10 @@ switch($_SERVER['REQUEST_METHOD']){
    $data['class_number'] = $put['classNumber'];
    $data['capacity'] = $put['capacity'];
    $id = $put['id'];
-   $message = classroomResourceRun('PUT', $id, $data, $dbc);
+   if(dataCheck($data)){
+     $message = classroomResourceRun('PUT', $id, $data, $dbc);
+   }
+   else{ $message = "Data not in correct format";}
    break;
 
  case 'DELETE':
@@ -160,28 +166,45 @@ function delete($id,$db) {
     }  else {
       return "Error Classroom not Deleted";
     }
-
 }
 
-    /*public function dataCheck($data) {
-        //The dataCheck function uses the JSON data to make sure that all form objects were properly filled out.
-        $errors = array();
+function dataCheck($data) {
+    //The dataCheck function uses the JSON data to make sure that all form objects were properly filled out.
+    $errors = array();
 
-        if ($data['campus_id'] === '' ){
-            $errors[] = 'No Campus ID ';
-        }
-        if ($data['building_name'] === '' ){
-            $errors[] = 'No Building Name ';
-        }
-        if ($data['building_abbreviation'] === '' ){
-            $errors[] = 'No Abbreviation ';
-        }
-        if (count($errors) > 0)
-        {
-            throw new Exception('Form not fully filled');
-        }
-        else{
-            return true;
-        }
-
-    }*/
+    if ($data['building_id'] === '' ){
+      if(preg_match('/^[0-9]*$/', $data['building_id'])){
+        $errors[] = 'Building ID in the wrong format';
+      } else {
+        $errors[] = 'No Building ID ';
+      }
+    }
+    if ($data['room_type_id'] === '' ){
+      if(preg_match('/^[0-9]*$/', $data['room_type_id'])){
+        $errors[] = 'Room Type ID in the wrong format';
+      } else {
+        $errors[] = 'No Room Type ID ';
+      }
+    }
+    if ($data['class_number'] === '' ){
+      if(preg_match('/^[a-zA-Z 0-9]*$/', $data['class_number'])){
+        $errors[] = 'Classroom Number in the wrong format';
+      } else {
+        $errors[] = 'No Classroom Number ';
+      }
+    }
+    if ($data['capacity'] === '' ){
+      if(preg_match('/^[0-9]*$/', $data['capacity'])){
+        $errors[] = 'Capacity in the wrong format';
+      } else {
+        $errors[] = 'No Capacity ';
+      }
+    }
+    if (count($errors) > 0)
+    {
+        throw new Exception('Form not fully filled');
+    }
+    else{
+        return true;
+    }
+}

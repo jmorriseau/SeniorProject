@@ -2448,6 +2448,33 @@ span {
     border: solid 1px #fff;
     color: #fff;
     font-size: 16px; }
+    #login-container input[type=text]:focus, #login-container input[type=password]:focus {
+      outline: 0;
+      background: transparent; }
+      #login-container input[type=text]:focus + login-label, #login-container input[type=password]:focus + login-label {
+        opacity: 0; }
+    #login-container input[type=text]:valid, #login-container input[type=password]:valid {
+      background-size: 20px;
+      background-repeat: no-repeat;
+      background-position: 20px 20px; }
+      #login-container input[type=text]:valid + login-label, #login-container input[type=password]:valid + login-label {
+        opacity: 0; }
+    #login-container input[type=text]:invalid:not(:focus), #login-container input[type=password]:invalid:not(:focus) {
+      background: pink; }
+      #login-container input[type=text]:invalid:not(:focus) + login-label, #login-container input[type=password]:invalid:not(:focus) + login-label {
+        opacity: 0; }
+    #login-container input[type=text]:invalid:focus ~ .requirements, #login-container input[type=password]:invalid:focus ~ .requirements {
+      max-height: 150px;
+      padding: 0 15px 10px 25px; }
+  #login-container .requirements {
+    padding: 0 15px 0 25px;
+    color: #999;
+    max-height: 0;
+    transition: 0.28s;
+    overflow: hidden;
+    color: red;
+    font-style: italic;
+    font-size: 15px; }
   #login-container ::-webkit-input-placeholder {
     /* Chrome/Opera/Safari */
     color: #fff; }
@@ -2755,6 +2782,11 @@ div.loading {
   .mock-link:visited, .mock-link:link, .mock-link:active {
     color: #141d38; }
 
+.date {
+  margin-top: -60px;
+  color: #fff;
+  margin-right: 20px; }
+
 .classroom-container {
   position: relative;
   display: block;
@@ -2806,10 +2838,10 @@ div.loading {
 
 .result-classrooms {
   position: absolute;
-  top: 250px;
+  top: 175px;
   right: -100%;
   transition: all 0.3s ease-in-out;
-  width: 800px; }
+  width: 840px; }
   .result-classrooms.active {
     right: calc(50% - 400px); }
 
@@ -2818,7 +2850,8 @@ div.loading {
   padding: 15px 10px;
   box-sizing: border-box;
   border-bottom: solid 1px #cccccc;
-  display: block; }
+  display: block;
+  cursor: pointer; }
   .result-classrooms ul li:last-child {
     border-bottom: none; }
   .result-classrooms ul li:nth-child(even) {
@@ -2930,18 +2963,24 @@ div.alpha-search {
   text-align: center; }
 
 .result-faculty {
-  padding: 75px 0; }
+  width: 900px;
+  margin: 80px auto; }
   .result-faculty ul li {
     width: 80%;
-    padding: 15px 10px;
+    padding: 15px 20px;
     box-sizing: border-box;
     border-bottom: solid 1px #cccccc;
     display: block;
-    margin: 0 auto; }
+    margin: 0 auto;
+    cursor: pointer; }
     .result-faculty ul li:last-child {
       border-bottom: none; }
     .result-faculty ul li:nth-child(even) {
       background-color: #eaeaea; }
+
+.edit-faculty-container {
+  width: 600px;
+  margin: 50px auto; }
 
 #find {
   background-color: #22305d;
@@ -3171,3 +3210,26 @@ div.alpha-search {
   margin: 50px auto; }
   .edit-subject-container .form-row input[type=text] {
     min-width: 300px; }
+
+.home-container {
+  display: block;
+  height: auto;
+  min-height: 400px;
+  width: 900px;
+  margin: 30px auto;
+  border: 1px solid #22305d;
+  border-radius: 5px; }
+
+.home-header {
+  width: 100%;
+  padding: 15px;
+  box-sizing: border-box;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+  background-color: #22305d;
+  font-size: 16px;
+  color: #fff; }
+
+.home-announcements {
+  padding: 20px;
+  color: #383838; }

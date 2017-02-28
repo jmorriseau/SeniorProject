@@ -1,15 +1,9 @@
-<!-- <button class="btn" onclick="launchModal('.edit-classroom','add_edit_building')">Test model edit</button> -->
+<?php
+include('./autoload.php');
 
-<div class="modal-container edit-classroom">
-  <div class="modal-header">
-    Edit Classroom
-  </div>
-  <div class="modal-body">
-  </div>
-  <div class="modal-footer">
-    <button class="pull-right" onclick="closeModal('.edit-classroom')">Close</button>
-  </div>
-</div>
+ $db = new DAO();
+
+ ?>
 
 <div class="header">
   <h1>Current Classrooms</h1>
@@ -20,42 +14,57 @@
 
   <div class="classroom-selector select-campus">
     <label>Select a campus:</label>
-    <select onchange="updateSlidingSelect('.select-campus','.select-building')">
+    <select class="campuses-drop-down" onchange="updateSlidingSelect('.select-campus','.select-building');getCampusBuildings()">
       <option value="">--Choose One--</option>
-      <option value="access_road">Access Road</option>
-      <option value="east_greenwich">East Greenwich</option>
-      <option value="post_road">Post Road</option>
+      <?php
+        $campus = $db->sql("SELECT * FROM Campus");
+
+        if(count($campus) > 0){
+          foreach($campus as $c){
+            echo '<option value="'.$c['campus_id'].'">' . $c['campus_name'] . '</option>';
+          }
+        }
+      ?>
     </select>
   </div>
 
   <div class="classroom-selector select-building">
     <label>Select a building:</label>
-    <select onchange="updateSlidingSelect('.select-building','.select-floor')">
+    <select class="buildings-drop-down" onchange="updateSlidingSelect('.select-building','.select-floor');getBuildingFloors()">
       <option value="">--Choose One--</option>
-      <option value="main_building">Main Building</option>
-      <option value="east_building">East Building</option>
-      <option value="west_building">West Building</option>
     </select>
   </div>
 
   <div class="classroom-selector select-floor">
     <label>Select a floor:</label>
-    <select onchange="updateSlidingSelect('.select-floor','.result-classrooms')">
+    <select class="floor-drop-down" onchange="updateSlidingSelect('.select-floor','.result-classrooms');getClassrooms()">
       <option value="">--Choose One--</option>
-      <option value="floor_one">Frist Floor</option>
-      <option value="floor_two">Second Floor</option>
-      <option value="floor_three">Third Floor</option>
     </select>
   </div>
 
+
+<!-- add bid to the add button -->
   <div class="result-classrooms">
-    Available Classrooms
-    <ul>
-      <li>N208 <span class="pull-right"><span class="mock-link" onclick="loadPage('add_edit_classroom')">Edit</span> | <a href="#">Delete</a></span></li>
-      <li>N209 <span class="pull-right"><a href="#">Edit</a> | <a href="#">Delete</a></span></li>
-      <li>N210 <span class="pull-right"><a href="#">Edit</a> | <a href="#">Delete</a></span></li>
-      <li>N215 <span class="pull-right"><a href="#">Edit</a> | <a href="#">Delete</a></span></li>
-    </ul>
+    <h3>Available Classrooms
+      <button class="btn btn-success pull-right" onclick="loadPage('add_edit_classroom')">
+      <span class="fa fa-plus-circle"></span>
+      Add Classroom
+    </button>
+    </h3>
   </div>
 
 </div>
+
+<script>
+  $(function(){
+
+    //if existing classroom edit is clicked go to add edit classroom
+    $("body").on("click", ".edit-classroom", function(){
+      var classroomId = $(this).data("cid");
+      var buildingId = $(this).data("bid");
+      console.log("Got the classroom Id: " + classroomId);
+      $(".content-container").load("php/add_edit_classroom.php?cid=" + classroomId + "&bid=" + buildingId);
+    });
+    
+  });
+</script>

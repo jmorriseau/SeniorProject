@@ -35,7 +35,10 @@
      $data['credit_hours'] = $_POST['creditHours'];
      $data['semester_number'] = $_POST['semesterNumber'];
      $data['departments_id'] = $_POST['departmentsId'];
-     $message = courseResourceRun('POST', NULL, $data, $dbc);
+     if(dataCheck($data)){
+       $message = courseResourceRun('POST', NULL, $data, $dbc);
+     }
+     else{ $message = "Data not in correct format";}
      break;
 
    case 'PUT':
@@ -46,7 +49,10 @@
     $data['semester_number'] = $put['semesterNumber'];
     $data['departments_id'] = $put['departmentsId'];
     $id = $put['id'];
-    $message = courseResourceRun('PUT', $id, $data, $dbc);
+    if(dataCheck($data)){
+      $message = courseResourceRun('PUT', $id, $data, $dbc);
+    }
+    else{ $message = "Data not in correct format";}
     break;
 
    case 'DELETE':
@@ -169,3 +175,51 @@
         }
 
     }
+
+function dataCheck($data) {
+    //The dataCheck function uses the JSON data to make sure that all form objects were properly filled out.
+    $errors = array();
+
+    if ($data['course_name'] === '' ){
+      if(preg_match('/^[a-zA-Z 0-9]*$/', $data['course_name'])){
+        $errors[] = 'Course Name in the wrong format';
+      } else {
+        $errors[] = 'No Course Name ';
+      }
+    }
+    if ($data['course_number'] === '' ){
+      if(preg_match('/^[a-zA-Z 0-9]*$/', $data['course_number'])){
+        $errors[] = 'Course Number in the wrong format';
+      } else {
+        $errors[] = 'No Course Number ';
+      }
+    }
+    if ($data['credit_hours'] === '' ){
+      if(preg_match('/^[0-9]*$/', $data['credit_hours'])){
+        $errors[] = 'Credit Hours in the wrong format';
+      } else {
+        $errors[] = 'No Credit Hours ';
+      }
+    }
+    if ($data['semester_number'] === '' ){
+      if(preg_match('/^[0-9]*$/', $data['semester_number'])){
+        $errors[] = 'Semester Number in the wrong format';
+      } else {
+        $errors[] = 'No Semester Number ';
+      }
+    }
+    if ($data['departments_id'] === '' ){
+      if(preg_match('/^[0-9]*$/', $data['departments_id'])){
+        $errors[] = 'Department ID in the wrong format';
+      } else {
+        $errors[] = 'No Department ID ';
+      }
+    }
+    if (count($errors) > 0)
+    {
+        throw new Exception('Form not fully filled');
+    }
+    else{
+        return true;
+    }
+}

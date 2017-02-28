@@ -1,21 +1,3 @@
-<!--
-<div id="login-page">
-  <div id="login-container">
-    <form action="index.php" method="post">
-      <div class="login-form-row">
-        <label for="login-email" class="fa fa-envelope-o login-label"></label>
-        <input placeholder="Email" type="text" id="login-email"/>
-      </div>
-      <div class="login-form-row">
-        <label for="login-password" class="fa fa-lock login-label"></label>
-        <input placeholder="Password" type="password" id="login-password"  />
-      </div>
-      <div class="login-btn-container">
-         <button class="btn-login" role="button" onclick="validateLogin('home')">Login</button>
-      </div>
-    </form>
-  </div>
-</div> -->
 
 <?php session_destroy();?>
 <div id="login-page">
@@ -24,17 +6,22 @@
       <div class="login-form-row">
         <label for="login-email" class="fa fa-envelope-o login-label"></label>
                                                                 <!--name= when taken out breaks -->
-        <input placeholder="Email" type="text" id="login-email" name="login-email"/>
+        <input required placeholder="Email" type="text" id="login-email" name="login-email"/>
+        <div class="requirements">
+      Must be a valid email address.
+    </div>
       </div>
       <div class="login-form-row">
         <label for="login-password" class="fa fa-lock login-label"></label>
-        <input placeholder="Password" type="password" id="login-password" name="login-password" />
+        <input required placeholder="Password" type="password" id="login-password" name="login-password" />
+        <div class="requirements">
+      Your password must be at least 6 characters as well as contain at least one uppercase,
+      one lowercase, and one number.
+    </div>
       </div>
       <div class="login-btn-container">
-        <!--button class="btn-login" role="button" onclick="validateLogin('home')">Login</button-->
-          <input type="submit" value="submit" text="Login" class="btn-login" role="button"/>
+          <input type="submit" value="Log in" text="Login" class="btn-login" role="button"/>
       </div>
     </form>
   </div>
 </div>
-

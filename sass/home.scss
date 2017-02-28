@@ -1,0 +1,23 @@
+.home-container{
+    display:block;
+    height:auto;
+    min-height:400px;
+    width:900px;
+    margin:30px auto;
+    border:1px solid #22305d;
+    border-radius:5px;
+}
+.home-header{
+    width: 100%;
+    padding: 15px;
+    box-sizing: border-box;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    background-color: #22305d;
+    font-size: 16px;
+    color: #fff;
+}
+.home-announcements{
+    padding:20px;
+    color:#383838;
+}
