@@ -42,8 +42,15 @@ include('./autoload.php');
     </select>
   </div>
 
+
+<!-- add bid to the add button -->
   <div class="result-classrooms">
-    <h3>Available Classrooms</h3>
+    <h3>Available Classrooms
+      <button class="btn btn-success pull-right" onclick="loadPage('add_edit_classroom')">
+      <span class="fa fa-plus-circle"></span>
+      Add Classroom
+    </button>
+    </h3>
   </div>
 
 </div>
@@ -54,8 +61,9 @@ include('./autoload.php');
     //if existing classroom edit is clicked go to add edit classroom
     $("body").on("click", ".edit-classroom", function(){
       var classroomId = $(this).data("cid");
+      var buildingId = $(this).data("bid");
       console.log("Got the classroom Id: " + classroomId);
-      $(".content-container").load("php/add_edit_classroom.php?cid=" + classroomId);
+      $(".content-container").load("php/add_edit_classroom.php?cid=" + classroomId + "&bid=" + buildingId);
     });
     
   });

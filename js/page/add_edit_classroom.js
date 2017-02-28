@@ -1,3 +1,24 @@
+$(function () {
+	alert("hello- can you hear me?");
+//    if delete classroom  button is clicked run ajax to delete classroom
+    $(".delete_classroom").on('click', function (e) {
+        e.stopPropagation();
+        e.preventDefault();
+        var classroom_id = $(this).data("delete");
+		console.log(classroom_id);
+        $.ajax({
+            url: "php/api/ClassroomResource.php?id=" + classroom_id,
+            dataType: "JSON",
+            method: "DELETE",
+            success: function (data) {
+                console.log("success " + data);
+                alert('Classroom has been deleted.');
+                loadPage('classroom');
+            }
+        });
+    });
+});
+
 var form = document.querySelector('form');
 
 form.addEventListener('submit', checkForm);
@@ -20,25 +41,32 @@ function checkForm(e){
 	
 	//for each field in the add_edit_classroom form with the validate class, see if the field is empty or fails regex validation
 	//if so set the isValid flad to false and add the error class to signify an error to the user else remove the error class
-	$('#add_classroom .validate').each(function(){
-		if($(this).val() == "" || !regexValidations[this.name].test(this.value)){
-			$(this).parent().addClass('error');
-			isValid = false;
-		}
-		else {
-			$(this).parent().removeClass('error');
-		}
-	});
+	// $('#add_classroom .validate').each(function(){
+	// 	if($(this).val() == "" || !regexValidations[this.name].test(this.value)){
+	// 		$(this).parent().addClass('error');
+	// 		isValid = false;
+	// 	}
+	// 	else {
+	// 		$(this).parent().removeClass('error');
+	// 	}
+	// });
 
 	// if the isValid flag gets set to false, alert the user else send to php via ajax
 	if(isValid == false){
 		alert("Please correct all fields.");
 	}
 	else {
+		var type;
+		if ($(".submit-form").hasClass("Add")) {
+            type = "POST";
+        }
+        else {
+            type = "PUT";
+        }
 		alert("Form is valid");
 		$.ajax({
 			url: "php/api/ClassroomResource.php",
-			type: "POST",
+			type: type,
 			dataType: "JSON",
 			data: {
 				buildingId: $("select[name=buildingName]").val(),
