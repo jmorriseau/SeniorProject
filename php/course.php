@@ -59,7 +59,7 @@ $selectedSubject = "";
           $(".load-course").load('php/course_list.php?sid=' + subjectId);
       });
 
-      //if an existing couse is clicked add edit button
+      //if an existing course is clicked add edit button
       $("body").on("click", '.edit-course',function(){          
           var courseId = $(this).val();
           var subId = $(this).data("sid");

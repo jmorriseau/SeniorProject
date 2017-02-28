@@ -18,7 +18,9 @@ include('./autoload.php');
     if(count($courses) > 0){
       echo '<select class"load-courses" name="courses" size="23">';
         foreach($courses as $course){
-          echo "<option data-sid=" . $course_id . " value=" . $course['course_id'] ." class='edit-course'>" . $course['course_name'] . "</option>";
+          echo "<option data-sid=" . $course_id . " value=" . $course['course_id']
+              ." class='edit-course'>" . $course['course_name'] .
+              " ".$course['course_number']."</option>";
         }
         echo '</select>';
       }
