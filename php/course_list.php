@@ -11,10 +11,7 @@ include('./autoload.php');
 
  if (isset($course_id)){
     $courses = $db->sql("SELECT * FROM Courses where departments_id = '" .$course_id ."' ORDER BY course_name");
-//     $courses = $db->sql("SELECT * FROM Courses");
-// var_dump($courses);
     
-
     if(count($courses) > 0){
       echo '<select class"load-courses" name="courses" size="23">';
         foreach($courses as $course){

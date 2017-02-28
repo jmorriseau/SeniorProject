@@ -1,9 +1,16 @@
+<?php
+include('./autoload.php');
+
+ $db = new DAO();
+
+ ?>
+
 <div class="header">
   <h1>Current Curriculum
-    <button class="btn btn-success pull-right" onclick="loadPage('add_curriculum')">
+    <!--<button class="btn btn-success pull-right" onclick="loadPage('add_curriculum')">
       <span class="fa fa-plus-circle"></span>
       Add Curriculum
-    </button>
+    </button>-->
 </h1>
 </div>
 <hr/>
@@ -12,32 +19,25 @@
 
   <div class="curriculum-selector select-degree">
     <label>Select a degree:</label>
-    <select onchange="updateSlidingSelect('.select-degree','.select-program')">
+    <select class="degree-drop-down" onchange="updateSlidingSelect('.select-degree','.select-program');getProgram()">
       <option value="">--Choose One--</option>
-      <option value="architecture">Architectural Building Engineering Technology</option>
-      <option value="auto">Automotive Service Management</option>
-      <option value="business_management">Business Management</option>
-      <option value="software">Software Engineering</option>
+      <option value="1">Associate</option>
+      <option value="2">Bachelor</option>
+      <option value="3">Master</option>
     </select>
   </div>
 
   <div class="curriculum-selector select-program">
     <label>Select a program:</label>
-    <select onchange="updateSlidingSelect('.select-program','.select-start')">
+    <select class="program-drop-down" onchange="updateSlidingSelect('.select-program','.select-start');getStartDate()">
       <option value="">--Choose One--</option>
-      <option value="associate">Associate</option>
-      <option value="bachelor">Bachelor</option>
-      <option value="master">Master</option>
     </select>
   </div>
 
   <div class="curriculum-selector select-start">
     <label>Select a enrollment start:</label>
-    <select onchange="updateSlidingSelect('.select-start','.result-curriculum')">
+    <select class="start-drop-down" onchange="updateSlidingSelect('.select-start','.result-curriculum')">
       <option value="">--Choose One--</option>
-      <option value="10_16_current">October 2016 or later</option>
-      <option value="10_14_09_16">October 2014 to September 2016</option>
-      <option value="01_13_09_14">January 2013 to September 2014</option>
     </select>
   </div>
 

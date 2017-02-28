@@ -1,10 +1,3 @@
-// $(function(){
-//   console.log("Before the click");
-//   $(document).on('click', '.julie', function(){
-//     console.log(this);
-//    // loadPage('course');
-//   })
-// });
 function loadPage(page){
   console.log("Getting to this function " + page);
   if(page === 'login'){
@@ -82,6 +75,8 @@ function updateSlidingSelect(current, next){
   }
 }
 
+
+//** function for the classroom sliders */
 function getCampusBuildings(){
   var campusId = $('.campuses-drop-down').val();
   $.ajax({
@@ -120,7 +115,39 @@ function getClassrooms(){
     }
   })
 }
+/*** end functions for the classroom sliders */
 
+/** funtions for the curriculum sliders */
+function getProgram(){
+  var degreeId = $('.degree-drop-down').val();
+  console.log(degreeId + " is the degree ID");
+  $.ajax({
+    method:"GET",
+    url: 'php/program_list.php?did=' + degreeId,
+    success: function(result){
+     // console.log(result);
+     $('.program-drop-down').append(result);
+     $('.degree-drop-down').attr('disabled',true);
+    }
+  })
+}
+
+function getStartDate(){
+  var degreeId = $('.degree-drop-down').val();
+  var programId = $('.program-drop-down').val();
+  console.log(programId + " is the program ID");
+  $.ajax({
+    method:"GET",
+    url: 'php/start_list.php?pid=' + programId + "&did=" + degreeId,
+    success: function(result){
+     // console.log(result);
+     $('.start-drop-down').append(result);
+     $('.program-drop-down').attr('disabled',true);
+    }
+  })
+}
+
+/** end funtions for the curriculum sliders */
 
 function editCampus(elem){
   console.log(elem);

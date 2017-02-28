@@ -1,4 +1,5 @@
 $(function () {
+	alert("hello- can you hear me?");
 //    if delete classroom  button is clicked run ajax to delete classroom
     $(".delete_classroom").on('click', function (e) {
         e.stopPropagation();

@@ -2467,10 +2467,11 @@ span {
       max-height: 150px;
       padding: 0 15px 10px 25px; }
   #login-container .requirements {
+    line-height: 12px;
     padding: 0 15px 0 25px;
     color: #999;
     max-height: 0;
-    transition: 0.28s;
+    transition: 0.2s;
     overflow: hidden;
     color: red;
     font-style: italic;
