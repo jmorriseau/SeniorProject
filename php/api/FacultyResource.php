@@ -44,8 +44,8 @@
     parse_str(file_get_contents('php://input'), $put);
     $data['first_name'] = $put['firstName'];
     $data['last_name'] = $put['lastName'];
-    $data['phone_number'] = $_POST['phoneNumber'];
-    $data['email'] = $_POST['email'];
+    $data['phone_number'] = $put['phoneNumber'];
+    $data['email'] = $put['email'];
     $id = $put['id'];
     if(dataCheck($data)){
       $message = facultyResourceRun('PUT', $id, $data, $dbc);
