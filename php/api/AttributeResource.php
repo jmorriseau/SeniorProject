@@ -32,7 +32,10 @@
    case 'POST':
      $data['attribute_type_id'] = $_POST['attributeTypeId'];
      $data['attributes_name'] = $_POST['attributesName'];
-     $message = attributeResourceRun('POST', NULL, $data, $dbc);
+     if(dataCheck($data)){
+       $message = attributeResourceRun('POST', NULL, $data, $dbc);
+     }
+     else{ $message = "Data not in correct format";}
      break;
 
    case 'PUT':
@@ -40,7 +43,10 @@
      $data['attribute_type_id'] = $put['attributeTypeId'];
      $data['attributes_name'] = $put['attributesName'];
      $id = $put['id'];
-     $message = attributeResourceRun('PUT', $id, $data, $dbc);
+     if(dataCheck($data)){
+       $message = attributeResourceRun('PUT', $id, $data, $dbc);
+     }
+     else{ $message = "Data not in correct format";}
      break;
 
    case 'DELETE':
@@ -156,4 +162,34 @@
           return "Error Attribute not Deleted";
         }
 
+    }
+
+    function dataCheck($data) {
+        //The dataCheck function uses the JSON data to make sure that all form objects were properly filled out.
+        $errors = array();
+
+        if ($data['attribute_type_id'] === '' ){
+            $errors[] = 'No Attribute Type ID ';
+        } else {
+          if (!preg_match('/^[0-9]*$/', $data['attribute_type_id'])){
+          } else {
+            $errors[] = 'Attribute Type ID in the wrong format';
+          }
+        }
+        if ($data['attributes_name'] === '' ){
+            $errors[] = 'No Attribute Name ';
+        } else {
+          if (!preg_match('/^[a-zA-Z 0-9]*$/', $data['attributes_name'])){
+          } else {
+            $errors[] = 'Attributes Name in the wrong format';
+          }
+        }
+        if (count($errors) > 0)
+        {
+            throw new Exception('Form not fully filled');
+            return false;
+        }
+        else{
+            return true;
+        }
     }

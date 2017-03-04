@@ -51,7 +51,7 @@ switch($_SERVER['REQUEST_METHOD']){
     $data['address'] = $put['addressLine1'];
     $data['city'] = $put['city'];
     $data['state'] = $put['state'];
-    $data['zip'] = $put['zip'];
+    $data['zip'] = trim($put['zip']);
     $id = $put['id'];
     if(dataCheck($data)){
       $message = buildingResourceRun('PUT', $id, $data, $dbc);
@@ -182,57 +182,71 @@ function dataCheck($data) {
     $errors = array();
 
     if ($data['campus_id'] === '' ){
-      if(preg_match('/^[0-9]*$/', $data['campus_id'])){
-        $errors[] = 'Campus ID in the wrong format';
-      } else {
         $errors[] = 'No Campus ID ';
+    } else {
+      if(preg_match('/^[0-9]*$/', $data['campus_id'])){
+      } else {
+        $errors[] = 'Campus ID in the wrong format';
       }
     }
+
     if ($data['building_abbreviation'] === '' ){
-      if(preg_match('/^[a-zA-Z 0-9]*$/', $data['building_abbreviation'])){
-        $errors[] = 'Building Abbreviation in the wrong format';
-      } else {
         $errors[] = 'No Building Abbreviation ';
+    } else {
+      if(preg_match('/^[a-zA-Z 0-9]*$/', $data['building_abbreviation'])){
+      } else {
+        $errors[] = 'Building Abbreviation in the wrong format';
       }
     }
+
     if ($data['building_name'] === '' ){
-      if(preg_match('/^[a-zA-Z 0-9]*$/', $data['building_name'])){
-        $errors[] = 'Building Name in the wrong format';
-      } else {
         $errors[] = 'No Building Name ';
+    } else {
+      if(preg_match('/^[a-zA-Z 0-9]*$/', $data['building_name'])){
+      } else {
+        $errors[] = 'Building Name in the wrong format';
       }
     }
+
     if ($data['address'] === '' ){
-      if(preg_match('/^\d{1,6}\040([A-Z]{1}[a-z]{1,}\040[A-Z]{1}[a-z]{1,})$|^\d{1,6}\040([A-Z]{1}[a-z]{1,}\040[A-Z]{1}[a-z]{1,}\040[A-Z]{1}[a-z]{1,})$|^\d{1,6}\040([A-Z]{1}[a-z]{1,}\040[A-Z]{1}[a-z]{1,}\040[A-Z]{1}[a-z]{1,}\040[A-Z]{1}[a-z]{1,})$/', $data['address'])){
-        $errors[] = 'Address in the wrong format';
-      } else {
         $errors[] = 'No Address ';
+    } else {
+      if(preg_match('/^[a-zA-Z 0-9]*$/', $data['address'])){
+      } else {
+        $errors[] = 'Address in the wrong format';
       }
     }
+
     if ($data['city'] === '' ){
-      if(preg_match('/.*/', $data['city'])){
-        $errors[] = 'City in the wrong format';
-      } else {
         $errors[] = 'No City ';
+    } else {
+      if(preg_match('/.*/', $data['city'])){
+      } else {
+        $errors[] = 'City in the wrong format';
       }
     }
+
     if ($data['state'] === '' ){
-      if(preg_match('/^[A-Z]{2}$/', $data['state'])){
-        $errors[] = 'State in the wrong format';
-      } else {
         $errors[] = 'No State ';
-      }
-    }
-    if ($data['zip'] === '' ){
-      if(preg_match('/^\d{5}(?:[-\s]\d{4})?$/', $data['zip'])){
-        $errors[] = 'Zip in the wrong format';
+    } else {
+      if(preg_match('/^[A-Z]{2}$/', $data['state'])){
       } else {
-        $errors[] = 'No Zip ';
+        $errors[] = 'State in the wrong format';
       }
     }
+
+    if ($data['zip'] === '' ){
+        $errors[] = 'No Zip ';
+    } else {
+      if(preg_match('/^\d{5}(?:[-\s]\d{4})?$/', $data['zip'])){
+      } else {
+        $errors[] = 'Zip in the wrong format';
+      }
+    }
+
     if (count($errors) > 0)
     {
-        throw new Exception('Form not fully filled');
+        return false;
     }
     else{
         return true;

@@ -32,7 +32,10 @@ switch($_SERVER['REQUEST_METHOD']){
 
     $data['attributes_id'] = $_POST['attributesId'];
     $data['course_id'] = $_POST['courseId'];
-    $message = courseAttrResourceRun('POST', NULL, $data, $dbc);
+    if(dataCheck($data)){
+      $message = courseAttrResourceRun('POST', NULL, $data, $dbc);
+    }
+    else{ $message = "Data not in correct format";}
     break;
 
  case 'PUT':
@@ -40,7 +43,10 @@ switch($_SERVER['REQUEST_METHOD']){
     $data['attributes_id'] = $put['attributesId'];
     $data['course_id'] = $put['courseId'];
     $id = $put['id'];
-    $message = courseAttrResourceRun('PUT', $id, $data, $dbc);
+    if(dataCheck($data)){
+      $message = courseAttrResourceRun('PUT', $id, $data, $dbc);
+    }
+    else{ $message = "Data not in correct format";}
     break;
 
  case 'DELETE':
@@ -155,25 +161,31 @@ function delete($id,$db) {
 
 }
 
-    /*public function dataCheck($data) {
-        //The dataCheck function uses the JSON data to make sure that all form objects were properly filled out.
-        $errors = array();
+function dataCheck($data) {
+    //The dataCheck function uses the JSON data to make sure that all form objects were properly filled out.
+    $errors = array();
 
-        if ($data['campus_id'] === '' ){
-            $errors[] = 'No Campus ID ';
-        }
-        if ($data['building_name'] === '' ){
-            $errors[] = 'No Building Name ';
-        }
-        if ($data['building_abbreviation'] === '' ){
-            $errors[] = 'No Abbreviation ';
-        }
-        if (count($errors) > 0)
-        {
-            throw new Exception('Form not fully filled');
-        }
-        else{
-            return true;
-        }
-
-    }*/
+    if ($data['attributes_id'] === '' ){
+        $errors[] = 'No Attribute ID ';
+    } else {
+      if(preg_match('/^[0-9]*$/', $data['attributes_id'])){
+      } else {
+        $errors[] = 'Attribute ID in the wrong format';
+      }
+    }
+    if ($data['course_id'] === '' ){
+        $errors[] = 'No Coursee ID ';
+    } else {
+      if(preg_match('/^[0-9]*$/', $data['course_id'])){
+      } else {
+        $errors[] = 'Course ID in the wrong format';
+      }
+    }
+    if (count($errors) > 0)
+    {
+        throw new Exception('Form not fully filled');
+    }
+    else{
+        return true;
+    }
+}

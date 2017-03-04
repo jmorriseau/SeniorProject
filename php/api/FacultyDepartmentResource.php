@@ -32,7 +32,10 @@
    case 'POST':
      $data['faculty_id'] = $_POST['facultyId'];
      $data['departments_id'] = $_POST['departmentsId'];
-     $message = facultyDeptResourceRun('POST', NULL, $data, $dbc);
+     if(dataCheck($data)){
+       $message = facultyDeptResourceRun('POST', NULL, $data, $dbc);
+     }
+     else{ $message = "Data not in correct format";}
      break;
 
    case 'PUT':
@@ -40,7 +43,10 @@
     $data['faculty_id'] = $put['facultyId'];
     $data['departments_id'] = $put['departmentsId'];
     $id = $put['id'];
-    $message = facultyDeptResourceRun('PUT', $id, $data, $dbc);
+    if(dataCheck($data)){
+      $message = facultyDeptResourceRun('PUT', $id, $data, $dbc);
+    }
+    else{ $message = "Data not in correct format";}
     break;
 
    case 'DELETE':
@@ -156,4 +162,33 @@
           return "Error Faculty Department Relation not Deleted";
         }
 
+    }
+
+    function dataCheck($data) {
+        //The dataCheck function uses the JSON data to make sure that all form objects were properly filled out.
+        $errors = array();
+
+        if ($data['faculty_id'] === '' ){
+            $errors[] = 'No Faculty ID ';
+        } else {
+          if(preg_match('/^[0-9]*$/', $data['faculty_id'])){
+          } else {
+            $errors[] = 'Faculty ID in the wrong format';
+          }
+        }
+        if ($data['departments_id'] === '' ){
+            $errors[] = 'No Department ID ';
+        } else {
+          if(preg_match('/^[0-9]*$/', $data['departments_id'])){ 
+          } else {
+            $errors[] = 'Departments ID in the wrong format';
+          }
+        }
+        if (count($errors) > 0)
+        {
+            throw new Exception('Form not fully filled');
+        }
+        else{
+            return true;
+        }
     }

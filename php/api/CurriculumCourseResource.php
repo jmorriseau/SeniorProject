@@ -29,23 +29,23 @@ switch($_SERVER['REQUEST_METHOD']){
     break;
 
   case 'POST':
-    parse_str(file_get_contents('php://input'), $put);
-    $data['department_id'] = $put['departmentID'];
-    $data['curriculum_name'] = $put['curriculumName'];
-    $data['degree_type_id'] = $put['degreeTypeId'];
-    $data['start_term'] = $put['startTerm'];
-    $data['end_term'] = $put['endTerm'];
-    $message = curriculumCourseResourceRun('POST', NULL, $data, $dbc);
+    $data['curriculum_id'] = $put['curriculumId'];
+    $data['course_id'] = $put['courseId'];
+    if(dataCheck($data)){
+      $message = curriculumCourseResourceRun('POST', NULL, $data, $dbc);
+    }
+    else{ $message = "Data not in correct format";}
     break;
 
   case 'PUT':
-    $data['department_id'] = $_POST['departmentID'];
-    $data['curriculum_name'] = $_POST['curriculumName'];
-    $data['degree_type_id'] = $_POST['degreeTypeId'];
-    $data['start_term'] = $_POST['startTerm'];
-    $data['end_term'] = $_POST['endTerm'];
+    parse_str(file_get_contents('php://input'), $put);
+    $data['curriculum_id'] = $put['curriculumId'];
+    $data['course_id'] = $put['courseId'];
     $id = $_POST['id'];
-    $message = curriculumCourseResourceRun('PUT', $id, $data, $dbc);
+    if(dataCheck($data)){
+      $message = curriculumCourseResourceRun('PUT', $id, $data, $dbc);
+    }
+    else{ $message = "Data not in correct format";}
     break;
 
   case 'DELETE':
@@ -158,4 +158,33 @@ function delete($id,$db) {
   }  else {
     return "Error Curriculum Course not Deleted";
   }
+}
+
+function dataCheck($data) {
+    //The dataCheck function uses the JSON data to make sure that all form objects were properly filled out.
+    $errors = array();
+
+    if ($data['curriculum_id'] === '' ){
+        $errors[] = 'No Curriculum ID ';
+    } else {
+      if(preg_match('/^[0-9]*$/', $data['curriculum_id'])){
+      } else {
+        $errors[] = 'Curriculum ID in the wrong format';
+      }
+    }
+    if ($data['course_id'] === '' ){
+        $errors[] = 'No Course ID ';
+    } else {
+      if(preg_match('/^[0-9]*$/', $data['course_id'])){
+      } else {
+        $errors[] = 'Course ID in the wrong format';
+      }
+    }
+    if (count($errors) > 0)
+    {
+        throw new Exception('Form not fully filled');
+    }
+    else{
+        return true;
+    }
 }

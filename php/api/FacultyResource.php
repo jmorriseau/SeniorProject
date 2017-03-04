@@ -177,31 +177,35 @@
         $errors = array();
 
         if ($data['first_name'] === '' ){
-          if(preg_match('/^[a-zA-Z 0-9]*$/', $data['first_name'])){
-            $errors[] = 'First Name in the wrong format';
-          } else {
             $errors[] = 'No First Name ';
+        } else {
+          if(preg_match('/^[a-zA-Z 0-9]*$/', $data['first_name'])){
+          } else {
+            $errors[] = 'First Name in the wrong format';
           }
         }
         if ($data['last_name'] === '' ){
-          if(preg_match('/^[a-zA-Z 0-9]*$/', $data['last_name'])){
-            $errors[] = 'Last Name in the wrong format';
-          } else {
             $errors[] = 'No Last Name ';
+        } else {
+          if(preg_match('/^[a-zA-Z 0-9]*$/', $data['last_name'])){
+          } else {
+            $errors[] = 'Last Name in the wrong format';
           }
         }
         if ($data['phone_number'] === '' ){
-          if(preg_match('/^(?:(?:\+?1\s*(?:[.-]\s*)?)?(?:\(\s*([2-9]1[02-9]|[2-9][02-8]1|[2-9][02-8][02-9])\s*\)|([2-9]1[02-9]|[2-9][02-8]1|[2-9][02-8][02-9]))\s*(?:[.-]\s*)?)?([2-9]1[02-9]|[2-9][02-9]1|[2-9][02-9]{2})\s*(?:[.-]\s*)?([0-9]{4})(?:\s*(?:#|x\.?|ext\.?|extension)\s*(\d+))?$/', $data['phone_number'])){
-            $errors[] = 'Phone Number in the wrong format';
-          } else {
             $errors[] = 'No Phone Number ';
+        } else {
+          if(preg_match('/^(?:(?:\+?1\s*(?:[.-]\s*)?)?(?:\(\s*([2-9]1[02-9]|[2-9][02-8]1|[2-9][02-8][02-9])\s*\)|([2-9]1[02-9]|[2-9][02-8]1|[2-9][02-8][02-9]))\s*(?:[.-]\s*)?)?([2-9]1[02-9]|[2-9][02-9]1|[2-9][02-9]{2})\s*(?:[.-]\s*)?([0-9]{4})(?:\s*(?:#|x\.?|ext\.?|extension)\s*(\d+))?$/', $data['phone_number'])){
+          } else {
+            $errors[] = 'Phone Number in the wrong format';
           }
         }
         if ($data['email'] === '' ){
-          if(preg_match('/^[A-Za-z0-9@.]*$/', $data['email'])){
-            $errors[] = 'Email in the wrong format';
-          } else {
             $errors[] = 'No Email ';
+        } else {
+          if(preg_match('/^[A-Za-z0-9@.]*$/', $data['email'])){ 
+          } else {
+            $errors[] = 'Email in the wrong format';
           }
         }
         if (count($errors) > 0)
