@@ -19,9 +19,10 @@ $(function () {
 });
 
 
-var form = document.querySelector('form');
+var formFaculty = document.querySelector('#add_faculty');
 
-form.addEventListener('submit', checkForm);
+if(formFaculty)
+formFaculty.addEventListener('submit', checkForm);
 
 
 //Set regexValidation for each field being passed from add_edit_building

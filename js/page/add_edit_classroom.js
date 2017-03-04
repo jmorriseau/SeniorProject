@@ -1,7 +1,6 @@
-$(function () {
-	alert("hello- can you hear me?");
+
 //    if delete classroom  button is clicked run ajax to delete classroom
-    $(".delete_classroom").on('click', function (e) {
+    $(document).on('click', '.delete_classroom',function (e) {
         e.stopPropagation();
         e.preventDefault();
         var classroom_id = $(this).data("delete");
@@ -16,24 +15,14 @@ $(function () {
                 loadPage('classroom');
             }
         });
-    });
-});
+    });	
 
-var form = document.querySelector('form');
 
-form.addEventListener('submit', checkForm);
-
-//Set regex validation for wach field being passed from add_edit_classroom
-var regexValidations = {
-	"buildingName": /^[a-zA-Z 0-9]*$/,
-	"roomNumber": /^[a-zA-Z 0-9]*$/,
-	"classroomType": /^[a-zA-Z 0-9]*$/,
-	"roomCap": /^\d+$/
-};
-
+$(document).on("click", ".add-edit-classroom-btn",classroomCheckForm);
 
 //check form on submit
-function checkForm(e){
+function classroomCheckForm(e){
+	alert("hello rysdklf jklsfjkl sdlfjkl sdklfjklsd klan");
 	e.preventDefault();
 	
 	//set flag to help check validation
@@ -69,27 +58,21 @@ function checkForm(e){
 			type: type,
 			dataType: "JSON",
 			data: {
-				buildingId: $("select[name=buildingName]").val(),
-				roomNumber: $("input[name=roomNumber]").val(),
-				classroomTypeId: $("select[name=classroomType]").val(),
-				roomCap: $("input[name=roomCap]").val()
+				buildingId: $("input[name=buildingId]").val(),
+				classNumber: $("input[name=roomNumber]").val(),
+				roomTypeId: $("select[name=classroomType]").val(),
+				capacity: $("input[name=roomCap]").val(),
+				id : $("input[name=classroomId]").val()
 			},
 			//if ajax is successful, return to classroom main page and alert the user
 		success: function(data){
-			if(data !== ""){
-				alert(data);
+			if(data !== "" && data == 'Classroom Added'){
+					alert("Classroom added successfully.")
+                    loadPage('classroom');
 			}
-			else {
-				loadPage('classroom');
-				//$("#content").load("tools/contacts/index.php", function () {
-                    //     if (url == "tools/contacts/add_contact_db.php") {
-                    //         alert("Contact successfully added");
-                    //     }
-                    //     else if (url == "tools/contacts/edit_contact_db.php") {
-                    //         alert("Contact successfully edited");
-                    //     }
-
-                    // });
+			else if(data !== "" && data == 'Classroom Updated'){
+				 	alert("Classroom updated successfully.")
+                	loadPage('classroom');
 			}
 		},
 		//if ajax is unsuccessful, show reponse test in console
@@ -101,3 +84,13 @@ function checkForm(e){
 	
 	
 }
+
+//Set regex validation for wach field being passed from add_edit_classroom
+var regexValidations = {
+	"buildingName": /^[a-zA-Z 0-9]*$/,
+	"roomNumber": /^[a-zA-Z 0-9]*$/,
+	"classroomType": /^[a-zA-Z 0-9]*$/,
+	"roomCap": /^\d+$/
+};
+
+

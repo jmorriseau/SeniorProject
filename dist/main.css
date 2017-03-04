@@ -2788,11 +2788,15 @@ div.loading {
   color: #fff;
   margin-right: 20px; }
 
+.fa.fa-times {
+  cursor: pointer; }
+
 .classroom-container {
   position: relative;
   display: block;
   width: 100%;
-  height: 100%; }
+  height: 100%;
+  overflow-x: hidden; }
 
 .classroom-selector {
   width: 250px;
@@ -2866,7 +2870,8 @@ div.loading {
   position: relative;
   display: block;
   width: 100%auto;
-  height: 100%; }
+  height: 100%;
+  overflow-x: hidden; }
 
 .curriculum-selector {
   /*width:250px;

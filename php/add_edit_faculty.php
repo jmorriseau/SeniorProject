@@ -13,7 +13,7 @@ $action;
 //if there is a faculty Id, pull information
  if (isset($faculty_id)){
     $faculty = $db->sql("SELECT * FROM Faculty where faculty_id = '" . $faculty_id ."'");
-    var_dump($faculty);
+    //var_dump($faculty);
     $action = "Update";
  }
  else {
@@ -23,9 +23,10 @@ $action;
 
 <h1><?php echo $action ?> Faculty</h1>
 <hr/>
+<span class="fa fa-times pull-right" onclick="loadPage('faculty')"></span>
 
 <div class="form-container edit-faculty-container">
-  <form id="add_faculty" action="#" method="post">
+  <form id="add_faculty">
     <div class="form-row">
       <label>First Name:</label>
       <input type="text" name="firstName" class="validate" placeholder="George" maxlength="100" minlength="2" required

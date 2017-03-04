@@ -116,11 +116,14 @@ function getClassrooms(){
     url: 'php/classroom_list_full.php?cid=' + campusId + '&bid=' + buildingId + '&fid=' + floorId,
     success: function(result){
       //console.log(result);
+      $('.add-avail-header').append('<button class="btn btn-success pull-right add-new-classroom" data-bid="'+buildingId+'"><span class="fa fa-plus-circle"></span>Add Classroom</button>')
       $('.result-classrooms').append(result);
+      $('.floor-drop-down').attr('disabled',true);
     }
   })
 }
-/*** end functions for the classroom sliders */
+
+/*** end functions for the classroom sliders */ 
 
 /** funtions for the curriculum sliders */
 function getProgram(){
@@ -148,6 +151,19 @@ function getStartDate(){
      // console.log(result);
      $('.start-drop-down').append(result);
      $('.program-drop-down').attr('disabled',true);
+    }
+  })
+}
+
+function getCurriculumList(){
+  var curriculumId = $('.start-drop-down').val();
+  console.log(curriculumId);
+  $.ajax({
+    method: "GET",
+    url: 'php/curriculum_list.php?cid=' + curriculumId,
+    success: function(result){
+      $('.result-curriculum').append(result);
+      $('.start-drop-down').attr('disabled',true);
     }
   })
 }
@@ -259,12 +275,19 @@ $(function () {
             }
         });
     });
+
 });
 
 
-var form = document.querySelector('form');
 
-form.addEventListener('submit', checkForm);
+    var formBuildings = document.querySelectorAll('#add_edit_building');
+
+
+if(formBuildings.length) {
+    formBuildings[0].addEventListener('submit', checkForm);
+formBuildings[1].addEventListener('submit', checkForm);
+formBuildings[2].addEventListener('submit', checkForm);
+}
 
 
 //Set regexValidation for each field being passed from add_edit_building
@@ -281,6 +304,7 @@ var regexValidations = {
 //check form on submit
 function checkForm(e) {
     e.preventDefault();
+    console.log($(this).find('input[name=buildingName]').val());
 
     //set flag to help check validation
     var isValid = true;
@@ -313,7 +337,7 @@ function checkForm(e) {
     }
     else {
         var type;
-		var addressLineConcat = $("input[name=addressLine1]").val() + " " + $("input[name=addressLine2]").val();
+		var addressLineConcat = $(this).find("input[name=addressLine1]").val() + " " + $(this).find("input[name=addressLine2]").val();
         if ($(".submit-form").hasClass("Add")) {
             type = "POST";
         }
@@ -326,13 +350,13 @@ function checkForm(e) {
             type: type,
             dataType: "JSON",
             data: {
-                buildingName: $("input[name=buildingName]").val(),
-                campusName: $("select[name=campusName]").val(),
+                buildingName: $(this).find('input[name=buildingName]').val(),
+                campusName: $(this).find("select[name=campusName]").val(),
                 addressLine1: addressLineConcat,
-                city: $("input[name=city]").val(),
-                state: $("select[name=state]").val(),
-                zip: $("input[name=zip]").val(),
-                id: $("input[name=buildingId]").val()
+                city: $(this).find("input[name=city]").val(),
+                state: $(this).find("select[name=state]").val(),
+                zip: $(this).find("input[name=zip]").val(),
+                id: $(this).find("input[name=buildingId]").val()
             },
             //if ajax is successful, return to building main page and alert the user
             success: function (data) {
@@ -354,10 +378,9 @@ function checkForm(e) {
 
 }
 
-$(function () {
-	alert("hello- can you hear me?");
+
 //    if delete classroom  button is clicked run ajax to delete classroom
-    $(".delete_classroom").on('click', function (e) {
+    $(document).on('click', '.delete_classroom',function (e) {
         e.stopPropagation();
         e.preventDefault();
         var classroom_id = $(this).data("delete");
@@ -372,24 +395,14 @@ $(function () {
                 loadPage('classroom');
             }
         });
-    });
-});
+    });	
 
-var form = document.querySelector('form');
 
-form.addEventListener('submit', checkForm);
-
-//Set regex validation for wach field being passed from add_edit_classroom
-var regexValidations = {
-	"buildingName": /^[a-zA-Z 0-9]*$/,
-	"roomNumber": /^[a-zA-Z 0-9]*$/,
-	"classroomType": /^[a-zA-Z 0-9]*$/,
-	"roomCap": /^\d+$/
-};
-
+$(document).on("click", ".add-edit-classroom-btn",classroomCheckForm);
 
 //check form on submit
-function checkForm(e){
+function classroomCheckForm(e){
+	alert("hello rysdklf jklsfjkl sdlfjkl sdklfjklsd klan");
 	e.preventDefault();
 	
 	//set flag to help check validation
@@ -425,27 +438,21 @@ function checkForm(e){
 			type: type,
 			dataType: "JSON",
 			data: {
-				buildingId: $("select[name=buildingName]").val(),
-				roomNumber: $("input[name=roomNumber]").val(),
-				classroomTypeId: $("select[name=classroomType]").val(),
-				roomCap: $("input[name=roomCap]").val()
+				buildingId: $("input[name=buildingId]").val(),
+				classNumber: $("input[name=roomNumber]").val(),
+				roomTypeId: $("select[name=classroomType]").val(),
+				capacity: $("input[name=roomCap]").val(),
+				id : $("input[name=classroomId]").val()
 			},
 			//if ajax is successful, return to classroom main page and alert the user
 		success: function(data){
-			if(data !== ""){
-				alert(data);
+			if(data !== "" && data == 'Classroom Added'){
+					alert("Classroom added successfully.")
+                    loadPage('classroom');
 			}
-			else {
-				loadPage('classroom');
-				//$("#content").load("tools/contacts/index.php", function () {
-                    //     if (url == "tools/contacts/add_contact_db.php") {
-                    //         alert("Contact successfully added");
-                    //     }
-                    //     else if (url == "tools/contacts/edit_contact_db.php") {
-                    //         alert("Contact successfully edited");
-                    //     }
-
-                    // });
+			else if(data !== "" && data == 'Classroom Updated'){
+				 	alert("Classroom updated successfully.")
+                	loadPage('classroom');
 			}
 		},
 		//if ajax is unsuccessful, show reponse test in console
@@ -457,6 +464,17 @@ function checkForm(e){
 	
 	
 }
+
+//Set regex validation for wach field being passed from add_edit_classroom
+var regexValidations = {
+	"buildingName": /^[a-zA-Z 0-9]*$/,
+	"roomNumber": /^[a-zA-Z 0-9]*$/,
+	"classroomType": /^[a-zA-Z 0-9]*$/,
+	"roomCap": /^\d+$/
+};
+
+
+
 $(function () {
 //    if delete course button is clicked run ajax to delete course
     $(".delete_course").on('click', function (e) {
@@ -477,9 +495,11 @@ $(function () {
 });
 
 
-var form = document.querySelector('form');
+var formCourse = document.querySelector('#add_course');
 
-form.addEventListener('submit', checkForm);
+if(formCourse) 
+    formCourse.addEventListener('submit', courseCheckForm);
+
 
 
 //Set regexValidation for each field being passed from add_edit_building
@@ -488,7 +508,7 @@ form.addEventListener('submit', checkForm);
 // };
 
 //check form on submit
-function checkForm(e) {
+function courseCheckForm(e) {
     e.preventDefault();
 
     //set flag to help check validation
@@ -574,9 +594,10 @@ $(function () {
 });
 
 
-var form = document.querySelector('form');
+var formFaculty = document.querySelector('#add_faculty');
 
-form.addEventListener('submit', checkForm);
+if(formFaculty)
+formFaculty.addEventListener('submit', checkForm);
 
 
 //Set regexValidation for each field being passed from add_edit_building
@@ -669,9 +690,10 @@ $(function () {
 });
 
 
-var form = document.querySelector('form');
+var formSubject = document.querySelector('#add_subject');
 
-form.addEventListener('submit', checkForm);
+if(formSubject)
+formSubject.addEventListener('submit', checkForm);
 
 
 //Set regexValidation for each field being passed from add_edit_building

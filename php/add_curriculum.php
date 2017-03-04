@@ -1,6 +1,6 @@
 <h1>Add Curriculum</h1>
 <hr/>
-<form>
+<form id="add_curriculum" action="#" method="post">
   <div class="form-row">
     <label>Curriculum Name:</label>
     <input type="text" />

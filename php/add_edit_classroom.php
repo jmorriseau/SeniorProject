@@ -3,7 +3,11 @@
 if (isset($_GET['cid'])) {
     $classroom_id = $_GET['cid'];
 }
-echo $classroom_id;
+//if the building id is passed set it to a php variable
+if(isset($_GET['bid'])) {
+	$building_id = $_GET['bid'];
+}
+echo $building_id;
 
 include('./autoload.php');
 
@@ -25,18 +29,10 @@ $db = new DAO();
 <hr/>
 
 <div class="form-container edit-classroom-container">
-	<form id="add_classroom" action="#" method="post">
-		
+	<form id="add_edit_classroom">
 
-		<!--<div class="form-row">
-			<label>Building Name:</label>
-			<select name="buildingName" class="validate" required>
-				<option value="">--Choose One--</option>
-				<option value="1" selected="selected">Main Building</option>
-			</select>
-			</div>-->
-
-			<input type="hidden" name="buildingId" value="<?php if(isset($classroom[0]['building_id'])){echo $classroom[0]['building_id'];}?>"/>
+			<input type="hidden" name="buildingId" value="<?php 
+				if(isset($classroom[0]['building_id'])){echo $classroom[0]['building_id'];}else{echo $building_id;}?>"/>
 
 			<div class="form-row">
 			<label>Room Number:</label>
@@ -107,7 +103,7 @@ $db = new DAO();
 					echo '<button class="delete_classroom btn btn-default" data-delete="' . $classroom[0]['classroom_id'] . '">Delete</button>';
 				}
 			?>
-			<button class="btn btn-success submit-form <?php echo $action ?>" name="save" type="submit"><?php echo $action ?></button>
+			<button class="btn btn-success submit-form add-edit-classroom-btn <?php echo $action ?>" name="save" type="button"><?php echo $action ?></button>
 			</div>
 
 		

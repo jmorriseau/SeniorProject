@@ -31,7 +31,7 @@ include('./autoload.php');
   <h1><?php echo $action ?> Building</h1>
   <hr/>
 
-  <form id="add_building" action="#" method="post">
+  <form id="add_edit_building">
     <div class="form-container building-container">
 
       <div class="form-row">

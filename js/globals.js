@@ -111,11 +111,14 @@ function getClassrooms(){
     url: 'php/classroom_list_full.php?cid=' + campusId + '&bid=' + buildingId + '&fid=' + floorId,
     success: function(result){
       //console.log(result);
+      $('.add-avail-header').append('<button class="btn btn-success pull-right add-new-classroom" data-bid="'+buildingId+'"><span class="fa fa-plus-circle"></span>Add Classroom</button>')
       $('.result-classrooms').append(result);
+      $('.floor-drop-down').attr('disabled',true);
     }
   })
 }
-/*** end functions for the classroom sliders */
+
+/*** end functions for the classroom sliders */ 
 
 /** funtions for the curriculum sliders */
 function getProgram(){
@@ -143,6 +146,19 @@ function getStartDate(){
      // console.log(result);
      $('.start-drop-down').append(result);
      $('.program-drop-down').attr('disabled',true);
+    }
+  })
+}
+
+function getCurriculumList(){
+  var curriculumId = $('.start-drop-down').val();
+  console.log(curriculumId);
+  $.ajax({
+    method: "GET",
+    url: 'php/curriculum_list.php?cid=' + curriculumId,
+    success: function(result){
+      $('.result-curriculum').append(result);
+      $('.start-drop-down').attr('disabled',true);
     }
   })
 }

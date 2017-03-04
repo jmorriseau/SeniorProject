@@ -28,7 +28,7 @@ $action;
 <hr/>
 <span class="fa fa-times pull-right" onclick="loadPage('course')"></span>
 <div class="form-container edit-classroom-container">
-<form id="add_course" action="#" method="post">
+<form id="add_course">
   <div class="form-row">
     <label>Course Name:</label>
     <input type="text" name="courseName" class="validate" placeholder="English 101" maxlength="100" minlength="2" required

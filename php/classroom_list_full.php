@@ -17,7 +17,7 @@ include('./autoload.php');
 $db = new DAO();
 
 if ( (isset($campus_id)) && (isset($building_id)) && (isset($floor_id)) ){
-    $classroomList = $db->sql("SELECT * FROM Classroom WHERE building_id = '" . $building_id ."' AND class_number LIKE '" . $building_id ."%' ORDER BY class_number");
+    $classroomList = $db->sql("SELECT * FROM Classroom WHERE building_id = '" . $building_id ."' AND class_number LIKE '" .$floor_id."%' ORDER BY class_number");
 
     if(count($classroomList) > 0){
         echo '<ul>';

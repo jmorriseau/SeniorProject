@@ -13,9 +13,9 @@ if ($util->isPostRequest() && $_SESSION['logged_in'] === false) {
 
       $login->getLogin($email, $password, $db);
     }
-    else{
-      echo "Please make sure all fields are filled in correctly.";
-    }
+    // else{
+    //   echo "Please make sure all fields are filled in correctly.";
+    // }
 }
 
 ?>
