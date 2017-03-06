@@ -31,10 +31,17 @@ switch($_SERVER['REQUEST_METHOD']){
  case 'POST':
 
    $data['building_id'] = $_POST['buildingId'];
+<<<<<<< HEAD
    $data['class_number'] = $_POST['roomNumber'];
    $data['room_type_id'] = $_POST['classroomTypeId'];
    $data['capacity'] = $_POST['roomCap'];
    //if(dataCheck($data)){
+=======
+   $data['class_number'] = $_POST['classNumber'];
+   $data['room_type_id'] = $_POST['roomTypeId'];
+   $data['capacity'] = $_POST['capacity'];
+   if(dataCheck($data)){
+>>>>>>> 741783c3eefcfda3075529f9f47c49280f58f9e5
      $message = classroomResourceRun('POST', NULL, $data, $dbc);
    //}
    //else{ $message = "Data not in correct format";}

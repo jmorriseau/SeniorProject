@@ -18,9 +18,11 @@ $(function () {
 });
 
 
-var form = document.querySelector('form');
+var formCourse = document.querySelector('#add_course');
 
-form.addEventListener('submit', checkForm);
+if(formCourse) 
+    formCourse.addEventListener('submit', courseCheckForm);
+
 
 
 //Set regexValidation for each field being passed from add_edit_building
@@ -29,7 +31,7 @@ form.addEventListener('submit', checkForm);
 // };
 
 //check form on submit
-function checkForm(e) {
+function courseCheckForm(e) {
     e.preventDefault();
 
     //set flag to help check validation

@@ -15,12 +15,19 @@ $(function () {
             }
         });
     });
+
 });
 
 
-var form = document.querySelector('form');
 
-form.addEventListener('submit', checkForm);
+    var formBuildings = document.querySelectorAll('#add_edit_building');
+
+
+if(formBuildings.length) {
+    formBuildings[0].addEventListener('submit', checkForm);
+formBuildings[1].addEventListener('submit', checkForm);
+formBuildings[2].addEventListener('submit', checkForm);
+}
 
 
 //Set regexValidation for each field being passed from add_edit_building
@@ -37,6 +44,7 @@ var regexValidations = {
 //check form on submit
 function checkForm(e) {
     e.preventDefault();
+    console.log($(this).find('input[name=buildingName]').val());
 
     //set flag to help check validation
     var isValid = true;
@@ -69,7 +77,7 @@ function checkForm(e) {
     }
     else {
         var type;
-		var addressLineConcat = $("input[name=addressLine1]").val() + " " + $("input[name=addressLine2]").val();
+		var addressLineConcat = $(this).find("input[name=addressLine1]").val() + " " + $(this).find("input[name=addressLine2]").val();
         if ($(".submit-form").hasClass("Add")) {
             type = "POST";
         }
@@ -82,13 +90,13 @@ function checkForm(e) {
             type: type,
             dataType: "JSON",
             data: {
-                buildingName: $("input[name=buildingName]").val(),
-                campusName: $("select[name=campusName]").val(),
+                buildingName: $(this).find('input[name=buildingName]').val(),
+                campusName: $(this).find("select[name=campusName]").val(),
                 addressLine1: addressLineConcat,
-                city: $("input[name=city]").val(),
-                state: $("select[name=state]").val(),
-                zip: $("input[name=zip]").val(),
-                id: $("input[name=buildingId]").val()
+                city: $(this).find("input[name=city]").val(),
+                state: $(this).find("select[name=state]").val(),
+                zip: $(this).find("input[name=zip]").val(),
+                id: $(this).find("input[name=buildingId]").val()
             },
             //if ajax is successful, return to building main page and alert the user
             success: function (data) {

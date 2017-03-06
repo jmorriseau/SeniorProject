@@ -36,14 +36,14 @@ include('./autoload.php');
 
   <div class="curriculum-selector select-start">
     <label>Select a enrollment start:</label>
-    <select class="start-drop-down" onchange="updateSlidingSelect('.select-start','.result-curriculum')">
+    <select class="start-drop-down" onchange="updateSlidingSelect('.select-start','.result-curriculum');getCurriculumList()">
       <option value="">--Choose One--</option>
     </select>
   </div>
 
   <div class="result-curriculum">
     Curriculum
-    <ul>
+    <!--<ul>
       <li>Quarter One
         <ul>
           <li>Computer and Networking Fundamentals</li>
@@ -61,7 +61,7 @@ include('./autoload.php');
       <li>Quarter Four
         <span></span>
       </li>
-    </ul>
+    </ul>-->
   </div>
 
 </div>

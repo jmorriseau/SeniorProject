@@ -24,7 +24,7 @@ $action;
 <hr/>
 <span class="fa fa-times pull-right" onclick="loadPage('course')"></span>
 <div class="form-container edit-subject-container">
-<form id="add_subject" action="#" method="post">
+<form id="add_subject">
   <div class="form-row">
     <label>Subject Name:</label>
     <input type="text" name="subjectName" class="validate" placeholder="English" maxlength="100" minlength="2" required

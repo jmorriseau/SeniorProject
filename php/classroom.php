@@ -9,6 +9,7 @@ include('./autoload.php');
   <h1>Current Classrooms</h1>
 </div>
 <hr />
+<span class="fa fa-times pull-right" onclick="loadPage('classroom')"></span>
 
 <div class="classroom-container content-container">
 
@@ -44,12 +45,8 @@ include('./autoload.php');
 
 
 <!-- add bid to the add button -->
-  <div class="result-classrooms">
-    <h3>Available Classrooms
-      <button class="btn btn-success pull-right" onclick="loadPage('add_edit_classroom')">
-      <span class="fa fa-plus-circle"></span>
-      Add Classroom
-    </button>
+ <div class="result-classrooms">
+    <h3 class="add-avail-header">Available Classrooms
     </h3>
   </div>
 
@@ -64,6 +61,13 @@ include('./autoload.php');
       var buildingId = $(this).data("bid");
       console.log("Got the classroom Id: " + classroomId);
       $(".content-container").load("php/add_edit_classroom.php?cid=" + classroomId + "&bid=" + buildingId);
+    });
+
+    //if new classroom button is clicked go to add edit classroom
+    $("body").on("click", ".add-new-classroom", function(){
+      var buildingId = $(this).data("bid");
+      console.log("Got the building Id: " + buildingId);
+      $(".content-container").load("php/add_edit_classroom.php?&bid=" + buildingId);
     });
     
   });
