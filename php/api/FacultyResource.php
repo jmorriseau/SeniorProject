@@ -34,10 +34,10 @@
      $data['last_name'] = $_POST['lastName'];
      $data['phone_number'] = $_POST['phoneNumber'];
      $data['email'] = $_POST['email'];
-     if(dataCheck($data)){
+     //if(dataCheck($data)){
        $message = facultyResourceRun('POST', NULL, $data, $dbc);
-     }
-     else{ $message = "Data not in correct format";}
+     //}
+     //else{ $message = "Data not in correct format";}
      break;
 
    case 'PUT':
@@ -47,10 +47,10 @@
     $data['phone_number'] = $put['phoneNumber'];
     $data['email'] = $put['email'];
     $id = $put['id'];
-    if(dataCheck($data)){
+    //if(dataCheck($data)){
       $message = facultyResourceRun('PUT', $id, $data, $dbc);
-    }
-    else{ $message = "Data not in correct format";}
+    //}
+    //else{ $message = "Data not in correct format";}
     break;
 
    case 'DELETE':
@@ -203,7 +203,7 @@
         if ($data['email'] === '' ){
             $errors[] = 'No Email ';
         } else {
-          if(preg_match('/^[A-Za-z0-9@.]*$/', $data['email'])){ 
+          if(preg_match('/^[A-Za-z0-9@.]*$/', $data['email'])){
           } else {
             $errors[] = 'Email in the wrong format';
           }

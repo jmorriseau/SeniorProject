@@ -34,10 +34,10 @@ switch($_SERVER['REQUEST_METHOD']){
     $data['degree_type_id'] = $_POST['degreeTypeId'];
     $data['start_term'] = $_POST['startTerm'];
     $data['end_term'] = $_POST['endTerm'];
-    if(dataCheck($data)){
+    //if(dataCheck($data)){
       $message = curriculumResourceRun('POST', NULL, $data, $dbc);
-    }
-    else{ $message = "Data not in correct format";}
+    //}
+    //else{ $message = "Data not in correct format";}
     break;
 
   case 'PUT':
@@ -48,10 +48,10 @@ switch($_SERVER['REQUEST_METHOD']){
     $data['start_term'] = $put['startTerm'];
     $data['end_term'] = $put['endTerm'];
     $id = $put['id'];
-    if(dataCheck($data)){
+    //if(dataCheck($data)){
       $message = curriculumResourceRun('PUT', $id, $data, $dbc);
-    }
-    else{ $message = "Data not in correct format";}
+    //}
+    //else{ $message = "Data not in correct format";}
     break;
 
   case 'DELETE':
@@ -211,7 +211,7 @@ function dataCheck($data) {
     if ($data['end_term'] === '' ){
         $errors[] = 'No End Term ';
     } else {
-      if(preg_match('/^[0-9]{4}-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1])$/', $data['end_term'])){ 
+      if(preg_match('/^[0-9]{4}-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1])$/', $data['end_term'])){
       } else {
         $errors[] = 'End Term in the wrong format';
       }

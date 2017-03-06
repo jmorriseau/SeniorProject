@@ -32,10 +32,10 @@ switch($_SERVER['REQUEST_METHOD']){
 
     $data['attributes_id'] = $_POST['attributesId'];
     $data['course_id'] = $_POST['courseId'];
-    if(dataCheck($data)){
+    //if(dataCheck($data)){
       $message = courseAttrResourceRun('POST', NULL, $data, $dbc);
-    }
-    else{ $message = "Data not in correct format";}
+    //}
+    //else{ $message = "Data not in correct format";}
     break;
 
  case 'PUT':
@@ -43,10 +43,10 @@ switch($_SERVER['REQUEST_METHOD']){
     $data['attributes_id'] = $put['attributesId'];
     $data['course_id'] = $put['courseId'];
     $id = $put['id'];
-    if(dataCheck($data)){
+    //if(dataCheck($data)){
       $message = courseAttrResourceRun('PUT', $id, $data, $dbc);
-    }
-    else{ $message = "Data not in correct format";}
+    //}
+    //else{ $message = "Data not in correct format";}
     break;
 
  case 'DELETE':

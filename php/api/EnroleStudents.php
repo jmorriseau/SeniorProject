@@ -28,6 +28,6 @@
   }
 
   function createClasses($dbc){
-
+      $enrollment = $dbc->sql("SELECT * FROM Enrollment");
   }
 ?>

@@ -31,10 +31,10 @@ switch($_SERVER['REQUEST_METHOD']){
   case 'POST':
     $data['curriculum_id'] = $put['curriculumId'];
     $data['course_id'] = $put['courseId'];
-    if(dataCheck($data)){
+    //if(dataCheck($data)){
       $message = curriculumCourseResourceRun('POST', NULL, $data, $dbc);
-    }
-    else{ $message = "Data not in correct format";}
+    //}
+    //else{ $message = "Data not in correct format";}
     break;
 
   case 'PUT':
@@ -42,10 +42,10 @@ switch($_SERVER['REQUEST_METHOD']){
     $data['curriculum_id'] = $put['curriculumId'];
     $data['course_id'] = $put['courseId'];
     $id = $_POST['id'];
-    if(dataCheck($data)){
+    //if(dataCheck($data)){
       $message = curriculumCourseResourceRun('PUT', $id, $data, $dbc);
-    }
-    else{ $message = "Data not in correct format";}
+    //}
+    //else{ $message = "Data not in correct format";}
     break;
 
   case 'DELETE':

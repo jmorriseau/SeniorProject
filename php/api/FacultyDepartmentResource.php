@@ -32,10 +32,10 @@
    case 'POST':
      $data['faculty_id'] = $_POST['facultyId'];
      $data['departments_id'] = $_POST['departmentsId'];
-     if(dataCheck($data)){
+     //if(dataCheck($data)){
        $message = facultyDeptResourceRun('POST', NULL, $data, $dbc);
-     }
-     else{ $message = "Data not in correct format";}
+     //}
+     //else{ $message = "Data not in correct format";}
      break;
 
    case 'PUT':
@@ -43,10 +43,10 @@
     $data['faculty_id'] = $put['facultyId'];
     $data['departments_id'] = $put['departmentsId'];
     $id = $put['id'];
-    if(dataCheck($data)){
+    //if(dataCheck($data)){
       $message = facultyDeptResourceRun('PUT', $id, $data, $dbc);
-    }
-    else{ $message = "Data not in correct format";}
+    //}
+    //else{ $message = "Data not in correct format";}
     break;
 
    case 'DELETE':
@@ -179,7 +179,7 @@
         if ($data['departments_id'] === '' ){
             $errors[] = 'No Department ID ';
         } else {
-          if(preg_match('/^[0-9]*$/', $data['departments_id'])){ 
+          if(preg_match('/^[0-9]*$/', $data['departments_id'])){
           } else {
             $errors[] = 'Departments ID in the wrong format';
           }

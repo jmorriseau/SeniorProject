@@ -37,10 +37,10 @@ switch($_SERVER['REQUEST_METHOD']){
     $data['city'] = $_POST['city'];
     $data['state'] = $_POST['state'];
     $data['zip'] = $_POST['zip'];
-    if(dataCheck($data)){
+    //if(dataCheck($data)){
       $message = buildingResourceRun('POST', NULL, $data, $dbc);
-    }
-    else{ $message = "Data not in correct format";}
+    //}
+    //else{ $message = "Data not in correct format";}
     break;
 
   case 'PUT':
@@ -53,10 +53,10 @@ switch($_SERVER['REQUEST_METHOD']){
     $data['state'] = $put['state'];
     $data['zip'] = trim($put['zip']);
     $id = $put['id'];
-    if(dataCheck($data)){
+    //if(dataCheck($data)){
       $message = buildingResourceRun('PUT', $id, $data, $dbc);
-    }
-    else{ $message = "Data not in correct format";}
+    //}
+    //else{ $message = "Data not in correct format";}
     break;
 
   case 'DELETE':
@@ -246,7 +246,7 @@ function dataCheck($data) {
 
     if (count($errors) > 0)
     {
-        return false;
+        throw exception('Errors found');
     }
     else{
         return true;

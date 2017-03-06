@@ -32,10 +32,10 @@ switch($_SERVER['REQUEST_METHOD']){
 
     $data['attributes_id'] = $_POST['attributesId'];
     $data['classroom_id'] = $_POST['classroomId'];
-    if(dataCheck($data)){
+    //if(dataCheck($data)){
       $message = classroomAttrResourceRun('POST', NULL, $data, $dbc);
-    }
-    else{ $message = "Data not in correct format";}
+    //}
+    //else{ $message = "Data not in correct format";}
     break;
 
  case 'PUT':
@@ -43,10 +43,11 @@ switch($_SERVER['REQUEST_METHOD']){
     $data['attributes_id'] = $put['attributesId'];
     $data['classroom_id'] = $put['classroomId'];
     $id = $put['id'];
-    if(dataCheck($data)){
+    $check = dataCheck($data);
+    if($check == true){
       $message = classroomAttrResourceRun('PUT', $id, $data, $dbc);
     }
-    else{ $message = "Data not in correct format";}
+    else{ $message = $check;}
     break;
 
  case 'DELETE':
@@ -182,12 +183,17 @@ function dataCheck($data) {
         $errors[] = 'Classroom ID in the wrong format';
       }
     }
-    
+
     if (count($errors) > 0)
     {
-        throw new Exception('Form not fully filled');
+        $message = "ERROR: ";
+        echo "<script>console.log( 'Debug Objects: " . $errors[1] . "' );</script>";
+        foreach($errors as $error){
+          $message = $message . $error . ' ';
+        }
+        return $message;
     }
-    else{
+    else {
         return true;
     }
 }

@@ -32,10 +32,10 @@
    case 'POST':
      $data['attribute_type_id'] = $_POST['attributeTypeId'];
      $data['attributes_name'] = $_POST['attributesName'];
-     if(dataCheck($data)){
+     //if(dataCheck($data)){
        $message = attributeResourceRun('POST', NULL, $data, $dbc);
-     }
-     else{ $message = "Data not in correct format";}
+     //}
+     //else{ $message = "Data not in correct format";}
      break;
 
    case 'PUT':
@@ -43,10 +43,10 @@
      $data['attribute_type_id'] = $put['attributeTypeId'];
      $data['attributes_name'] = $put['attributesName'];
      $id = $put['id'];
-     if(dataCheck($data)){
+     //if(dataCheck($data)){
        $message = attributeResourceRun('PUT', $id, $data, $dbc);
-     }
-     else{ $message = "Data not in correct format";}
+     //}
+     //else{ $message = "Data not in correct format";}
      break;
 
    case 'DELETE':

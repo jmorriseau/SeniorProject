@@ -3,8 +3,48 @@ include('./autoload.php');
 
 $db = new DAO();
 $faculty = array();
-
+$count = array();
+$id_key = array();
+$holder = array();
+$enrol_total = array();
+//$count['test'] = 1;
 $faculty = $db->sql("SELECT * FROM Faculty ORDER BY last_name");
+
+/*$enrollment = $db->sql("SELECT course_id FROM Enrollment");
+
+foreach ($enrollment as $header => $value) {
+  $i = 0;
+  foreach ($enrollment as $value => $thing) {
+    $cid = $thing['course_id'] ;
+    $holder[$i] = $cid;
+    $i++;
+    }
+}
+$ie = 0;
+foreach($holder as $cur_val){
+
+  if(array_key_exists($cur_val, $count) === true){
+    $count[$cur_val] = $count[$cur_val] + 1;
+  }
+  else {
+    $count[$cur_val] = 1;
+    $id_key[$ie] = $cur_val;
+  }
+  $ie++;
+}
+
+$if = 0;
+foreach($count as $total){
+
+}
+
+//array_multisort($count, SORT_DESC);
+
+var_dump($count);
+echo "\n\n -------------------------------------------------------------------------";
+var_dump($id_key);
+*/
+
 ?>
 
 <div class="header">
@@ -18,7 +58,7 @@ $faculty = $db->sql("SELECT * FROM Faculty ORDER BY last_name");
 <hr/>
 
  <!-- Search bar -->
-<div id="find">             
+<div id="find">
     <?php include_once("find.php"); ?>
     <input id="search-input" type="text" placeholder="Search"/>
     <div id="search-icon"></div>
@@ -58,6 +98,6 @@ $faculty = $db->sql("SELECT * FROM Faculty ORDER BY last_name");
       console.log("Got the faculty Id: " + facultyId);
       $(".content-container").load("php/add_edit_faculty.php?fid=" + facultyId);
     });
-    
+
   });
 </script>

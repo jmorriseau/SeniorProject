@@ -34,10 +34,10 @@ switch($_SERVER['REQUEST_METHOD']){
    $data['class_number'] = $_POST['roomNumber'];
    $data['room_type_id'] = $_POST['classroomTypeId'];
    $data['capacity'] = $_POST['roomCap'];
-   if(dataCheck($data)){
+   //if(dataCheck($data)){
      $message = classroomResourceRun('POST', NULL, $data, $dbc);
-   }
-   else{ $message = "Data not in correct format";}
+   //}
+   //else{ $message = "Data not in correct format";}
    break;
 
  case 'PUT':
@@ -48,11 +48,10 @@ switch($_SERVER['REQUEST_METHOD']){
    $data['capacity'] = $put['capacity'];
    $id = $put['id'];
    //echo "<script>console.log( 'Debug Objects: " . $data['building_id'] . '\t' . $data['room_type_id'] . '\t' . $data['class_number'] . '\t' . $data['capacity'] . '\t'. "' );</script>";
-   if(dataCheck($data)){
+   //if(dataCheck($data)){
      $message = classroomResourceRun('PUT', $id, $data, $dbc);
-   }
-   else{ $message = "Data not in correct format";}
-   $message = "Data not in correct format";
+   //}
+   //else{ $message = "Data not in correct format";}
    break;
 
  case 'DELETE':

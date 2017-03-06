@@ -31,20 +31,20 @@
 
    case 'POST':
      $data['campus_name'] = $_POST['campusName'];
-     if(dataCheck($data)){
+     //if(dataCheck($data)){
        $message = campusResourceRun('POST', NULL, $data, $dbc);
-     }
-     else{ $message = "Data not in correct format";}
+     //}
+     //else{ $message = "Data not in correct format";}
      break;
 
    case 'PUT':
     parse_str(file_get_contents('php://input'), $put);
      $data['campus_name'] = $put['campusName'];
      $id = $put['id'];
-     if(dataCheck($data)){
+     //if(dataCheck($data)){
        $message = campusResourceRun('PUT', $id, $data, $dbc);
-     }
-     else{ $message = "Data not in correct format";}
+     //}
+     //else{ $message = "Data not in correct format";}
      break;
 
    case 'DELETE':
