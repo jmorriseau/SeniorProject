@@ -30,9 +30,9 @@ formSubject.addEventListener('submit', checkForm);
 
 
 //Set regexValidation for each field being passed from add_edit_building
-// var regexValidations = {
-
-// };
+var regexValidations = {
+    "subjectName": /^[a-zA-Z0-9]*$/
+};
 
 //check form on submit
 function checkForm(e) {
@@ -43,17 +43,17 @@ function checkForm(e) {
 
     //for each field in the add_subject form the with the validate class, see if the field is empty or fails regex validation
     //if so set the isValid flag to false and add the error class to signify an error to the user else remove the error class
-    // $('#add_subject .validate').each(function () {
-    //     //$(this).length <= 0) ||
-    //     if ($(this).val() == "" || !regexValidations[this.name].test(this.value)) {
-    //         $(this).parent().addClass('error');
-    //         console.log($(this).val());
-    //         isValid = false;
-    //     }
-    //     else {
-    //         $(this).parent().removeClass('error');
-    //     }
-    // });
+    $('#add_subject .validate').each(function () {
+        //$(this).length <= 0) ||
+        if ($(this).val() == "" || !regexValidations[this.name].test(this.value)) {
+            $(this).parent().addClass('error');
+            console.log($(this).val());
+            isValid = false;
+        }
+        else {
+            $(this).parent().removeClass('error');
+        }
+    });
 
     //if the isValid flag gets set to false, alert the user else, send to php via ajax
     if (isValid == false) {
@@ -67,7 +67,7 @@ function checkForm(e) {
         else {
             type = "PUT";
         }
-        alert("Type: " + type + $("input[name=subjectId]").val());
+        //alert("Type: " + type + $("input[name=subjectId]").val());
         $.ajax({
             url: "php/api/DepartmentResource.php",
             type: type,

@@ -7,7 +7,6 @@ if (isset($_GET['cid'])) {
 if(isset($_GET['bid'])) {
 	$building_id = $_GET['bid'];
 }
-echo $building_id;
 
 include('./autoload.php');
 
@@ -36,7 +35,7 @@ $db = new DAO();
 
 			<div class="form-row">
 			<label>Room Number:</label>
-			<input type="text" name="roomNumber" class="validate" placeholder="N210" maxlength="20" minlength="1" required 
+			<input type="text" name="roomNumber" class="validate" placeholder="210" maxlength="4" minlength="1" required 
 			value="<?php
 								if(isset($classroom[0]['class_number'])){
 								echo $classroom[0]['class_number'];
@@ -64,7 +63,7 @@ $db = new DAO();
 
 			<div class="form-row">
 			<label>Room Capacity:</label>
-			<input type="number" name="roomCap" class="validate" placeholder="15" min="0" max="30" required
+			<input type="number" name="roomCap" class="validate" placeholder="15" min="1" max="30" required
 			value="<?php
 								if(isset($classroom[0]['capacity'])){
 								echo $classroom[0]['capacity'];

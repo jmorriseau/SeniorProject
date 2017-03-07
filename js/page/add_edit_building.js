@@ -24,7 +24,6 @@ $(function () {
 });
 
 
-
     var formBuildings = document.querySelectorAll('#add_edit_building');
 
 
@@ -41,19 +40,20 @@ var regexValidations = {
     "campusName": /^[a-zA-Z 0-9]/,
     "addressLine1": /^\d{1,6}\040([A-Z]{1}[a-z]{1,}\040[A-Z]{1}[a-z]{1,})$|^\d{1,6}\040([A-Z]{1}[a-z]{1,}\040[A-Z]{1}[a-z]{1,}\040[A-Z]{1}[a-z]{1,})$|^\d{1,6}\040([A-Z]{1}[a-z]{1,}\040[A-Z]{1}[a-z]{1,}\040[A-Z]{1}[a-z]{1,}\040[A-Z]{1}[a-z]{1,})$/,
     "addressLine2": /[a-z0-9]/i,
-    "city": /.*/,
+    "city": /(?:[A-Z][a-z.-]+[ ]?)+/,
     "state": /^[A-Z]{2}$/,
-    "zip": /^\d{5}(?:[-\s]\d{4})?$/
+    "zip": /\b\d{5}(?:-\d{4})?\b/
 };
+
+//set flag to help check validation
+    var isValid = true;
 
 //check form on submit
 function checkForm(e) {
     e.preventDefault();
-    console.log($(this).find('input[name=buildingName]').val());
 
-    //set flag to help check validation
-    var isValid = true;
-
+    isValid = true;
+    console.log("Value :" + isValid + " before the loop");
     //if address two has a value, add the validator class, if not, remove the validator class
     if ($.trim($("input[name=addressLine2]").val()) != "") {
         $("input[name=addressLine2]").addClass('validate');
@@ -64,18 +64,23 @@ function checkForm(e) {
 
     //for each field in the add_edit_building form the with the validate class, see if the field is empty or fails regex validation
     //if so set the isValid flag to false and add the error class to signify an error to the user else remove the error class
-    // $('#add_building .validate').each(function () {
+    // $('#add_edit_building .validate').each(function () {
     //     //$(this).length <= 0) ||
     //     if ($(this).val() == "" || !regexValidations[this.name].test(this.value)) {
     //         $(this).parent().addClass('error');
     //         console.log($(this).val());
+            
     //         isValid = false;
+    //         console.log("Value is : " + isValid + " in the error loop");
     //     }
     //     else {
     //         $(this).parent().removeClass('error');
+    //         console.log($(this).val());
+    //         console.log("Value is : " +isValid + " in the remove error loop");
     //     }
     // });
 
+    console.log("Value is :" +isValid + " after the loop");
     //if the isValid flag gets set to false, alert the user else, send to php via ajax
     if (isValid == false) {
         alert("Please correct all fields.");
@@ -89,7 +94,7 @@ function checkForm(e) {
         else {
             type = "PUT";
         }
-        alert("Type: " + type);
+        //alert("Type: " + type);
         $.ajax({
             url: "php/api/BuildingResource.php",
             type: type,

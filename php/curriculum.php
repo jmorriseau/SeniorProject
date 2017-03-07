@@ -43,26 +43,6 @@ include('./autoload.php');
   </div>
 
   <div class="result-curriculum">
-    Curriculum
-    <!--<ul>
-      <li>Quarter One
-        <ul>
-          <li>Computer and Networking Fundamentals</li>
-          <li>Programming Essentails Using C++</li>
-          <li>IT Visual Communications</li>
-          <li>Intro to College Math</li>
-        </ul>
-      </li>
-      <li>Quarter Two
-        <span></span>
-      </li>
-      <li>Quarter Three
-        <span></span>
-      </li>
-      <li>Quarter Four
-        <span></span>
-      </li>
-    </ul>-->
   </div>
 
 </div>

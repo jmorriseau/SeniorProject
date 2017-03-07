@@ -41,7 +41,7 @@ $action;
 
   <div class="form-row">
     <label>Course Number:</label>
-    <input type="text" name="courseNumber" placeholder="EN101" maxlength="8" minlength="3" required 
+    <input type="text" name="courseNumber" class="validate" placeholder="EN101" maxlength="8" minlength="3" required 
     value="<?php
               if(isset($course[0]['course_number'])){
               echo $course[0]['course_number'];
@@ -62,7 +62,7 @@ $action;
 
   <div class="form-row">
     <label>Credit Hours:</label>
-    <input type="number" name="creditHours" class="validate" placeholder="4" min="0" max="5" required
+    <input type="number" name="creditHours" class="validate" placeholder="4" min="1" max="5" required
     value="<?php
               if(isset($course[0]['credit_hours'])){
               echo $course[0]['credit_hours'];

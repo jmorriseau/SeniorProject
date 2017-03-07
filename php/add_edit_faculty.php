@@ -59,7 +59,7 @@ $action;
 
     <div class="form-row">
       <label>Email:</label>
-      <input type="text" name="email" class="validate" placeholder="gsaban@neit.edu" maxlength="100" minlength="7" required
+      <input type="email" name="email" class="validate" placeholder="gsaban@neit.edu" maxlength="100" minlength="7" required
       value="<?php
               if(isset($faculty[0]['email'])){
                 echo $faculty[0]['email'];

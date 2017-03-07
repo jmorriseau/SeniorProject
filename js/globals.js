@@ -128,7 +128,6 @@ function getProgram(){
     method:"GET",
     url: 'php/program_list.php?did=' + degreeId,
     success: function(result){
-     // console.log(result);
      $('.program-drop-down').append(result);
      $('.degree-drop-down').attr('disabled',true);
     }
@@ -143,7 +142,6 @@ function getStartDate(){
     method:"GET",
     url: 'php/start_list.php?pid=' + programId + "&did=" + degreeId,
     success: function(result){
-     // console.log(result);
      $('.start-drop-down').append(result);
      $('.program-drop-down').attr('disabled',true);
     }
@@ -156,7 +154,7 @@ function getCurriculumList(){
   console.log(curriculumId + " degree id " + degreeId);
   $.ajax({
     method: "GET",
-    url: 'php/curriculum_list.php?cid=' + curriculumId + '&did=' + degreeId,
+    url: 'php/curriculum_list.php?cid=' + curriculumId + "&did=" + degreeId,
     success: function(result){
       $('.result-curriculum').append(result);
       $('.start-drop-down').attr('disabled',true);

@@ -9,7 +9,7 @@ include('./autoload.php');
  $db = new DAO();
 
 if (isset($degree_id)){
-    $programs = $db->sql("SELECT * FROM Curriculum where degree_type_id = '" .$degree_id ."'");
+    $programs = $db->sql("SELECT * FROM Curriculum where degree_type_id = '" .$degree_id ."' ORDER BY curriculum_name");
     foreach($programs as $p){
         echo '<option value="'. $p['curriculum_id'] .'">' . $p['curriculum_name'] . '</option>';
     } 
