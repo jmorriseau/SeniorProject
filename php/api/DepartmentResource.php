@@ -150,9 +150,14 @@
 
      function delete($id,$db) {
         //Delete uses a statment written to delete from the db where the id matches the one located in the endpoint.
+        if(sizeof($db->sql("SELECT * from Faculty_Dept_Relation where departments_id ='".$id."';")) > 0)
+        {
+          $db->sql("DELETE from Faculty_Dept_Relation where departments_id = '".$id."';");
+        }
+
         $db->sql("DELETE FROM Departments WHERE departments_id = '".$id."';");
 
-        if($db->sql("SELECT * from Departments WHERE departments_id ='".$id."';").length == 0)
+        if(sizeof($db->sql("SELECT * from Departments WHERE departments_id ='".$id."';")) == 0)
         {
           return "Department Deleted";
         }  else {

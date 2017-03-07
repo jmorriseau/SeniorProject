@@ -150,9 +150,19 @@
 
   function delete($id,$db) {
       //Delete uses a statement written to delete from the db where the id matches the one located in the endpoint.
+
+      if(sizeof($db->sql("SELECT * from Building where campus_id ='".$id."';")) > 0)
+      {
+        $db->sql("DELETE from Building where campus_id = '".$id."';");
+        if(sizeof($db->sql("SELECT Classroom.* from Classroom, Building where Building.campus_id = '".$id."' AND Classroom.building_id = Building.building_id;")) > 0)
+        {
+          $db->sql("DELETE from Classroom where Building.campus_id = '".$id."' AND Classroom.building_id = Building.building_id;");
+        }
+      }
+
       $db->sql("DELETE FROM Campus WHERE campus_id = '".$id."';");
 
-      if($db->sql("select * from Campus where campus_id ='".$id."';").length == 0) {
+      if(sizeof($db->sql("select * from Campus where campus_id ='".$id."';")) == 0) {
           return 'Campus Deleted';
       } else {
           throw new InvalidArgumentException('Campus ID ' . $id . ' was not found');

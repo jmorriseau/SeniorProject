@@ -157,7 +157,7 @@
         //Delete uses a statment written to delete from the db where the id matches the one located in the endpoint.
         $db->sql("DELETE FROM Faculty_Dept_Relation WHERE faculty_dept_relation_id = '".$id."';");
 
-        if($db->sql("SELECT * from Faculty_Dept_Relation where faculty_dept_relation_id ='".$id."';").length == 0)
+        if(sizeof($db->sql("SELECT * from Faculty_Dept_Relation where faculty_dept_relation_id ='".$id."';")) == 0)
         {
           return "Faculty Department Relation Deleted";
         }  else {

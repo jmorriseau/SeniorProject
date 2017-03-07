@@ -167,9 +167,19 @@
 
      function delete($id,$db) {
         //Delete uses a statment written to delete from the db where the id matches the one located in the endpoint.
+        if(sizeof($db->sql("SELECT * from Course_Attribute_Relation where course_id ='".$id."';")) > 0)
+        {
+          $db->sql("DELETE from Course_Attribute_Relation where course_id = '".$id."';");
+        }
+
+        if(sizeof($db->sql("SELECT * from Class where course_id ='".$id."';")) > 0)
+        {
+          $db->sql("DELETE from Class where course_id = '".$id."';");
+        }
+
         $db->sql("DELETE FROM Courses WHERE course_id = '".$id."';");
 
-        if($db->sql("SELECT * from Courses where course_id ='".$id."';").length == 0)
+        if(sizeof($db->sql("SELECT * from Courses where course_id ='".$id."';")) == 0)
         {
           return "Course Deleted";
         }  else {

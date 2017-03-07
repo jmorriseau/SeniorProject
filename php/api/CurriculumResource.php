@@ -164,9 +164,14 @@ function put($id,$data,$db)
 
 function delete($id,$db) {
   //Delete uses a statment written to delete from the db where the id matches the one located in the endpoint.
+  if(sizeof($db->sql("SELECT * from Curriculum_Course_Relation where curriculum_id ='".$id."';")) > 0)
+  {
+    $db->sql("DELETE from Curriculum_Course_Relation where curriculum_id = '".$id."';");
+  }
+
   $db->sql("DELETE FROM Curriculum WHERE curriculum_id = '".$id."';");
 
-  if($db->sql("select * from Curriculum where curriculum_id ='".$id."';").length == 0)
+  if(sizeof($db->sql("select * from Curriculum where curriculum_id ='".$id."';")) == 0)
   {
     return "Curriculum Deleted";
   }  else {

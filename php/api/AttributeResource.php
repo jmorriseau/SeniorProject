@@ -157,7 +157,7 @@
         //Delete uses a statment written to delete from the db where the id matches the one located in the endpoint.
         $db->sql("DELETE FROM Attributes WHERE attributes_id = '".$id."';");
 
-        if($db->sql("select * from Attributes where attributes_id ='".$id."';").length == 0)
+        if(sizeof($db->sql("select * from Attributes where attributes_id ='".$id."';")) == 0)
         {
           return "Attribute Deleted";
         }  else {
