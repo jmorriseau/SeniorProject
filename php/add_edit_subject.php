@@ -39,12 +39,10 @@ $action;
 
   <div class="form-row">
     <label></label>
-    <!--<button class="btn btn-default" onclick="loadPage('course')">Cancel</button>
-    <button class="btn btn-success" onclick="loadPage('course')">Save</button>-->
     <?php
-        if($action == "Update"){
-                echo '<button class="delete_subject btn btn-default" data-delete="' . $department[0]['departments_id'] . '">Delete</button>';
-        }
+        // if($action == "Update"){
+        //         echo '<button class="delete_subject btn btn-default" data-delete="' . $department[0]['departments_id'] . '">Delete</button>';
+        // }
     ?>
     <button class="btn btn-success submit-form <?php echo $action ?>" name="save" type="submit"><?php echo $action ?></button>
   </div>

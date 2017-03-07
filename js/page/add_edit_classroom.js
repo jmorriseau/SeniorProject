@@ -23,7 +23,13 @@
         });
     });	
 
-
+//Set regex validation for wach field being passed from add_edit_classroom
+var regexValidations = {
+	"roomNumber": /^[a-zA-Z0-9]*$/,
+	"classroomType": /^[0-9]$/,
+	"roomCap": /^[0-9]*$/
+	
+};
 
 $(document).on("click", ".add-edit-classroom-btn",classroomCheckForm);
 
@@ -94,12 +100,6 @@ function classroomCheckForm(e){
 	
 }
 
-//Set regex validation for wach field being passed from add_edit_classroom
-var regexValidations = {
-	"buildingId": /[0-9]$/,
-	"roomNumber": /^[a-zA-Z 0-9]*$/,
-	"classroomType": /[0-9]$/,
-	"roomCap": /(?:\d*\.)?\d+/
-};
+
 
 

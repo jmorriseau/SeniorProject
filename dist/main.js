@@ -415,7 +415,13 @@ function checkForm(e) {
         });
     });	
 
-
+//Set regex validation for wach field being passed from add_edit_classroom
+var regexValidations = {
+	"roomNumber": /^[a-zA-Z0-9]*$/,
+	"classroomType": /^[0-9]$/,
+	"roomCap": /^[0-9]*$/
+	
+};
 
 $(document).on("click", ".add-edit-classroom-btn",classroomCheckForm);
 
@@ -486,13 +492,7 @@ function classroomCheckForm(e){
 	
 }
 
-//Set regex validation for wach field being passed from add_edit_classroom
-var regexValidations = {
-	"buildingId": /[0-9]$/,
-	"roomNumber": /^[a-zA-Z 0-9]*$/,
-	"classroomType": /[0-9]$/,
-	"roomCap": /(?:\d*\.)?\d+/
-};
+
 
 
 
@@ -529,9 +529,12 @@ if(formCourse)
 
 
 //Set regexValidation for each field being passed from add_edit_building
-// var regexValidations = {
+var regexValidations = {
+    "courseName":/^[a-zA-Z 0-9]*$/,
+    "courseNumber": /^[a-zA-Z 0-9]*$/,
+    "creditHours": /^[0-9]*$/
 
-// };
+};
 
 //check form on submit
 function courseCheckForm(e) {
@@ -542,17 +545,17 @@ function courseCheckForm(e) {
 
     //for each field in the add_subject form the with the validate class, see if the field is empty or fails regex validation
     //if so set the isValid flag to false and add the error class to signify an error to the user else remove the error class
-    // $('#add_course .validate').each(function () {
-    //     //$(this).length <= 0) ||
-    //     if ($(this).val() == "" || !regexValidations[this.name].test(this.value)) {
-    //         $(this).parent().addClass('error');
-    //         console.log($(this).val());
-    //         isValid = false;
-    //     }
-    //     else {
-    //         $(this).parent().removeClass('error');
-    //     }
-    // });
+    $('#add_course .validate').each(function () {
+        //$(this).length <= 0) ||
+        if ($(this).val() == "" || !regexValidations[this.name].test(this.value)) {
+            $(this).parent().addClass('error');
+            console.log($(this).val());
+            isValid = false;
+        }
+        else {
+            $(this).parent().removeClass('error');
+        }
+    });
 
     //if the isValid flag gets set to false, alert the user else, send to php via ajax
     if (isValid == false) {
@@ -635,9 +638,12 @@ formFaculty.addEventListener('submit', checkForm);
 
 
 //Set regexValidation for each field being passed from add_edit_building
-// var regexValidations = {
-
-// };
+var regexValidations = {
+    "firstName": /^[a-zA-Z .\-\']*$/,
+    "lastName": /^[a-zA-Z .\-\']*$/,
+    "phoneNumber": /^(?:(?:\+?1\s*(?:[.-]\s*)?)?(?:\(\s*([2-9]1[02-9]|[2-9][02-8]1|[2-9][02-8][02-9])\s*\)|([2-9]1[02-9]|[2-9][02-8]1|[2-9][02-8][02-9]))\s*(?:[.-]\s*)?)?([2-9]1[02-9]|[2-9][02-9]1|[2-9][02-9]{2})\s*(?:[.-]\s*)?([0-9]{4})(?:\s*(?:#|x\.?|ext\.?|extension)\s*(\d+))?$/,
+    "email": /^[A-Za-z0-9@.]*$/
+};
 
 //check form on submit
 function checkForm(e) {
@@ -648,17 +654,17 @@ function checkForm(e) {
 
     //for each field in the add_subject form the with the validate class, see if the field is empty or fails regex validation
     //if so set the isValid flag to false and add the error class to signify an error to the user else remove the error class
-    // $('#add_faculty .validate').each(function () {
-    //     //$(this).length <= 0) ||
-    //     if ($(this).val() == "" || !regexValidations[this.name].test(this.value)) {
-    //         $(this).parent().addClass('error');
-    //         console.log($(this).val());
-    //         isValid = false;
-    //     }
-    //     else {
-    //         $(this).parent().removeClass('error');
-    //     }
-    // });
+    $('#add_faculty .validate').each(function () {
+        //$(this).length <= 0) ||
+        if ($(this).val() == "" || !regexValidations[this.name].test(this.value)) {
+            $(this).parent().addClass('error');
+            console.log($(this).val());
+            isValid = false;
+        }
+        else {
+            $(this).parent().removeClass('error');
+        }
+    });
 
     //if the isValid flag gets set to false, alert the user else, send to php via ajax
     if (isValid == false) {
@@ -739,9 +745,9 @@ formSubject.addEventListener('submit', checkForm);
 
 
 //Set regexValidation for each field being passed from add_edit_building
-// var regexValidations = {
-
-// };
+var regexValidations = {
+    "subjectName": /^[a-zA-Z0-9]*$/
+};
 
 //check form on submit
 function checkForm(e) {
@@ -752,17 +758,17 @@ function checkForm(e) {
 
     //for each field in the add_subject form the with the validate class, see if the field is empty or fails regex validation
     //if so set the isValid flag to false and add the error class to signify an error to the user else remove the error class
-    // $('#add_subject .validate').each(function () {
-    //     //$(this).length <= 0) ||
-    //     if ($(this).val() == "" || !regexValidations[this.name].test(this.value)) {
-    //         $(this).parent().addClass('error');
-    //         console.log($(this).val());
-    //         isValid = false;
-    //     }
-    //     else {
-    //         $(this).parent().removeClass('error');
-    //     }
-    // });
+    $('#add_subject .validate').each(function () {
+        //$(this).length <= 0) ||
+        if ($(this).val() == "" || !regexValidations[this.name].test(this.value)) {
+            $(this).parent().addClass('error');
+            console.log($(this).val());
+            isValid = false;
+        }
+        else {
+            $(this).parent().removeClass('error');
+        }
+    });
 
     //if the isValid flag gets set to false, alert the user else, send to php via ajax
     if (isValid == false) {
