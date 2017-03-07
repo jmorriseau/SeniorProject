@@ -68,7 +68,7 @@ function courseCheckForm(e) {
         else {
             type = "PUT";
         }
-        alert("subject is " + $("input[name=subId]").val());
+        //alert("subject is " + $("input[name=subId]").val());
         $.ajax({
             url: "php/api/CourseResource.php",
             type: type,

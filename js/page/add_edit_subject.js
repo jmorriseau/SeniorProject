@@ -67,7 +67,7 @@ function checkForm(e) {
         else {
             type = "PUT";
         }
-        alert("Type: " + type + $("input[name=subjectId]").val());
+        //alert("Type: " + type + $("input[name=subjectId]").val());
         $.ajax({
             url: "php/api/DepartmentResource.php",
             type: type,

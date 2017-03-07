@@ -132,6 +132,99 @@ if (isset($curriculum_id)){
                 } 
                 echo '</ul>';
             }
+
+             //master level
+            if($degree_id == "3"){
+                echo '<h3>Quarter 1</h3>';
+                echo '<ul>';
+                foreach($curriculums as $c){
+                    if($c[semester_number] == "1"){
+                        echo '<li class="curriculum-from-db" data-courseid="' .$c[course_id]. '">'. $c[course_name] . '</li>';
+                    }
+                }
+                echo '</ul>';
+
+                echo '<h3>Quarter 2</h3>';
+                echo '<ul>';
+                foreach($curriculums as $c){
+                    if($c[semester_number] == "2"){
+                        echo '<li class="curriculum-from-db" data-courseid="' .$c[course_id]. '">'. $c[course_name] . '</li>';
+                    }
+                } 
+                echo '</ul>';
+
+                echo '<h3>Quarter 3</h3>';
+                echo '<ul>';
+                foreach($curriculums as $c){
+                    if($c[semester_number] == "3"){
+                        echo '<li class="curriculum-from-db" data-courseid="' .$c[course_id]. '">'. $c[course_name] . '</li>';
+                    }
+                } 
+                echo '</ul>';
+
+                echo '<h3>Quarter 4</h3>';
+                echo '<ul>';
+                foreach($curriculums as $c){
+                    if($c[semester_number] == "4"){
+                        echo '<li class="curriculum-from-db" data-courseid="' .$c[course_id]. '">'. $c[course_name] . '</li>';
+                    }
+                } 
+                echo '</ul>';
+
+                echo '<h3>Quarter 5</h3>';
+                echo '<ul>';
+                foreach($curriculums as $c){
+                    if($c[semester_number] == "5"){
+                        echo '<li class="curriculum-from-db" data-courseid="' .$c[course_id]. '">'. $c[course_name] . '</li>';
+                    }
+                } 
+                echo '</ul>';
+
+                echo '<h3>Quarter 6</h3>';
+                echo '<ul>';
+                foreach($curriculums as $c){
+                    if($c[semester_number] == "6"){
+                        echo '<li class="curriculum-from-db" data-courseid="' .$c[course_id]. '">'. $c[course_name] . '</li>';
+                    }
+                } 
+                echo '</ul>';
+
+                echo '<h3>Quarter 7</h3>';
+                echo '<ul>';
+                foreach($curriculums as $c){
+                    if($c[semester_number] == "7"){
+                        echo '<li class="curriculum-from-db" data-courseid="' .$c[course_id]. '">'. $c[course_name] . '</li>';
+                    }
+                } 
+                echo '</ul>';
+
+                echo '<h3>Quarter 8</h3>';
+                echo '<ul>';
+                foreach($curriculums as $c){
+                    if($c[semester_number] == "8"){
+                        echo '<li class="curriculum-from-db" data-courseid="' .$c[course_id]. '">'. $c[course_name] . '</li>';
+                    }
+                } 
+                echo '</ul>';
+
+                echo '<h3>Quarter 9</h3>';
+                echo '<ul>';
+                foreach($curriculums as $c){
+                    if($c[semester_number] == "9"){
+                        echo '<li class="curriculum-from-db" data-courseid="' .$c[course_id]. '">'. $c[course_name] . '</li>';
+                    }
+                } 
+                echo '</ul>';
+
+                echo '<h3>Quarter 10</h3>';
+                echo '<ul>';
+                foreach($curriculums as $c){
+                    if($c[semester_number] == "10"){
+                        echo '<li class="curriculum-from-db" data-courseid="' .$c[course_id]. '">'. $c[course_name] . '</li>';
+                    }
+                } 
+                echo '</ul>';
+            }
         
     }
     else if(count($curriculums) < 1) {

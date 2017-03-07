@@ -128,7 +128,6 @@ function getProgram(){
     method:"GET",
     url: 'php/program_list.php?did=' + degreeId,
     success: function(result){
-     // console.log(result);
      $('.program-drop-down').append(result);
      $('.degree-drop-down').attr('disabled',true);
     }
@@ -143,7 +142,6 @@ function getStartDate(){
     method:"GET",
     url: 'php/start_list.php?pid=' + programId + "&did=" + degreeId,
     success: function(result){
-     // console.log(result);
      $('.start-drop-down').append(result);
      $('.program-drop-down').attr('disabled',true);
     }

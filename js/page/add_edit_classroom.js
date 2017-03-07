@@ -24,11 +24,11 @@
     });	
 
 
+
 $(document).on("click", ".add-edit-classroom-btn",classroomCheckForm);
 
 //check form on submit
 function classroomCheckForm(e){
-	alert("hello rysdklf jklsfjkl sdlfjkl sdklfjklsd klan");
 	e.preventDefault();
 	
 	//set flag to help check validation
@@ -36,15 +36,15 @@ function classroomCheckForm(e){
 	
 	//for each field in the add_edit_classroom form with the validate class, see if the field is empty or fails regex validation
 	//if so set the isValid flad to false and add the error class to signify an error to the user else remove the error class
-	// $('#add_classroom .validate').each(function(){
-	// 	if($(this).val() == "" || !regexValidations[this.name].test(this.value)){
-	// 		$(this).parent().addClass('error');
-	// 		isValid = false;
-	// 	}
-	// 	else {
-	// 		$(this).parent().removeClass('error');
-	// 	}
-	// });
+	$('#add_edit_classroom .validate').each(function(){
+		if($(this).val() == "" || !regexValidations[this.name].test(this.value)){
+			$(this).parent().addClass('error');
+			isValid = false;
+		}
+		else {
+			$(this).parent().removeClass('error');
+		}
+	});
 
 	// if the isValid flag gets set to false, alert the user else send to php via ajax
 	if(isValid == false){
@@ -58,7 +58,7 @@ function classroomCheckForm(e){
         else {
             type = "PUT";
         }
-		alert("Form is valid");
+		//alert("Form is valid");
 		$.ajax({
 			url: "php/api/ClassroomResource.php",
 			type: type,
@@ -96,10 +96,10 @@ function classroomCheckForm(e){
 
 //Set regex validation for wach field being passed from add_edit_classroom
 var regexValidations = {
-	"buildingName": /^[a-zA-Z 0-9]*$/,
+	"buildingId": /[0-9]$/,
 	"roomNumber": /^[a-zA-Z 0-9]*$/,
-	"classroomType": /^[a-zA-Z 0-9]*$/,
-	"roomCap": /^\d+$/
+	"classroomType": /[0-9]$/,
+	"roomCap": /(?:\d*\.)?\d+/
 };
 
 

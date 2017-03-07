@@ -7,7 +7,6 @@ if (isset($_GET['cid'])) {
 if(isset($_GET['bid'])) {
 	$building_id = $_GET['bid'];
 }
-echo $building_id;
 
 include('./autoload.php');
 
