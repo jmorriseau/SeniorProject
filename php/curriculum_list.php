@@ -3,6 +3,10 @@
 if(isset($_GET['cid'])){
     $curriculum_id = $_GET['cid'];
 }
+//if degree id is passed set it to a php variable
+if(isset($GET['did'])){
+    $degree_id = $_GET['did'];
+}
 
 
 include('./autoload.php');
@@ -14,11 +18,24 @@ if (isset($curriculum_id)){
     //var_dump($curriculums);
 
     if(count($curriculums) > 0){       
-        echo '<ul>';
+        
             foreach($curriculums as $c){
-                echo '<li class="curriculum-from-db" data-courseid="' .$c[course_id]. '">'. $c[course_name] . '</li>';
+                if($c[semester_number] == "1"){
+                    echo '<h3>Quarter 1</h3>';
+                    echo '<ul>';
+                    echo '<li class="curriculum-from-db" data-courseid="' .$c[course_id]. '">'. $c[course_name] . '</li>';
+                    echo '</ul>';
+                }
+                //echo '<li class="curriculum-from-db" data-courseid="' .$c[course_id]. '">'. $c[course_name] . '</li>';
+            
+            
+            
+            
+            
+            
+            
             }
-        echo '</ul>';
+        
     }
     else if(count($curriculums) < 1) {
         echo 'No results returned.';

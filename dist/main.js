@@ -156,11 +156,12 @@ function getStartDate(){
 }
 
 function getCurriculumList(){
+  var degreeId = $('.degree-drop-down').val();
   var curriculumId = $('.start-drop-down').val();
-  console.log(curriculumId);
+  console.log(curriculumId + " degree id " + degreeId);
   $.ajax({
     method: "GET",
-    url: 'php/curriculum_list.php?cid=' + curriculumId,
+    url: 'php/curriculum_list.php?cid=' + curriculumId + '&did=' + degreeId,
     success: function(result){
       $('.result-curriculum').append(result);
       $('.start-drop-down').attr('disabled',true);
@@ -269,9 +270,14 @@ $(function () {
             dataType: "JSON",
             method: "DELETE",
             success: function (data) {
-                console.log("success " + data);
+                if(data !== "" && data == 'Building Deleted'){
+                    console.log("success " + data);
                 alert('Building has been deleted.');
                 loadPage('building');
+                }
+                else{
+                    alert(data);
+                }
             }
         });
     });
@@ -368,6 +374,9 @@ function checkForm(e) {
                     alert("Building updated successfully.")
                     loadPage('building');
                 } 
+                else {
+                    alert(data);
+                }
             },
             //if ajax is unsuccessful, show response text in console
             error: function (data) {
@@ -390,9 +399,15 @@ function checkForm(e) {
             dataType: "JSON",
             method: "DELETE",
             success: function (data) {
-                console.log("success " + data);
-                alert('Classroom has been deleted.');
-                loadPage('classroom');
+				if(data !== "" && data == 'Classroom Deleted'){
+					console.log("success " + data);
+					alert('Classroom has been deleted.');
+					loadPage('classroom');
+				}
+				else {
+					alert(data);
+				}
+                
             }
         });
     });	
@@ -454,6 +469,9 @@ function classroomCheckForm(e){
 				 	alert("Classroom updated successfully.")
                 	loadPage('classroom');
 			}
+			else{
+				alert(data);
+			}
 		},
 		//if ajax is unsuccessful, show reponse test in console
 		error: function(data){
@@ -486,9 +504,14 @@ $(function () {
             dataType: "JSON",
             method: "DELETE",
             success: function (data) {
-                console.log("success " + data);
-                alert('Course has been deleted.');
-                loadPage('course');
+                if(data !== "" && data == 'Course Deleted'){
+                    console.log("success " + data);
+                    alert('Course has been deleted.');
+                    loadPage('course');
+                }
+                else{
+				    alert(data);
+			    }
             }
         });
     });
@@ -563,6 +586,9 @@ function courseCheckForm(e) {
                         alert("Course updated successfully.")
                         loadPage('course');
                 } 
+                else{
+				    alert(data);
+			    }
             },
             //if ajax is unsuccessful, show response text in console
             error: function (data) {
@@ -585,9 +611,14 @@ $(function () {
             dataType: "JSON",
             method: "DELETE",
             success: function (data) {
-                console.log("success " + data);
-                alert('Faculty has been deleted.');
-                loadPage('faculty');
+                if(data !== "" && data == 'Faculty Deleted'){
+                    console.log("success " + data);
+                    alert('Faculty has been deleted.');
+                    loadPage('faculty');
+                }
+                else {
+                    alert(data);
+                } 
             }
         });
     });
@@ -660,6 +691,9 @@ function checkForm(e) {
                         alert("Faculty updated successfully.")
                         loadPage('faculty');
                 } 
+                else {
+                    alert(data);
+                }
             },
             //if ajax is unsuccessful, show response text in console
             error: function (data) {
@@ -681,9 +715,14 @@ $(function () {
             dataType: "JSON",
             method: "DELETE",
             success: function (data) {
-                console.log("success " + data);
-                alert('Subject has been deleted.');
-                loadPage('course');
+                if(data !== "" && data == 'Department Deleted'){
+                    console.log("success " + data);
+                    alert('Subject has been deleted.');
+                    loadPage('course');
+                }
+                else {
+                    alert(data);
+                }
             }
         });
     });
@@ -753,6 +792,9 @@ function checkForm(e) {
                         alert("Subject updated successfully.")
                         loadPage('course');
                 } 
+                else {
+                    alert(data);
+                }
             },
             //if ajax is unsuccessful, show response text in console
             error: function (data) {
