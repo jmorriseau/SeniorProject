@@ -9,9 +9,14 @@ $(function () {
             dataType: "JSON",
             method: "DELETE",
             success: function (data) {
-                console.log("success " + data);
-                alert('Subject has been deleted.');
-                loadPage('course');
+                if(data !== "" && data == 'Department Deleted'){
+                    console.log("success " + data);
+                    alert('Subject has been deleted.');
+                    loadPage('course');
+                }
+                else {
+                    alert(data);
+                }
             }
         });
     });
@@ -81,6 +86,9 @@ function checkForm(e) {
                         alert("Subject updated successfully.")
                         loadPage('course');
                 } 
+                else {
+                    alert(data);
+                }
             },
             //if ajax is unsuccessful, show response text in console
             error: function (data) {

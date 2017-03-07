@@ -14,6 +14,7 @@ include('./autoload.php');
 </h1>
 </div>
 <hr/>
+<span class="fa fa-times pull-right" onclick="loadPage('curriculum')"></span>
 
 <div class="curriculum-container content-container">
 

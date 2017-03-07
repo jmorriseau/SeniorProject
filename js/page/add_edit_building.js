@@ -9,9 +9,14 @@ $(function () {
             dataType: "JSON",
             method: "DELETE",
             success: function (data) {
-                console.log("success " + data);
+                if(data !== "" && data == 'Building Deleted'){
+                    console.log("success " + data);
                 alert('Building has been deleted.');
                 loadPage('building');
+                }
+                else{
+                    alert(data);
+                }
             }
         });
     });
@@ -108,6 +113,9 @@ function checkForm(e) {
                     alert("Building updated successfully.")
                     loadPage('building');
                 } 
+                else {
+                    alert(data);
+                }
             },
             //if ajax is unsuccessful, show response text in console
             error: function (data) {

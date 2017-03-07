@@ -10,9 +10,15 @@
             dataType: "JSON",
             method: "DELETE",
             success: function (data) {
-                console.log("success " + data);
-                alert('Classroom has been deleted.');
-                loadPage('classroom');
+				if(data !== "" && data == 'Classroom Deleted'){
+					console.log("success " + data);
+					alert('Classroom has been deleted.');
+					loadPage('classroom');
+				}
+				else {
+					alert(data);
+				}
+                
             }
         });
     });	
@@ -73,6 +79,9 @@ function classroomCheckForm(e){
 			else if(data !== "" && data == 'Classroom Updated'){
 				 	alert("Classroom updated successfully.")
                 	loadPage('classroom');
+			}
+			else{
+				alert(data);
 			}
 		},
 		//if ajax is unsuccessful, show reponse test in console
