@@ -3,14 +3,15 @@ include('./autoload.php');
 
 $db = new DAO();
 $faculty = array();
-$count = array();
+
+$faculty = $db->sql("SELECT * FROM Faculty ORDER BY last_name");
+/*$count = array();
 $id_key = array();
 $holder = array();
 $enrol_total = array();
 //$count['test'] = 1;
-$faculty = $db->sql("SELECT * FROM Faculty ORDER BY last_name");
 
-/*$enrollment = $db->sql("SELECT course_id FROM Enrollment");
+$enrollment = $db->sql("SELECT course_id FROM Enrollment");
 
 foreach ($enrollment as $header => $value) {
   $i = 0;

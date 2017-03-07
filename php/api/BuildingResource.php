@@ -37,10 +37,11 @@ switch($_SERVER['REQUEST_METHOD']){
     $data['city'] = $_POST['city'];
     $data['state'] = $_POST['state'];
     $data['zip'] = $_POST['zip'];
-    //if(dataCheck($data)){
+    $check = dataCheck($data);
+    if($check === true){
       $message = buildingResourceRun('POST', NULL, $data, $dbc);
-    //}
-    //else{ $message = "Data not in correct format";}
+    }
+    else{ $message = $check;}
     break;
 
   case 'PUT':
@@ -53,10 +54,11 @@ switch($_SERVER['REQUEST_METHOD']){
     $data['state'] = $put['state'];
     $data['zip'] = trim($put['zip']);
     $id = $put['id'];
-    //if(dataCheck($data)){
+    $check = dataCheck($data);
+    if($check === true){
       $message = buildingResourceRun('PUT', $id, $data, $dbc);
-    //}
-    //else{ $message = "Data not in correct format";}
+    }
+    else{ $message = $check;}
     break;
 
   case 'DELETE':
@@ -202,7 +204,7 @@ function dataCheck($data) {
     if ($data['building_name'] === '' ){
         $errors[] = 'No Building Name ';
     } else {
-      if(preg_match('/^[a-zA-Z 0-9]*$/', $data['building_name'])){
+      if(preg_match('/^[a-zA-Z 0-9 /]*$/', $data['building_name'])){
       } else {
         $errors[] = 'Building Name in the wrong format';
       }
@@ -246,7 +248,11 @@ function dataCheck($data) {
 
     if (count($errors) > 0)
     {
-        throw exception('Errors found');
+      $message = 'ERRORS: ';
+      foreach($errors as $error){
+        $message = $message . $error . ' ';
+      }
+      return $message;
     }
     else{
         return true;

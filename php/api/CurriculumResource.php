@@ -34,10 +34,11 @@ switch($_SERVER['REQUEST_METHOD']){
     $data['degree_type_id'] = $_POST['degreeTypeId'];
     $data['start_term'] = $_POST['startTerm'];
     $data['end_term'] = $_POST['endTerm'];
-    //if(dataCheck($data)){
+    $check = dataCheck($data);
+    if($check === true){
       $message = curriculumResourceRun('POST', NULL, $data, $dbc);
-    //}
-    //else{ $message = "Data not in correct format";}
+    }
+    else{ $message = $check;}
     break;
 
   case 'PUT':
@@ -48,10 +49,11 @@ switch($_SERVER['REQUEST_METHOD']){
     $data['start_term'] = $put['startTerm'];
     $data['end_term'] = $put['endTerm'];
     $id = $put['id'];
-    //if(dataCheck($data)){
+    $check = dataCheck($data);
+    if($check === true){
       $message = curriculumResourceRun('PUT', $id, $data, $dbc);
-    //}
-    //else{ $message = "Data not in correct format";}
+    }
+    else{ $message = $check;}
     break;
 
   case 'DELETE':
@@ -218,7 +220,11 @@ function dataCheck($data) {
     }
     if (count($errors) > 0)
     {
-        throw new Exception('Form not fully filled');
+      $message = 'ERRORS: ';
+      foreach($errors as $error){
+        $message = $message . $error . ' ';
+      }
+      return $message;
     }
     else{
         return true;

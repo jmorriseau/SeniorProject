@@ -30,20 +30,22 @@
 
    case 'POST':
      $data['department_name'] = $_POST['subjectName'];
-     //if(dataCheck($data)){
+     $check = dataCheck($data);
+     if($check === true){
        $message = departmentResourceRun('POST', NULL, $data, $dbc);
-     //}
-     //else{ $message = "Data not in correct format";}
+     }
+     else{ $message = $check;}
      break;
 
    case 'PUT':
     parse_str(file_get_contents('php://input'), $put);
     $data['department_name'] = $put['subjectName'];
      $id = $put['id'];
-     //if(dataCheck($data)){
+     $check = dataCheck($data);
+     if($check === true){
        $message = departmentResourceRun('PUT', $id, $data, $dbc);
-     //}
-     //else{ $message = "Data not in correct format";}
+     }
+     else{ $message = $check;}
      break;
 
    case 'DELETE':
@@ -173,7 +175,11 @@
         }
         if (count($errors) > 0)
         {
-            throw new Exception('Form not fully filled');
+          $message = 'ERRORS: ';
+          foreach($errors as $error){
+            $message = $message . $error . ' ';
+          }
+          return $message;
         }
         else{
             return true;

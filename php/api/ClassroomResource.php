@@ -31,20 +31,15 @@ switch($_SERVER['REQUEST_METHOD']){
  case 'POST':
 
    $data['building_id'] = $_POST['buildingId'];
-<<<<<<< HEAD
+
    $data['class_number'] = $_POST['roomNumber'];
    $data['room_type_id'] = $_POST['classroomTypeId'];
    $data['capacity'] = $_POST['roomCap'];
-   //if(dataCheck($data)){
-=======
-   $data['class_number'] = $_POST['classNumber'];
-   $data['room_type_id'] = $_POST['roomTypeId'];
-   $data['capacity'] = $_POST['capacity'];
-   if(dataCheck($data)){
->>>>>>> 741783c3eefcfda3075529f9f47c49280f58f9e5
+   $check = dataCheck($data);
+   if($check === true){
      $message = classroomResourceRun('POST', NULL, $data, $dbc);
-   //}
-   //else{ $message = "Data not in correct format";}
+   }
+   else{ $message = $check;}
    break;
 
  case 'PUT':
@@ -55,10 +50,12 @@ switch($_SERVER['REQUEST_METHOD']){
    $data['capacity'] = $put['capacity'];
    $id = $put['id'];
    //echo "<script>console.log( 'Debug Objects: " . $data['building_id'] . '\t' . $data['room_type_id'] . '\t' . $data['class_number'] . '\t' . $data['capacity'] . '\t'. "' );</script>";
-   //if(dataCheck($data)){
+   $check = dataCheck($data);
+   echo "<script>console.log( 'Debug Objects: " . $check . "' );</script>";
+   if($check === true){
      $message = classroomResourceRun('PUT', $id, $data, $dbc);
-   //}
-   //else{ $message = "Data not in correct format";}
+   }
+   else{ $message = $check;}
    break;
 
  case 'DELETE':
@@ -214,7 +211,14 @@ function dataCheck($data) {
     }
     if (count($errors) > 0)
     {
-        throw new Exception('Form not fully filled');
+        $message = 'ERRORS: ';
+        foreach($errors as $error){
+          $message = $message . $error . ' ';
+        }
+
+        echo "<script>console.log( 'Debug Objects: " . $message . "' );</script>";
+
+        return $message;
     }
     else{
         return true;

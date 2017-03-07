@@ -35,10 +35,11 @@
      $data['credit_hours'] = $_POST['creditHours'];
      $data['semester_number'] = $_POST['semesterNumber'];
      $data['departments_id'] = $_POST['departmentsId'];
-     //if(dataCheck($data)){
+     $check = dataCheck($data);
+     if($check === true){
        $message = courseResourceRun('POST', NULL, $data, $dbc);
-     //}
-     //else{ $message = "Data not in correct format";}
+     }
+     else{ $message = $check;}
      break;
 
    case 'PUT':
@@ -49,10 +50,11 @@
     $data['semester_number'] = $put['semesterNumber'];
     $data['departments_id'] = $put['departmentsId'];
     $id = $put['id'];
-    //if(dataCheck($data)){
+    $check = dataCheck($data);
+    if($check === true){
       $message = courseResourceRun('PUT', $id, $data, $dbc);
-    //}
-    //else{ $message = "Data not in correct format";}
+    }
+    else{ $message = $check;}
     break;
 
    case 'DELETE':
@@ -223,8 +225,11 @@ function dataCheck($data) {
 
     if (count($errors) > 0)
     {
-        throw new Exception('Form not fully filled');
-        return false;
+      $message = 'ERRORS: ';
+      foreach($errors as $error){
+        $message = $message . $error . ' ';
+      }
+      return $message;
     }
     else{
         return true;

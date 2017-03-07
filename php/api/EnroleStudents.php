@@ -28,6 +28,45 @@
   }
 
   function createClasses($dbc){
-      $enrollment = $dbc->sql("SELECT * FROM Enrollment");
+    $count = array();
+    $id_key = array();
+    $holder = array();
+    $enrol_total = array();
+    //$count['test'] = 1;
+
+    /*$enrollment = $db->sql("SELECT course_id FROM Enrollment");
+
+    foreach ($enrollment as $header => $value) {
+      $i = 0;
+      foreach ($enrollment as $value => $thing) {
+        $cid = $thing['course_id'] ;
+        $holder[$i] = $cid;
+        $i++;
+        }
+    }
+    $ie = 0;
+    foreach($holder as $cur_val){
+
+      if(array_key_exists($cur_val, $count) === true){
+        $count[$cur_val] = $count[$cur_val] + 1;
+      }
+      else {
+        $count[$cur_val] = 1;
+        $id_key[$ie] = $cur_val;
+      }
+      $ie++;
+    }
+
+    $if = 0;
+    foreach($count as $total){
+
+    }
+
+    //array_multisort($count, SORT_DESC);
+
+    var_dump($count);
+    echo "\n\n -------------------------------------------------------------------------";
+    var_dump($id_key);
+    */
   }
 ?>
