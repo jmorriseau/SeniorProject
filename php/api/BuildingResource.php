@@ -204,7 +204,7 @@ function dataCheck($data) {
     if ($data['building_name'] === '' ){
         $errors[] = 'No Building Name ';
     } else {
-      if(preg_match('/^[a-zA-Z 0-9 /]*$/', $data['building_name'])){
+      if(preg_match('/^[a-zA-Z 0-9]*$/', $data['building_name'])){
       } else {
         $errors[] = 'Building Name in the wrong format';
       }
