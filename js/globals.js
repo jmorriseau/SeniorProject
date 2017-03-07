@@ -156,7 +156,7 @@ function getCurriculumList(){
   console.log(curriculumId + " degree id " + degreeId);
   $.ajax({
     method: "GET",
-    url: 'php/curriculum_list.php?cid=' + curriculumId + '&did=' + degreeId,
+    url: 'php/curriculum_list.php?cid=' + curriculumId + "&did=" + degreeId,
     success: function(result){
       $('.result-curriculum').append(result);
       $('.start-drop-down').attr('disabled',true);
