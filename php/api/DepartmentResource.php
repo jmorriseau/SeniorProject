@@ -30,20 +30,22 @@
 
    case 'POST':
      $data['department_name'] = $_POST['subjectName'];
-     if(dataCheck($data)){
+     $check = dataCheck($data);
+     if($check === true){
        $message = departmentResourceRun('POST', NULL, $data, $dbc);
      }
-     else{ $message = "Data not in correct format";}
+     else{ $message = $check;}
      break;
 
    case 'PUT':
     parse_str(file_get_contents('php://input'), $put);
     $data['department_name'] = $put['subjectName'];
      $id = $put['id'];
-     if(dataCheck($data)){
+     $check = dataCheck($data);
+     if($check === true){
        $message = departmentResourceRun('PUT', $id, $data, $dbc);
      }
-     else{ $message = "Data not in correct format";}
+     else{ $message = $check;}
      break;
 
    case 'DELETE':
@@ -166,14 +168,18 @@
         if ($data['department_name'] === '' ){
             $errors[] = 'No Department Name ';
         } else {
-          if(preg_match('/^[a-zA-Z 0-9]*$/', $data['department_name'])){ 
+          if(preg_match('/^[a-zA-Z 0-9]*$/', $data['department_name'])){
           } else {
             $errors[] = 'Department Name in the wrong format';
           }
         }
         if (count($errors) > 0)
         {
-            throw new Exception('Form not fully filled');
+          $message = 'ERRORS: ';
+          foreach($errors as $error){
+            $message = $message . $error . ' ';
+          }
+          return $message;
         }
         else{
             return true;
