@@ -49,9 +49,7 @@ switch($_SERVER['REQUEST_METHOD']){
    $data['class_number'] = $put['classNumber'];
    $data['capacity'] = $put['capacity'];
    $id = $put['id'];
-   //echo "<script>console.log( 'Debug Objects: " . $data['building_id'] . '\t' . $data['room_type_id'] . '\t' . $data['class_number'] . '\t' . $data['capacity'] . '\t'. "' );</script>";
    $check = dataCheck($data);
-   echo "<script>console.log( 'Debug Objects: " . $check . "' );</script>";
    if($check === true){
      $message = classroomResourceRun('PUT', $id, $data, $dbc);
    }
@@ -215,9 +213,6 @@ function dataCheck($data) {
         foreach($errors as $error){
           $message = $message . $error . ' ';
         }
-
-        echo "<script>console.log( 'Debug Objects: " . $message . "' );</script>";
-
         return $message;
     }
     else{
