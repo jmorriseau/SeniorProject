@@ -31,7 +31,7 @@ formFaculty.addEventListener('submit', checkForm);
 
 
 //Set regexValidation for each field being passed from add_edit_building
-var regexValidations = {
+var facultyRegexValidations = {
     "firstName": /^[a-zA-Z .\-\']*$/,
     "lastName": /^[a-zA-Z .\-\']*$/,
     "phoneNumber": /^(?:(?:\+?1\s*(?:[.-]\s*)?)?(?:\(\s*([2-9]1[02-9]|[2-9][02-8]1|[2-9][02-8][02-9])\s*\)|([2-9]1[02-9]|[2-9][02-8]1|[2-9][02-8][02-9]))\s*(?:[.-]\s*)?)?([2-9]1[02-9]|[2-9][02-9]1|[2-9][02-9]{2})\s*(?:[.-]\s*)?([0-9]{4})(?:\s*(?:#|x\.?|ext\.?|extension)\s*(\d+))?$/,
@@ -49,7 +49,7 @@ function checkForm(e) {
     //if so set the isValid flag to false and add the error class to signify an error to the user else remove the error class
     $('#add_faculty .validate').each(function () {
         //$(this).length <= 0) ||
-        if ($(this).val() == "" || !regexValidations[this.name].test(this.value)) {
+        if ($(this).val() == "" || !facultyRegexValidations[this.name].test(this.value)) {
             $(this).parent().addClass('error');
             console.log($(this).val());
             isValid = false;

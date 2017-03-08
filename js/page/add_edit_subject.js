@@ -30,7 +30,7 @@ formSubject.addEventListener('submit', checkForm);
 
 
 //Set regexValidation for each field being passed from add_edit_building
-var regexValidations = {
+var subjectRegexValidations = {
     "subjectName": /^[a-zA-Z0-9]*$/
 };
 
@@ -45,7 +45,7 @@ function checkForm(e) {
     //if so set the isValid flag to false and add the error class to signify an error to the user else remove the error class
     $('#add_subject .validate').each(function () {
         //$(this).length <= 0) ||
-        if ($(this).val() == "" || !regexValidations[this.name].test(this.value)) {
+        if ($(this).val() == "" || !subjectRegexValidations[this.name].test(this.value)) {
             $(this).parent().addClass('error');
             console.log($(this).val());
             isValid = false;

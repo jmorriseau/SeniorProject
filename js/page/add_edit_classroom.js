@@ -24,9 +24,8 @@
     });	
 
 //Set regex validation for wach field being passed from add_edit_classroom
-var regexValidations = {
+var classroomRegexValidations = {
 	"roomNumber": /^[a-zA-Z0-9]*$/,
-	"classroomType": /^[0-9]$/,
 	"roomCap": /^[0-9]*$/
 	
 };
@@ -43,7 +42,10 @@ function classroomCheckForm(e){
 	//for each field in the add_edit_classroom form with the validate class, see if the field is empty or fails regex validation
 	//if so set the isValid flad to false and add the error class to signify an error to the user else remove the error class
 	$('#add_edit_classroom .validate').each(function(){
-		if($(this).val() == "" || !regexValidations[this.name].test(this.value)){
+		console.log($(this).val());
+		console.log(this.name);
+		console.log(classroomRegexValidations);
+		if($(this).val() == "" || !classroomRegexValidations[this.name].test($(this).val())){
 			$(this).parent().addClass('error');
 			isValid = false;
 		}
@@ -99,7 +101,6 @@ function classroomCheckForm(e){
 	
 	
 }
-
 
 
 
