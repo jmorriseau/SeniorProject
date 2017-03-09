@@ -312,10 +312,10 @@ function checkForm(e) {
 
     console.log(e.target);
 
-    var ryanIsCute = this;
+    var specificForm = this;
 
-    ryanIsCute.isValid = true;
-    console.log("Value :" + ryanIsCute.isValid + " before the loop");
+    specificForm.isValid = true;
+    console.log("Value :" + specificForm.isValid + " before the loop");
     //if address two has a value, add the validator class, if not, remove the validator class
     if ($.trim($("input[name=addressLine2]").val()) != "") {
         $("input[name=addressLine2]").addClass('validate');
@@ -332,19 +332,19 @@ function checkForm(e) {
             $(this).parent().addClass('error');
             console.log($(this).val());
             
-        ryanIsCute.isValid = false;
-            console.log("Value is : " + ryanIsCute.isValid + " in the error loop");
+        specificForm.isValid = false;
+            console.log("Value is : " + specificForm.isValid + " in the error loop");
         }
         else {
             $(this).parent().removeClass('error');
             console.log($(this).val());
-            console.log("Value is : " +ryanIsCute.isValid + " in the remove error loop");
+            console.log("Value is : " +specificForm.isValid + " in the remove error loop");
         }
     });
 
     console.log("Value is :" +this.isValid + " after the loop");
     //if the isValid flag gets set to false, alert the user else, send to php via ajax
-    if (ryanIsCute.isValid == false) {
+    if (specificForm.isValid == false) {
         alert("Please correct all fields.");
     }
     else {
@@ -425,7 +425,8 @@ var classroomRegexValidations = {
 	
 };
 
-$(document).on("click", ".add-edit-classroom-btn",classroomCheckForm);
+
+
 
 //check form on submit
 function classroomCheckForm(e){

@@ -30,7 +30,8 @@ var classroomRegexValidations = {
 	
 };
 
-$(document).on("click", ".add-edit-classroom-btn",classroomCheckForm);
+
+
 
 //check form on submit
 function classroomCheckForm(e){

@@ -28,7 +28,7 @@ $db = new DAO();
 <hr/>
 
 <div class="form-container edit-classroom-container">
-	<form id="add_edit_classroom">
+	<form id="add_edit_classroom" onsubmit="classroomCheckForm(event)">
 
 			<input type="hidden" name="buildingId" value="<?php if(isset($classroom[0]['building_id'])){echo $classroom[0]['building_id'];}else{echo $building_id;}?>"/>
 
