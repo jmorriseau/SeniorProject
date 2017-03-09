@@ -155,7 +155,7 @@ function delete($id,$db) {
     //Delete uses a statment written to delete from the db where the id matches the one located in the endpoint.
     $db->sql("DELETE FROM Class_Attribute_Relation WHERE class_attr_relation_id = '".$id."';");
 
-    if($db->sql("select * from Class_Attribute_Relation where class_attr_relation_id ='".$id."';").length == 0)
+    if(sizeof($db->sql("select * from Class_Attribute_Relation where class_attr_relation_id ='".$id."';")) == 0)
     {
       return "Classroom Attribute Deleted";
     }  else {

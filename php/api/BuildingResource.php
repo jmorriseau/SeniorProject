@@ -169,9 +169,14 @@ function put($id,$data,$db)
 }
 function delete($id,$db) {
     //Delete uses a statment written to delete from the db where the id matches the one located in the endpoint.
+    if(sizeof($db->sql("SELECT * from Classroom where building_id ='".$id."';")) > 0)
+    {
+      $db->sql("DELETE from Classroom where building_id = '".$id."';");
+    }
+
     $db->sql("DELETE FROM Building WHERE building_id = '".$id."';");
 
-    if($db->sql("select * from Building where building_id ='".$id."';").length == 0)
+    if(sizeof($db->sql("select * from Building where building_id ='".$id."';")) == 0)
     {
       return "Building Deleted";
     }  else {

@@ -413,16 +413,16 @@ function checkForm(e) {
 				else {
 					alert(data);
 				}
-                
+
             }
         });
-    });	
+    });
 
 //Set regex validation for wach field being passed from add_edit_classroom
 var classroomRegexValidations = {
 	"roomNumber": /^[a-zA-Z0-9]*$/,
 	"roomCap": /^[0-9]*$/
-	
+
 };
 
 
@@ -431,10 +431,10 @@ var classroomRegexValidations = {
 //check form on submit
 function classroomCheckForm(e){
 	e.preventDefault();
-	
+
 	//set flag to help check validation
 	var isValid = true;
-	
+
 	//for each field in the add_edit_classroom form with the validate class, see if the field is empty or fails regex validation
 	//if so set the isValid flad to false and add the error class to signify an error to the user else remove the error class
 	$('#add_edit_classroom .validate').each(function(){
@@ -494,12 +494,7 @@ function classroomCheckForm(e){
 		}
 		});
 	}
-	
-	
 }
-
-
-
 
 $(function () {
 //    if delete course button is clicked run ajax to delete course

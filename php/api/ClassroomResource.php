@@ -29,12 +29,10 @@ switch($_SERVER['REQUEST_METHOD']){
    break;
 
  case 'POST':
-
    $data['building_id'] = $_POST['buildingId'];
-
-   $data['class_number'] = $_POST['roomNumber'];
-   $data['room_type_id'] = $_POST['classroomTypeId'];
-   $data['capacity'] = $_POST['roomCap'];
+   $data['class_number'] = $_POST['classNumber'];
+   $data['room_type_id'] = $_POST['roomTypeId'];
+   $data['capacity'] = $_POST['capacity'];
    $check = dataCheck($data);
    if($check === true){
      $message = classroomResourceRun('POST', NULL, $data, $dbc);
@@ -161,9 +159,19 @@ function put($id,$data,$db)
 
 function delete($id,$db) {
     //Delete uses a statment written to delete from the db where the id matches the one located in the endpoint.
+    if(sizeof($db->sql("SELECT * from Class_Attribute_Relation where classroom_id ='".$id."';")) > 0)
+    {
+      $db->sql("DELETE from Class_Attribute_Relation where classroom_id = '".$id."';");
+    }
+
+    if(sizeof($db->sql("SELECT * from Class where classroom_id ='".$id."';")) > 0)
+    {
+      $db->sql("DELETE from Class where classroom_id = '".$id."';");
+    }
+
     $db->sql("DELETE FROM Classroom WHERE classroom_id = '".$id."';");
 
-    if($db->sql("select * from Classroom where classroom_id ='".$id."';").length == 0)
+    if(sizeof($db->sql("select * from Classroom where classroom_id ='".$id."';")) == 0)
     {
       return "Classroom Deleted";
     }  else {

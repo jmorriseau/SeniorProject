@@ -161,11 +161,27 @@
         }
     }
 
-     function delete($id,$db) {
+     function delete($id, $db) {
         //Delete uses a statment written to delete from the db where the id matches the one located in the endpoint.
+
+        if(sizeof($db->sql("SELECT * from Faculty_User_Relation where faculty_id ='".$id."';")) > 0)
+        {
+          $db->sql("DELETE from Faculty_User_Relation where faculty_id = '".$id."';");
+        }
+
+        if(sizeof($db->sql("SELECT * from Faculty_Dept_Relation where faculty_id ='".$id."';")) > 0)
+        {
+          $db->sql("DELETE from Faculty_Dept_Relation where faculty_id = '".$id."';");
+        }
+
+        if(sizeof($db->sql("SELECT * from Class where faculty_id ='".$id."';")) > 0)
+        {
+          $db->sql("DELETE from Class where faculty_id = '".$id."';");
+        }
+
         $db->sql("DELETE FROM Faculty WHERE faculty_id = '".$id."';");
 
-        if($db->sql("SELECT * from Faculty where faculty_id ='".$id."';").length == 0)
+        if(sizeof($db->sql("SELECT * from Faculty where faculty_id ='".$id."';")) == 0)
         {
           return "Faculty Deleted";
         }  else {
