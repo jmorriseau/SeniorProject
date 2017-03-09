@@ -294,7 +294,7 @@ formBuildings[2].addEventListener('submit', checkForm);
 
 
 //Set regexValidation for each field being passed from add_edit_building
-var regexValidations = {
+var buildingRegexValidations = {
     "buildingName": /^[a-zA-Z 0-9]*$/,
     "campusName": /^[a-zA-Z 0-9]/,
     "addressLine1": /^\d{1,6}\040([A-Z]{1}[a-z]{1,}\040[A-Z]{1}[a-z]{1,})$|^\d{1,6}\040([A-Z]{1}[a-z]{1,}\040[A-Z]{1}[a-z]{1,}\040[A-Z]{1}[a-z]{1,})$|^\d{1,6}\040([A-Z]{1}[a-z]{1,}\040[A-Z]{1}[a-z]{1,}\040[A-Z]{1}[a-z]{1,}\040[A-Z]{1}[a-z]{1,})$/,
@@ -304,15 +304,18 @@ var regexValidations = {
     "zip": /\b\d{5}(?:-\d{4})?\b/
 };
 
-//set flag to help check validation
-    var isValid = true;
+
 
 //check form on submit
 function checkForm(e) {
     e.preventDefault();
 
-    isValid = true;
-    console.log("Value :" + isValid + " before the loop");
+    console.log(e.target);
+
+    var ryanIsCute = this;
+
+    ryanIsCute.isValid = true;
+    console.log("Value :" + ryanIsCute.isValid + " before the loop");
     //if address two has a value, add the validator class, if not, remove the validator class
     if ($.trim($("input[name=addressLine2]").val()) != "") {
         $("input[name=addressLine2]").addClass('validate');
@@ -323,25 +326,25 @@ function checkForm(e) {
 
     //for each field in the add_edit_building form the with the validate class, see if the field is empty or fails regex validation
     //if so set the isValid flag to false and add the error class to signify an error to the user else remove the error class
-    // $('#add_edit_building .validate').each(function () {
-    //     //$(this).length <= 0) ||
-    //     if ($(this).val() == "" || !regexValidations[this.name].test(this.value)) {
-    //         $(this).parent().addClass('error');
-    //         console.log($(this).val());
+    $(e.target).find('.validate').each(function () {
+        //$(this).length <= 0) ||
+        if ($(this).val() == "" || !buildingRegexValidations[this.name].test(this.value)) {
+            $(this).parent().addClass('error');
+            console.log($(this).val());
             
-    //         isValid = false;
-    //         console.log("Value is : " + isValid + " in the error loop");
-    //     }
-    //     else {
-    //         $(this).parent().removeClass('error');
-    //         console.log($(this).val());
-    //         console.log("Value is : " +isValid + " in the remove error loop");
-    //     }
-    // });
+        ryanIsCute.isValid = false;
+            console.log("Value is : " + ryanIsCute.isValid + " in the error loop");
+        }
+        else {
+            $(this).parent().removeClass('error');
+            console.log($(this).val());
+            console.log("Value is : " +ryanIsCute.isValid + " in the remove error loop");
+        }
+    });
 
-    console.log("Value is :" +isValid + " after the loop");
+    console.log("Value is :" +this.isValid + " after the loop");
     //if the isValid flag gets set to false, alert the user else, send to php via ajax
-    if (isValid == false) {
+    if (ryanIsCute.isValid == false) {
         alert("Please correct all fields.");
     }
     else {
@@ -416,9 +419,8 @@ function checkForm(e) {
     });
 
 //Set regex validation for wach field being passed from add_edit_classroom
-var regexValidations = {
+var classroomRegexValidations = {
 	"roomNumber": /^[a-zA-Z0-9]*$/,
-	"classroomType": /^[0-9]$/,
 	"roomCap": /^[0-9]*$/
 
 };
@@ -435,7 +437,10 @@ function classroomCheckForm(e){
 	//for each field in the add_edit_classroom form with the validate class, see if the field is empty or fails regex validation
 	//if so set the isValid flad to false and add the error class to signify an error to the user else remove the error class
 	$('#add_edit_classroom .validate').each(function(){
-		if($(this).val() == "" || !regexValidations[this.name].test(this.value)){
+		console.log($(this).val());
+		console.log(this.name);
+		console.log(classroomRegexValidations);
+		if($(this).val() == "" || !classroomRegexValidations[this.name].test($(this).val())){
 			$(this).parent().addClass('error');
 			isValid = false;
 		}
@@ -488,8 +493,6 @@ function classroomCheckForm(e){
 		}
 		});
 	}
-
-
 }
 
 $(function () {
@@ -516,16 +519,14 @@ $(function () {
     });
 });
 
-
+console.log("here in form course");
 var formCourse = document.querySelector('#add_course');
 
 if(formCourse) 
     formCourse.addEventListener('submit', courseCheckForm);
 
-
-
 //Set regexValidation for each field being passed from add_edit_building
-var regexValidations = {
+var courseRegexValidations = {
     "courseName":/^[a-zA-Z 0-9]*$/,
     "courseNumber": /^[a-zA-Z 0-9]*$/,
     "creditHours": /^[0-9]*$/
@@ -535,7 +536,7 @@ var regexValidations = {
 //check form on submit
 function courseCheckForm(e) {
     e.preventDefault();
-
+    console.log("in the check form for course");
     //set flag to help check validation
     var isValid = true;
 
@@ -543,7 +544,7 @@ function courseCheckForm(e) {
     //if so set the isValid flag to false and add the error class to signify an error to the user else remove the error class
     $('#add_course .validate').each(function () {
         //$(this).length <= 0) ||
-        if ($(this).val() == "" || !regexValidations[this.name].test(this.value)) {
+        if ($(this).val() == "" || !courseRegexValidations[this.name].test(this.value)) {
             $(this).parent().addClass('error');
             console.log($(this).val());
             isValid = false;
@@ -634,7 +635,7 @@ formFaculty.addEventListener('submit', checkForm);
 
 
 //Set regexValidation for each field being passed from add_edit_building
-var regexValidations = {
+var facultyRegexValidations = {
     "firstName": /^[a-zA-Z .\-\']*$/,
     "lastName": /^[a-zA-Z .\-\']*$/,
     "phoneNumber": /^(?:(?:\+?1\s*(?:[.-]\s*)?)?(?:\(\s*([2-9]1[02-9]|[2-9][02-8]1|[2-9][02-8][02-9])\s*\)|([2-9]1[02-9]|[2-9][02-8]1|[2-9][02-8][02-9]))\s*(?:[.-]\s*)?)?([2-9]1[02-9]|[2-9][02-9]1|[2-9][02-9]{2})\s*(?:[.-]\s*)?([0-9]{4})(?:\s*(?:#|x\.?|ext\.?|extension)\s*(\d+))?$/,
@@ -652,7 +653,7 @@ function checkForm(e) {
     //if so set the isValid flag to false and add the error class to signify an error to the user else remove the error class
     $('#add_faculty .validate').each(function () {
         //$(this).length <= 0) ||
-        if ($(this).val() == "" || !regexValidations[this.name].test(this.value)) {
+        if ($(this).val() == "" || !facultyRegexValidations[this.name].test(this.value)) {
             $(this).parent().addClass('error');
             console.log($(this).val());
             isValid = false;
@@ -741,7 +742,7 @@ formSubject.addEventListener('submit', checkForm);
 
 
 //Set regexValidation for each field being passed from add_edit_building
-var regexValidations = {
+var subjectRegexValidations = {
     "subjectName": /^[a-zA-Z0-9]*$/
 };
 
@@ -756,7 +757,7 @@ function checkForm(e) {
     //if so set the isValid flag to false and add the error class to signify an error to the user else remove the error class
     $('#add_subject .validate').each(function () {
         //$(this).length <= 0) ||
-        if ($(this).val() == "" || !regexValidations[this.name].test(this.value)) {
+        if ($(this).val() == "" || !subjectRegexValidations[this.name].test(this.value)) {
             $(this).parent().addClass('error');
             console.log($(this).val());
             isValid = false;

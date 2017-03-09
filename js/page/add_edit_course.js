@@ -22,16 +22,14 @@ $(function () {
     });
 });
 
-
+console.log("here in form course");
 var formCourse = document.querySelector('#add_course');
 
 if(formCourse) 
     formCourse.addEventListener('submit', courseCheckForm);
 
-
-
 //Set regexValidation for each field being passed from add_edit_building
-var regexValidations = {
+var courseRegexValidations = {
     "courseName":/^[a-zA-Z 0-9]*$/,
     "courseNumber": /^[a-zA-Z 0-9]*$/,
     "creditHours": /^[0-9]*$/
@@ -41,7 +39,7 @@ var regexValidations = {
 //check form on submit
 function courseCheckForm(e) {
     e.preventDefault();
-
+    console.log("in the check form for course");
     //set flag to help check validation
     var isValid = true;
 
@@ -49,7 +47,7 @@ function courseCheckForm(e) {
     //if so set the isValid flag to false and add the error class to signify an error to the user else remove the error class
     $('#add_course .validate').each(function () {
         //$(this).length <= 0) ||
-        if ($(this).val() == "" || !regexValidations[this.name].test(this.value)) {
+        if ($(this).val() == "" || !courseRegexValidations[this.name].test(this.value)) {
             $(this).parent().addClass('error');
             console.log($(this).val());
             isValid = false;

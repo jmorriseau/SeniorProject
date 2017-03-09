@@ -29,12 +29,10 @@ switch($_SERVER['REQUEST_METHOD']){
    break;
 
  case 'POST':
-
    $data['building_id'] = $_POST['buildingId'];
-
-   $data['class_number'] = $_POST['roomNumber'];
-   $data['room_type_id'] = $_POST['classroomTypeId'];
-   $data['capacity'] = $_POST['roomCap'];
+   $data['class_number'] = $_POST['classNumber'];
+   $data['room_type_id'] = $_POST['roomTypeId'];
+   $data['capacity'] = $_POST['capacity'];
    $check = dataCheck($data);
    if($check === true){
      $message = classroomResourceRun('POST', NULL, $data, $dbc);

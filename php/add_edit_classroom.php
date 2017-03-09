@@ -30,22 +30,16 @@ $db = new DAO();
 <div class="form-container edit-classroom-container">
 	<form id="add_edit_classroom">
 
-			<input type="hidden" name="buildingId" value="<?php 
-				if(isset($classroom[0]['building_id'])){echo $classroom[0]['building_id'];}else{echo $building_id;}?>"/>
+			<input type="hidden" name="buildingId" value="<?php if(isset($classroom[0]['building_id'])){echo $classroom[0]['building_id'];}else{echo $building_id;}?>"/>
 
 			<div class="form-row">
 			<label>Room Number:</label>
-			<input type="text" name="roomNumber" class="validate" placeholder="210" maxlength="4" minlength="1" required 
-			value="<?php
-								if(isset($classroom[0]['class_number'])){
-								echo $classroom[0]['class_number'];
-								}
-								?>"/>
+			<input type="text" name="roomNumber" class="validate" placeholder="210" maxlength="4" minlength="1" required value="<?php if(isset($classroom[0]['class_number'])){echo $classroom[0]['class_number'];}?>"/>
 			</div>
 
 			<div class="form-row">
 			<label>Classroom Type:</label>
-			<select name="classroomType" class="validate" required>
+			<select name="classroomType"  required>
 				<option value="">--Choose One--</option>
 				<?php
 						if(isset($classroom[0]['room_type_id'])){
@@ -102,7 +96,7 @@ $db = new DAO();
 					echo '<button class="delete_classroom btn btn-default" data-delete="' . $classroom[0]['classroom_id'] . '">Delete</button>';
 				}
 			?>
-			<button class="btn btn-success submit-form add-edit-classroom-btn <?php echo $action ?>" name="save" type="button"><?php echo $action ?></button>
+			<button class="btn btn-success submit-form add-edit-classroom-btn <?php echo $action ?>" name="save" type="submit"><?php echo $action ?></button>
 			</div>
 
 		
