@@ -2516,22 +2516,22 @@ span {
   display: none; }
 
 .alert-box {
-  width: 600px;
+  width: 450px;
   border: solid 1px #cccccc;
   border-radius: 5px;
   box-sizing: border-box;
   margin: 0 auto;
-  height: 77px;
+  height: 102px;
   position: relative;
   margin-bottom: 25px; }
   .alert-box .alert-icon, .alert-box .alert-text {
     float: left;
-    height: 75px;
+    height: 100px;
     width: 15%;
     background-color: #cccccc;
     box-sizing: border-box;
     overflow: hidden;
-    line-height: 75px;
+    line-height: 100px;
     text-align: center;
     color: #fff;
     font-size: 22px; }
@@ -2573,7 +2573,7 @@ span {
 
 .modal-container {
   width: 600px;
-  height: 500px;
+  height: 375px;
   border: solid 1px #22305d;
   border-radius: 5px;
   overflow: hidden;
@@ -2596,16 +2596,17 @@ span {
     visibility: visible; }
   .modal-container .modal-header {
     width: 100%;
-    height: 35px;
+    height: 60px;
     line-height: 35px;
     background-color: #e69b00;
     color: #fff;
-    padding: 0 10px;
-    box-sizing: border-box; }
-  .modal-container .modal-body {
     padding: 10px;
-    width: 100%auto;
-    height: 400px;
+    box-sizing: border-box;
+    font-size: 24px;
+    font-weight: 700; }
+  .modal-container .modal-body {
+    padding: 50px 0;
+    height: 250px;
     overflow-y: auto;
     box-sizing: border-box;
     font-size: 14px;
@@ -2614,7 +2615,7 @@ span {
     width: 100%;
     height: 65px;
     background-color: #e2e2e2;
-    padding: 0 10px;
+    padding: 15px;
     box-sizing: border-box; }
 
 .form-container {
@@ -2866,6 +2867,18 @@ div.loading {
   width: 500px;
   margin: 50px auto; }
 
+.classroom-modal .modal-footer button {
+  display: none; }
+
+.classroom-modal .modal-footer p {
+  display: block; }
+
+.classroom-modal.error-modal .modal-footer p {
+  display: none; }
+
+.classroom-modal.error-modal .modal-footer button {
+  display: block; }
+
 .curriculum-container {
   position: relative;
   display: block;
@@ -3022,6 +3035,18 @@ div.alpha-search {
     position: relative;
     right: 10px; }
 
+.faculty-modal .modal-footer button {
+  display: none; }
+
+.faculty-modal .modal-footer p {
+  display: block; }
+
+.faculty-modal.error-modal .modal-footer p {
+  display: none; }
+
+.faculty-modal.error-modal .modal-footer button {
+  display: block; }
+
 .result-myschedule ul li {
   width: 100%;
   padding: 15px 10px;
@@ -3051,8 +3076,7 @@ div.alpha-search {
     background-color: #fff;
     opacity: 1;
     visibility: visible;
-    transition: all 0.5s ease 0.5s, background-color 0.3s ease;
-    position: relative; }
+    transition: all 0.5s ease 0.5s, background-color 0.3s ease; }
     .campus-container section .campus-info-container {
       width: 100%;
       transition: width 0.3s ease;
@@ -3154,6 +3178,22 @@ div.alpha-search {
     font-weight: 600;
     font-size: 16px; }
 
+.modal-container.building-modal.show {
+  top: -250px;
+  left: -100px; }
+
+.building-modal .modal-footer button {
+  display: none; }
+
+.building-modal .modal-footer p {
+  display: block; }
+
+.building-modal.error-modal .modal-footer p {
+  display: none; }
+
+.building-modal.error-modal .modal-footer button {
+  display: block; }
+
 .btn-pad {
   margin-left: 10px; }
 
@@ -3216,6 +3256,18 @@ div.alpha-search {
   margin: 50px auto; }
   .edit-subject-container .form-row input[type=text] {
     min-width: 300px; }
+
+.subject-modal .modal-footer button, .course-modal .modal-footer button {
+  display: none; }
+
+.subject-modal .modal-footer p, .course-modal .modal-footer p {
+  display: block; }
+
+.subject-modal.error-modal .modal-footer p, .course-modal.error-modal .modal-footer p {
+  display: none; }
+
+.subject-modal.error-modal .modal-footer button, .course-modal.error-modal .modal-footer button {
+  display: block; }
 
 .home-container {
   display: block;

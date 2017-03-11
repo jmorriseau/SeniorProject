@@ -1,4 +1,5 @@
 $(function () {
+
 //    if delete contact  button is clicked run ajax to delete contact
     $(".delete_building").on('click', function (e) {
         e.stopPropagation();
@@ -10,9 +11,23 @@ $(function () {
             method: "DELETE",
             success: function (data) {
                 if(data !== "" && data == 'Building Deleted'){
-                    console.log("success " + data);
-                alert('Building has been deleted.');
-                loadPage('building');
+                //     console.log("success " + data);
+                // alert('Building has been deleted.');
+                // loadPage('building');
+                $(".building-modal").removeClass("error-modal");
+                $('.building-modal .modal-header').html("Building");
+                    $('.building-modal .modal-body').html(
+                        '<div class="alert-box info">' +
+                            '<div class="alert-icon">' +
+                                '<span class="fa fa-info-circle"></span>' +
+                            '</div>' +
+                            '<div class="alert-text">' +
+                                "Building deleted successfully." +
+                            '</div>' +
+                        '</div>'
+                    )
+                    launchModal('.building-modal');
+                    setTimeout(function(){closeModal('.building-modal');loadPage('building')},3000);
                 }
                 else{
                     alert(data);
@@ -29,8 +44,8 @@ $(function () {
 
 if(formBuildings.length) {
     formBuildings[0].addEventListener('submit', checkForm);
-formBuildings[1].addEventListener('submit', checkForm);
-formBuildings[2].addEventListener('submit', checkForm);
+    formBuildings[1].addEventListener('submit', checkForm);
+    formBuildings[2].addEventListener('submit', checkForm);
 }
 
 
@@ -51,12 +66,13 @@ var buildingRegexValidations = {
 function checkForm(e) {
     e.preventDefault();
 
-    console.log(e.target);
+    //console.log(e.target);
 
     var specificForm = this;
+    var buildingErrorList = "";
 
     specificForm.isValid = true;
-    console.log("Value :" + specificForm.isValid + " before the loop");
+    //console.log("Value :" + specificForm.isValid + " before the loop");
     //if address two has a value, add the validator class, if not, remove the validator class
     if ($.trim($("input[name=addressLine2]").val()) != "") {
         $("input[name=addressLine2]").addClass('validate');
@@ -71,26 +87,43 @@ function checkForm(e) {
         //$(this).length <= 0) ||
         if ($(this).val() == "" || !buildingRegexValidations[this.name].test(this.value)) {
             $(this).parent().addClass('error');
-            console.log($(this).val());
+            //console.log($(this).val());
+            //alert($(this).parent().find("label").text());
+            buildingErrorList += $(this).parent().find("label").text() + "<br /> ";
             
         specificForm.isValid = false;
-            console.log("Value is : " + specificForm.isValid + " in the error loop");
+            //console.log("Value is : " + specificForm.isValid + " in the error loop");
         }
         else {
             $(this).parent().removeClass('error');
-            console.log($(this).val());
-            console.log("Value is : " +specificForm.isValid + " in the remove error loop");
+           //console.log($(this).val());
+            //console.log("Value is : " +specificForm.isValid + " in the remove error loop");
         }
     });
 
-    console.log("Value is :" +this.isValid + " after the loop");
+    //console.log("Value is :" +this.isValid + " after the loop");
     //if the isValid flag gets set to false, alert the user else, send to php via ajax
     if (specificForm.isValid == false) {
-        alert("Please correct all fields.");
+        $(".building-modal").addClass("error-modal");
+        $('.building-modal .modal-header').html("Building");
+        $('.building-modal .modal-body').html(
+
+            '<div class="alert-box warning">' +
+            '<div class="alert-icon">' + 
+                '<span class="fa fa-exclamation-triangle"></span>' +
+            '</div>' +
+            '<div class="alert-text">' +
+                "Please correct the following fields:<br />" + 
+                buildingErrorList +
+            '</div>' +
+            '</div>' 
+        )
+        launchModal('.building-modal');
     }
     else {
         var type;
-		var addressLineConcat = $(this).find("input[name=addressLine1]").val() + " " + $(this).find("input[name=addressLine2]").val();
+        var buldingName = $.trim($(this).find('input[name=buildingName]').val());
+		var addressLineConcat = $.trim($(this).find("input[name=addressLine1]").val()) + " " + $.trim($(this).find("input[name=addressLine2]").val());
         if ($(".submit-form").hasClass("Add")) {
             type = "POST";
         }
@@ -103,23 +136,53 @@ function checkForm(e) {
             type: type,
             dataType: "JSON",
             data: {
-                buildingName: $(this).find('input[name=buildingName]').val(),
-                campusName: $(this).find("select[name=campusName]").val(),
+                buildingName: $.trim($(this).find('input[name=buildingName]').val()),
+                campusName: $.trim($(this).find("select[name=campusName]").val()),
                 addressLine1: addressLineConcat,
-                city: $(this).find("input[name=city]").val(),
-                state: $(this).find("select[name=state]").val(),
-                zip: $(this).find("input[name=zip]").val(),
-                id: $(this).find("input[name=buildingId]").val()
+                city: $.trim($(this).find("input[name=city]").val()),
+                state: $.trim($(this).find("select[name=state]").val()),
+                zip: $.trim($(this).find("input[name=zip]").val()),
+                id: $.trim($(this).find("input[name=buildingId]").val())
             },
             //if ajax is successful, return to building main page and alert the user
             success: function (data) {
                 if (data !== "" && data == 'Building Added') {
-                    alert("Building added successfully.")
-                    loadPage('building');
+                    // alert("Building added successfully.")
+                    // loadPage('building');
+                    $(".building-modal").removeClass("error-modal");
+                    $('.building-modal .modal-header').html("Building");
+                    $('.building-modal .modal-body').html(
+                        '<div class="alert-box info">' +
+                            '<div class="alert-icon">' +
+                                '<span class="fa fa-info-circle"></span>' +
+                            '</div>' +
+                            '<div class="alert-text">' +
+                                buldingName +
+                                " has been added successfully." +
+                            '</div>' +
+                        '</div>'
+                    )
+                    launchModal('.building-modal');
+                    setTimeout(function(){closeModal('.building-modal');loadPage('building')},3000);
                 }
                 else if (data !== "" && data == 'Building Updated'){
-                    alert("Building updated successfully.")
-                    loadPage('building');
+                    // alert("Building updated successfully.")
+                    // loadPage('building');
+                    $(".building-modal").removeClass("error-modal");
+                    $('.building-modal .modal-header').html("Building");
+                    $('.building-modal .modal-body').html(
+                        '<div class="alert-box info">' +
+                            '<div class="alert-icon">' +
+                                '<span class="fa fa-info-circle"></span>' +
+                            '</div>' +
+                            '<div class="alert-text">' +
+                                buldingName +
+                                " has been updated successfully." +
+                            '</div>' +
+                        '</div>'
+                    )
+                    launchModal('.building-modal'); 
+                    setTimeout(function(){closeModal('.building-modal');loadPage('building')},3000);
                 } 
                 else {
                     alert(data);

@@ -13,13 +13,15 @@ $faculty = array();
 //if there is a search criteria pull faculty information
  if (isset($searchCriteria)){
     $searchResults = $db->sql("SELECT * FROM Faculty WHERE last_name LIKE '" . $searchCriteria ."%' ORDER BY last_name");
+    $facultyList = "";
 
     if(count($searchResults) > 0){       
-        echo '<ul>';
+        $facultyList .= '<ul>';
             foreach($searchResults as $sr){
-                echo '<li class="edit-faculty" data-fid="' .$sr[faculty_id]. '">'. $sr[first_name] . ' ' . $sr[last_name] . '<span class="pull-right">Edit</span></li>';
+                $facultyList .='<li class="edit-faculty" data-fid="' .$sr[faculty_id]. '">'. $sr[first_name] . ' ' . $sr[last_name] . '<span class="pull-right">Edit</span></li>';
             }
-        echo '</ul>';
+        $facultyList .='</ul>';
+        echo $facultyList;
     }
     else if(count($searchResults) < 1) {
         echo 'No results returned.';

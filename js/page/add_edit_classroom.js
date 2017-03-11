@@ -11,9 +11,23 @@
             method: "DELETE",
             success: function (data) {
 				if(data !== "" && data == 'Classroom Deleted'){
-					console.log("success " + data);
-					alert('Classroom has been deleted.');
-					loadPage('classroom');
+					// console.log("success " + data);
+					// alert('Classroom has been deleted.');
+					// loadPage('classroom');
+					$(".classroom-modal").removeClass("error-modal");
+					$('.classroom-modal .modal-header').html("Classroom");
+                    $('.classroom-modal .modal-body').html(
+                        '<div class="alert-box info">' +
+                            '<div class="alert-icon">' +
+                                '<span class="fa fa-info-circle"></span>' +
+                            '</div>' +
+                            '<div class="alert-text">' +
+                                "Classroom deleted successfully." +
+                            '</div>' +
+                        '</div>'
+                    )
+                    launchModal('.classroom-modal');
+					setTimeout(function(){closeModal('.classroom-modal');loadPage('classroom')},3000);
 				}
 				else {
 					alert(data);
@@ -39,7 +53,7 @@ function classroomCheckForm(e){
 
 	//set flag to help check validation
 	var isValid = true;
-
+	var classroomErrorList = "";
 	//for each field in the add_edit_classroom form with the validate class, see if the field is empty or fails regex validation
 	//if so set the isValid flad to false and add the error class to signify an error to the user else remove the error class
 	$('#add_edit_classroom .validate').each(function(){
@@ -49,6 +63,7 @@ function classroomCheckForm(e){
 		if($(this).val() == "" || !classroomRegexValidations[this.name].test($(this).val())){
 			$(this).parent().addClass('error');
 			isValid = false;
+			classroomErrorList += $(this).parent().find("label").text() + "<br /> ";
 		}
 		else {
 			$(this).parent().removeClass('error');
@@ -57,10 +72,25 @@ function classroomCheckForm(e){
 
 	// if the isValid flag gets set to false, alert the user else send to php via ajax
 	if(isValid == false){
-		alert("Please correct all fields.");
+		//alert("Please correct all fields.");
+		$(".classroom-modal").addClass("error-modal");
+        $('.classroom-modal .modal-header').html("Classroom");
+        $('.classroom-modal .modal-body').html(
+            '<div class="alert-box warning">' +
+            '<div class="alert-icon">' + 
+                '<span class="fa fa-exclamation-triangle"></span>' +
+            '</div>' +
+            '<div class="alert-text">' +
+                "Please correct the following fields:<br />" +
+				classroomErrorList +
+            '</div>' +
+            '</div>'
+        )
+        launchModal('.classroom-modal');
 	}
 	else {
 		var type;
+		var classroomNumber = $.trim($("input[name=roomNumber]").val());
 		if ($(".submit-form").hasClass("Add")) {
             type = "POST";
         }
@@ -74,20 +104,50 @@ function classroomCheckForm(e){
 			dataType: "JSON",
 			data: {
 				buildingId: $("input[name=buildingId]").val(),
-				classNumber: $("input[name=roomNumber]").val(),
+				classNumber: $.trim($("input[name=roomNumber]").val()),
 				roomTypeId: $("select[name=classroomType]").val(),
-				capacity: $("input[name=roomCap]").val(),
+				capacity: $.trim($("input[name=roomCap]").val()),
 				id : $("input[name=classroomId]").val()
 			},
 			//if ajax is successful, return to classroom main page and alert the user
 		success: function(data){
 			if(data !== "" && data == 'Classroom Added'){
-					alert("Classroom added successfully.")
-                    loadPage('classroom');
+					// alert("Classroom added successfully.")
+                    // loadPage('classroom');
+					$(".classroom-modal").removeClass("error-modal");
+					$('.classroom-modal .modal-header').html("Classroom");
+                    $('.classroom-modal .modal-body').html(
+                        '<div class="alert-box info">' +
+                            '<div class="alert-icon">' +
+                                '<span class="fa fa-info-circle"></span>' +
+                            '</div>' +
+                            '<div class="alert-text">' +
+                                "Classroom  " + classroomNumber +
+                                " has been added successfully." +
+                            '</div>' +
+                        '</div>'
+                    )
+                    launchModal('.classroom-modal');
+					setTimeout(function(){closeModal('.classroom-modal');loadPage('classroom')},3000);
 			}
 			else if(data !== "" && data == 'Classroom Updated'){
-				 	alert("Classroom updated successfully.")
-                	loadPage('classroom');
+				 	// alert("Classroom updated successfully.")
+                	// loadPage('classroom');
+					$(".classroom-modal").removeClass("error-modal");
+					$('.classroom-modal .modal-header').html("Classroom");
+                    $('.classroom-modal .modal-body').html(
+                        '<div class="alert-box info">' +
+                            '<div class="alert-icon">' +
+                                '<span class="fa fa-info-circle"></span>' +
+                            '</div>' +
+                            '<div class="alert-text">' +
+                                "Classroom  " + classroomNumber + 
+                                " has been updated successfully." +
+                            '</div>' +
+                        '</div>'
+                    )
+                    launchModal('.classroom-modal');
+					setTimeout(function(){closeModal('.classroom-modal');loadPage('classroom')},3000);
 			}
 			else{
 				alert(data);

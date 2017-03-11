@@ -26,13 +26,9 @@ $action;
 <div class="form-container edit-subject-container">
 <form id="add_subject">
   <div class="form-row">
-    <label>Subject Name:</label>
+    <label>Subject Name</label>
     <input type="text" name="subjectName" class="validate" placeholder="English" maxlength="100" minlength="2" required
-      value="<?php
-              if(isset($department[0]['department_name'])){
-                echo $department[0]['department_name'];
-                }
-              ?>"/>
+      value="<?php if(isset($department[0]['department_name'])){echo rtrim($department[0]['department_name']);}?>"/>
   </div>
 
   <input type="hidden" name="subjectId" value="<?php if(isset($department[0]['departments_id'])){echo $department[0]['departments_id'];}?>"/>
@@ -48,5 +44,16 @@ $action;
   </div>
 </div>
 </form>
+
+<div class="modal-container subject-modal">
+    <div class="modal-header">
+    </div>
+    <div class="modal-body">
+    </div>
+    <div class="modal-footer">
+        <p class="pull-right">You will automatically be redirected.</p>
+        <button class="btn btn-success pull-right" onclick="closeModal('.subject-modal')">Close</button>
+    </div>
+</div>
 
 <script type="text/javascript" src="./js/page/add_edit_subject.js"></script>

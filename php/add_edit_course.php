@@ -30,44 +30,21 @@ $action;
 <div class="form-container edit-classroom-container">
 <form id="add_course">
   <div class="form-row">
-    <label>Course Name:</label>
+    <label>Course Name</label>
     <input type="text" name="courseName" class="validate" placeholder="English 101" maxlength="100" minlength="2" required
-    value="<?php
-            if(isset($course[0]['course_name'])){
-              echo $course[0]['course_name'];
-              }
-            ?>"/>
+    value="<?php if(isset($course[0]['course_name'])){echo rtrim($course[0]['course_name']);}?>"/>
   </div>
 
   <div class="form-row">
-    <label>Course Number:</label>
+    <label>Course Number</label>
     <input type="text" name="courseNumber" class="validate" placeholder="EN101" maxlength="8" minlength="3" required 
-    value="<?php
-              if(isset($course[0]['course_number'])){
-              echo $course[0]['course_number'];
-              }
-              ?>"/>
+    value="<?php if(isset($course[0]['course_number'])){echo $course[0]['course_number'];}?>"/>
   </div>
 
-<!-- boys say we dont need this 
-  <div class="form-row">    
-    <label>Classroom Type:</label>
-    <select>
-      <option value="">--Choose One--</option>
-      <option value="hall">Hall</option>
-      <option value="lab" selected="selected">Lab</option>
-      <option value="lecture">Lecture</option>
-    </select>
-  </div>-->
-
   <div class="form-row">
-    <label>Credit Hours:</label>
+    <label>Credit Hours</label>
     <input type="number" name="creditHours" class="validate" placeholder="4" min="1" max="5" required
-    value="<?php
-              if(isset($course[0]['credit_hours'])){
-              echo $course[0]['credit_hours'];
-              }
-              ?>"/>
+    value="<?php if(isset($course[0]['credit_hours'])){echo rtrim($course[0]['credit_hours']);}?>"/>
   </div>
 
   <div class="form-row">
@@ -108,5 +85,16 @@ $action;
   </div>
 </div>
 </form>
+
+<div class="modal-container course-modal">
+    <div class="modal-header">
+    </div>
+    <div class="modal-body">
+    </div>
+    <div class="modal-footer">
+        <p class="pull-right">You will automatically be redirected.</p>
+        <button class="btn btn-success pull-right" onclick="closeModal('.course-modal')">Close</button>
+    </div>
+</div>
 
 <script type="text/javascript" src="./js/page/add_edit_course.js"></script>

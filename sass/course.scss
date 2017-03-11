@@ -80,3 +80,19 @@
   }
 }
 
+.subject-modal .modal-footer button, .course-modal .modal-footer button {
+  display: none;
+}
+
+.subject-modal .modal-footer p, .course-modal .modal-footer p {
+  display: block;
+}
+
+
+.subject-modal.error-modal .modal-footer p, .course-modal.error-modal .modal-footer p {
+  display: none;
+}
+
+.subject-modal.error-modal .modal-footer button, .course-modal.error-modal .modal-footer button {
+  display: block;
+}

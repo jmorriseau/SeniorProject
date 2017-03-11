@@ -55,6 +55,7 @@ function launchModal(section, page){
 function closeModal(section){
   $('.modal-bg').hide();
   $(section).removeClass('show');
+  //loadPage(page);
 }
 
 function toggleAccordian(elem){

@@ -5,26 +5,6 @@ $db = new DAO();
 $faculty = array();
 
 $faculty = $db->sql("SELECT * FROM Faculty ORDER BY last_name");
-/*
-$count = array();
-$Holder = array();
-$sql_statement = array();
-
-$enrollment = $db->sql("SELECT course_id, count(course_id) as total FROM Enrollment GROUP BY course_id ORDER BY total desc;");
-
-foreach ($enrollment as $header => $value) {
-  foreach ($enrollment as $value => $thing) {
-    $cid = $thing['course_id'] ;
-    $ctot = $thing['total'];
-    $count += [$cid => $ctot];
-    }
-}
-
-var_dump($count);
-echo "\n\n --------------------------------------------------------------------------------------------------------------------";
-//var_dump($id_key);
-*/
-
 ?>
 
 <div class="header">
@@ -46,19 +26,23 @@ echo "\n\n ---------------------------------------------------------------------
 
 <div class="result-faculty">
   <?php
+  $facultyList = "";
     if(count($faculty) > 0){
-      echo '<ul>';
+      $facultyList .= '<ul>';
           foreach($faculty as $sr){
-              echo '<li class="edit-faculty" data-fid="' .$sr[faculty_id]. '">'. $sr[first_name] . ' ' . $sr[last_name] . '<span class="pull-right">Edit</span></li>';
+              $facultyList .= '<li class="edit-faculty" data-fid="' .$sr[faculty_id]. '">'. $sr[first_name] . ' ' . $sr[last_name] . '<span class="pull-right">Edit</span></li>';
           }
-      echo '</ul>';
+      $facultyList .= '</ul>';
+      echo $facultyList;
     }
   ?>
 </div>
 
 <script>
   $(function(){
-    //run search faculty when search icon is clicked
+
+   
+   // run search faculty when search icon is clicked
       $("#search-icon").on("click",function(){
         var searchCriteria = $("#search-input").val();
         console.log(searchCriteria);
@@ -72,12 +56,14 @@ echo "\n\n ---------------------------------------------------------------------
         $(".result-faculty").load('php/faculty_list.php?sc=' + searchCriteria);
     });
 
-    //if existing faculty edit is clicked go to add edit faulty
-    $("body").on("click", ".edit-faculty", function(){
+   // if existing faculty edit is clicked go to add edit faulty
+    $(document).one("click", ".result-faculty .edit-faculty", function(){
+      console.log($(this));
       var facultyId = $(this).data("fid");
       console.log("Got the faculty Id: " + facultyId);
       $(".content-container").load("php/add_edit_faculty.php?fid=" + facultyId);
     });
+
 
   });
 </script>
