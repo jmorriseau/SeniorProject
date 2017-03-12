@@ -5,26 +5,6 @@ $db = new DAO();
 $faculty = array();
 
 $faculty = $db->sql("SELECT * FROM Faculty ORDER BY last_name");
-/*
-$count = array();
-$Holder = array();
-$sql_statement = array();
-
-$enrollment = $db->sql("SELECT course_id, count(course_id) as total FROM Enrollment GROUP BY course_id ORDER BY total desc;");
-
-foreach ($enrollment as $header => $value) {
-  foreach ($enrollment as $value => $thing) {
-    $cid = $thing['course_id'] ;
-    $ctot = $thing['total'];
-    $count += [$cid => $ctot];
-    }
-}
-
-var_dump($count);
-echo "\n\n --------------------------------------------------------------------------------------------------------------------";
-//var_dump($id_key);
-*/
-
 ?>
 
 <div class="header">
