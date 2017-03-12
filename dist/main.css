@@ -3047,16 +3047,22 @@ div.alpha-search {
 .faculty-modal.error-modal .modal-footer button {
   display: block; }
 
-.result-myschedule ul li {
+.result-myschedule tr {
   width: 100%;
-  padding: 15px 10px;
+  padding: 10px 5px;
   box-sizing: border-box;
   border-bottom: solid 1px #cccccc;
   display: block; }
-  .result-myschedule ul li:last-child {
+  .result-myschedule tr:last-child {
     border-bottom: none; }
-  .result-myschedule ul li:nth-child(even) {
+  .result-myschedule tr:nth-child(even) {
     background-color: #eaeaea; }
+
+th, td {
+  margin: 0;
+  text-align: center;
+  border-collapse: collapse;
+  min-width: 150px; }
 
 .schedule-continer {
   border: 1px solid #cccccc;
