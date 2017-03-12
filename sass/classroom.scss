@@ -97,3 +97,20 @@
   width:500px;
   margin:50px auto;
 }
+
+.classroom-modal .modal-footer button {
+  display: none;
+}
+
+.classroom-modal .modal-footer p {
+  display: block;
+}
+
+
+.classroom-modal.error-modal .modal-footer p {
+  display: none;
+}
+
+.classroom-modal.error-modal .modal-footer button {
+  display: block;
+}

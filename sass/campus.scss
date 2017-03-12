@@ -14,7 +14,7 @@
       opacity: 1;
       visibility: visible;
       transition: all 0.5s ease 0.5s, background-color 0.3s ease;
-      position: relative;
+      // position: relative;
 
       .campus-info-container{
         width:100%;
@@ -158,4 +158,26 @@
     font-size:16px;
   }
 
+}
+
+.modal-container.building-modal.show{
+    top: -250px;
+    left: -100px;
+}
+
+.building-modal .modal-footer button {
+  display: none;
+}
+
+.building-modal .modal-footer p {
+  display: block;
+}
+
+
+.building-modal.error-modal .modal-footer p {
+  display: none;
+}
+
+.building-modal.error-modal .modal-footer button {
+  display: block;
 }

@@ -9,8 +9,8 @@
       12:00 PM</strong>. These updates are critical to establishing accurate scheduling. We appreciate your cooperation!</p>
   </div>
  </div> 
-<!--
-Notes for Saturday:
+
+<!--Notes for Saturday:
 Build the pages out
   Build the home page
   Build the building page etc
@@ -22,9 +22,9 @@ auto prefixer
 browerify/ browser sync
 
 from Sunday:
-increase height of modal header
+increase height of modal header-->
 
-<div class="alert-box info">
+<!--<div class="alert-box info">
   <div class="alert-icon">
     <span class="fa fa-info-circle"></span>
   </div>
@@ -102,5 +102,5 @@ increase height of modal header
 </div>
 
 <div class="loading">
-</div>
- -->
+</div>-->
+ 

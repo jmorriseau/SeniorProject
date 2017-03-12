@@ -39,7 +39,7 @@ include('./autoload.php');
         <input type="text" name="buildingName" class="validate" placeholder="North Building" maxlength="40" minlength="2" required
         value="<?php
             if(isset($building[0]['building_name'])){
-                echo $building[0]['building_name'];
+                echo rtrim($building[0]['building_name']);
             }
             ?>"/>
         <span class="hide">*</span>
@@ -66,7 +66,7 @@ include('./autoload.php');
         <input type="text" name="addressLine1" class="validate" placeholder="15 Main St" maxlength="40" minlength="2" required
         value="<?php
             if(isset($building[0]['address'])){
-                echo $building[0]['address'];
+                echo rtrim($building[0]['address']);
             }
         ?>"/>
       </div>
@@ -81,7 +81,7 @@ include('./autoload.php');
         <input type="text" name="city" class="validate" placeholder="North Attleboro" maxlength="150" minlength="2" required
         value="<?php
             if(isset($building[0]['city'])){
-                echo $building[0]['city'];
+                echo rtrim($building[0]['city']);
             }
         ?>"/>
       </div>
@@ -111,7 +111,7 @@ include('./autoload.php');
       <div class="form-row">
         <label>Zip</label>
         <input type="text" name="zip" class="validate" placeholder="02903" maxlength="10" minlength="5" required
-        value="<?php if(isset($building[0]['zip'])){echo $building[0]['zip'];}?>"/>
+        value="<?php if(isset($building[0]['zip'])){echo rtrim($building[0]['zip']);}?>"/>
       </div>
 
       <input type="hidden" name="buildingId" value="<?php if(isset($building[0]['building_id'])){echo $building[0]['building_id'];}?>"/>
@@ -128,6 +128,17 @@ include('./autoload.php');
 
     </div>
   </form>
+</div>
+
+<div class="modal-container building-modal">
+    <div class="modal-header">
+    </div>
+    <div class="modal-body">
+    </div>
+    <div class="modal-footer">
+        <p class="pull-right">You will automatically be redirected.</p>
+        <button class="btn btn-success pull-right" onclick="closeModal('.building-modal')">Close</button>
+    </div>
 </div>
 
 <script type="text/javascript" src="./js/page/add_edit_building.js"></script>

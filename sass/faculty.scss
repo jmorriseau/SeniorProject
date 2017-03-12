@@ -72,3 +72,20 @@ div.alpha-search{
       right: 10px;
     }
 }
+
+.faculty-modal .modal-footer button {
+  display: none;
+}
+
+.faculty-modal .modal-footer p {
+  display: block;
+}
+
+
+.faculty-modal.error-modal .modal-footer p {
+  display: none;
+}
+
+.faculty-modal.error-modal .modal-footer button {
+  display: block;
+}

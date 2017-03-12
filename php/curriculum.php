@@ -7,10 +7,6 @@ include('./autoload.php');
 
 <div class="header">
   <h1>Current Curriculum
-    <!--<button class="btn btn-success pull-right" onclick="loadPage('add_curriculum')">
-      <span class="fa fa-plus-circle"></span>
-      Add Curriculum
-    </button>-->
 </h1>
 </div>
 <hr/>
